@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.a2madrid.domain.model.QuizResult
-import com.example.a2madrid.ui.theme.A2MadridTheme
+import com.example.a2madrid.presentation.theme.A2MadridTheme
 
 @Composable
 fun ResultScreen(

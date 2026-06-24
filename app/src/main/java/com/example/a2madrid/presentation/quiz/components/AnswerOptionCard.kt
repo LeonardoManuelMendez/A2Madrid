@@ -31,8 +31,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.a2madrid.ui.theme.A2MadridTheme
-import com.example.a2madrid.ui.theme.LocalQuizColors
+import com.example.a2madrid.presentation.theme.A2MadridTheme
+import com.example.a2madrid.presentation.theme.LocalQuizColors
 
 /** Visual state of a single answer option. */
 enum class OptionState { Default, Selected, Correct, Incorrect, Dimmed }

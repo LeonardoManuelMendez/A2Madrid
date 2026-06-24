@@ -3,7 +3,7 @@
  * Colores semánticos que Material 3 no incluye (los del estado "correcto"). Se exponen por
  * CompositionLocal (LocalQuizColors), lo provee A2MadridTheme y los consume AnswerOptionCard.
  */
-package com.example.a2madrid.ui.theme
+package com.example.a2madrid.presentation.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

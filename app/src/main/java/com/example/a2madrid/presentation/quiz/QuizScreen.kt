@@ -50,7 +50,7 @@ import com.example.a2madrid.domain.model.Question
 import com.example.a2madrid.domain.model.QuizResult
 import com.example.a2madrid.presentation.quiz.components.AnswerOptionCard
 import com.example.a2madrid.presentation.quiz.components.OptionState
-import com.example.a2madrid.ui.theme.A2MadridTheme
+import com.example.a2madrid.presentation.theme.A2MadridTheme
 
 @Composable
 fun QuizScreen(

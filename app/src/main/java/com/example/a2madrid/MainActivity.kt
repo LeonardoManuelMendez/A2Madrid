@@ -15,7 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.a2madrid.presentation.navigation.A2MadridNavDisplay
-import com.example.a2madrid.ui.theme.A2MadridTheme
+import com.example.a2madrid.presentation.theme.A2MadridTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

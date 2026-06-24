@@ -34,7 +34,7 @@ com.example.a2madrid
    ├─ quiz/                   QuizViewModel, QuizUiState, QuizScreen, components/
    ├─ result/                 ResultViewModel, ResultScreen
    ├─ scorehistory/           ScoreHistoryViewModel, ScoreHistoryScreen
-   └─ ../ui/theme/            Tema M3 (carmesí Madrid) + colores de feedback
+   └─ theme/                  Tema M3 (carmesí Madrid) + colores de feedback
 ```
 
 ## Cómo interactúan las capas (flujo)

@@ -1,4 +1,4 @@
-package com.example.a2madrid.ui.theme
+package com.example.a2madrid.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

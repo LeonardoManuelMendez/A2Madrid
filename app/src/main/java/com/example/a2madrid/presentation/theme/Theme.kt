@@ -4,7 +4,7 @@
  * provee, vía CompositionLocal, los colores propios de feedback (LocalQuizColors).
  * Lo aplica MainActivity alrededor de TODAS las pantallas.
  */
-package com.example.a2madrid.ui.theme
+package com.example.a2madrid.presentation.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
