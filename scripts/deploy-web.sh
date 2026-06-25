@@ -13,10 +13,8 @@ mkdir -p build/site/app
 cp -r landing/. build/site/
 cp -r app/build/dist/wasmJs/productionExecutable/. build/site/app/
 
-# APK opcional: si existe landing/a2madrid.apk, el botón de descarga funcionará.
-if [ ! -f build/site/a2madrid.apk ]; then
-  echo "    (nota: no hay APK en landing/a2madrid.apk; el botón 'Descargar para Android' dará 404 hasta que lo añadas)"
-fi
+# Nota: el APK NO se aloja aquí. El botón "Descargar para Android" apunta a GitHub Releases
+# (releases/latest/download/a2madrid.apk), con ancho de banda gratis y sin riesgo de coste.
 
 echo "==> 3/3 · Desplegando a Firebase Hosting…"
 firebase deploy --only hosting

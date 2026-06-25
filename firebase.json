@@ -12,12 +12,6 @@
         "headers": [
           { "key": "Content-Type", "value": "application/wasm" }
         ]
-      },
-      {
-        "source": "/a2madrid.apk",
-        "headers": [
-          { "key": "Content-Type", "value": "application/vnd.android.package-archive" }
-        ]
       }
     ]
   }

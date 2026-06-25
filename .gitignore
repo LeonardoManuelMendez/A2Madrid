@@ -19,3 +19,7 @@ local.properties
 .firebase/
 firebase-debug.log*
 .firebase-debug.log*
+# Firma de release: NUNCA versionar el keystore ni sus contraseñas.
+*.jks
+*.keystore
+keystore.properties
