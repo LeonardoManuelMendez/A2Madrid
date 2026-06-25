@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+# Una sola base de código (Kotlin Multiplatform) verificada en sus plataformas:
+#  - Android: build + tests (Linux)
+#  - iOS: enlazado del framework compartido (macOS)
+#  - Web (wasmJs): compilación (Linux)
+jobs:
+  android:
+    name: Android (build + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar plataforma de Android (compileSdk 37)
+        run: sdkmanager "platforms;android-37"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build + tests
+        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+
+  web:
+    name: Web (wasmJs)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar plataforma de Android (compileSdk 37)
+        run: sdkmanager "platforms;android-37"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Compilar el target web
+        run: ./gradlew :app:compileKotlinWasmJs
+
+  ios:
+    name: iOS (framework)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar plataforma de Android (necesaria para configurar el proyecto)
+        run: sdkmanager "platforms;android-37"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Enlazar el framework compartido de iOS (simulador + dispositivo)
+        run: ./gradlew :app:linkDebugFrameworkIosSimulatorArm64 :app:linkDebugFrameworkIosArm64

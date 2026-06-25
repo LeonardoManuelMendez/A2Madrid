@@ -35,6 +35,20 @@ kotlin {
         binaries.executable()
     }
 
+    // iOS: tres targets (simulador Intel/ARM y dispositivo ARM). Cada uno empaqueta el código
+    // común en un framework "ComposeApp" que consume el proyecto Xcode (iosApp). Solo enlaza en
+    // macOS; en Linux/Windows el plugin de Kotlin desactiva estos targets automáticamente.
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)

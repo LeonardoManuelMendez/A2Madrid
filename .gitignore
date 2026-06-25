@@ -23,3 +23,9 @@ firebase-debug.log*
 *.jks
 *.keystore
 keystore.properties
+# iOS / Xcode (el .xcodeproj se genera en un Mac; sus artefactos no se versionan).
+xcuserdata/
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+iosApp/build/
+**/DerivedData/

@@ -6,8 +6,10 @@ respuesta con feedback inmediato (correcto/incorrecto + explicación) y al termi
 resumen con su puntuación. Las puntuaciones se guardan en un historial consultable y editable.
 No hay onboarding ni login.
 
-**Estado:** en **migración a Kotlin Multiplatform** (Android · iOS · Web). **Android** corre en
-emulador y **Web (wasmJs)** empaqueta y se sirve en navegador (Hitos 1 y 2 hechos). iOS pendiente.
+**Estado:** **Kotlin Multiplatform** en las tres plataformas. **Android** corre en emulador,
+**Web (wasmJs)** se sirve en navegador (publicada en Firebase: a2madrid.web.app) y el **código
+iOS** está completo, con su build de framework verificada en CI (GitHub Actions · runner macOS).
+Falta solo el proyecto Xcode ejecutable (se genera en un Mac).
 
 Repo: https://github.com/LeonardoManuelMendez/A2Madrid · respaldo local en `PruebaA2MadridCopia`.
 
@@ -30,8 +32,11 @@ app/  (módulo composeApp · Kotlin Multiplatform + Compose Multiplatform)
    ├─ commonMain/composeResources/files/exams.json   (Compose Resources)
    ├─ androidMain/kotlin/...     MainActivity · A2MadridApplication (initKoin) · AndroidScoreStorage · platformModule (actual)
    ├─ androidMain/{AndroidManifest.xml, res/}
-   ├─ iosMain/      (PENDIENTE)  IosScoreStorage (NSUserDefaults) · platformModule (actual) · MainViewController
+   ├─ iosMain/      (HECHO)      IosScoreStorage (NSUserDefaults) · platformModule (actual) · MainViewController (ComposeUIViewController)
    └─ wasmJsMain/   (HECHO)      WebScoreStorage (localStorage) · platformModule (actual) · main.kt (ComposeViewport) · resources/index.html
+
+iosApp/   (glue Swift de referencia: iOSApp.swift · ContentView.swift · Info.plist; el .xcodeproj se genera en Mac)
+.github/workflows/ci.yml   (CI: Android build+test · Web compile · iOS framework en runner macOS)
 ```
 
 ## Cómo interactúan las capas (flujo)
@@ -129,12 +134,28 @@ Android + iOS + Web (wasmJs).
   `app/build/dist/wasmJs/productionExecutable/`: index.html + a2madrid.js + .wasm + exams.json).
   Servir/probar: `./gradlew :app:wasmJsBrowserDevelopmentRun` (o `wasmJsBrowserRun`).
 
+**Hito 3 — iOS (CÓDIGO HECHO · build verificada en CI):**
+- Targets `iosX64/iosArm64/iosSimulatorArm64` con `binaries.framework { baseName="ComposeApp"; isStatic=true }`.
+- `iosMain`: `IosScoreStorage` (NSUserDefaults), `platformModule` (actual iOS), `MainViewController`
+  (`ComposeUIViewController { App() }`, arranca Koin una vez). Sin deps extra: koin-core, coroutines,
+  serialization, datetime, compose y navigation/lifecycle ya publican artefactos iOS.
+- `iosApp/` (glue Swift de referencia, sin `.xcodeproj` porque se genera en Mac).
+- Los targets iOS **solo enlazan en macOS**; en este Linux las tareas existen pero quedan SKIPPED.
+- **CI** (`.github/workflows/ci.yml`): runner `macos-14` ejecuta
+  `:app:linkDebugFrameworkIosSimulatorArm64` + `…IosArm64` → verifica el build de iOS sin Mac local.
+
 **Pendiente:**
-- [ ] **Hito 3 — iOS**: targets `iosX64/iosArm64/iosSimulatorArm64`, `IosScoreStorage`
-      (NSUserDefaults), `platformModule` (actual iOS) y `MainViewController` (`ComposeUIViewController`)
-      + proyecto Xcode `iosApp`. **Solo compila en macOS/Xcode** (no verificable en este Linux).
+- [ ] **iOS ejecutable**: generar el `iosApp.xcodeproj` en un Mac (Android Studio/Fleet con plugin
+      KMP, o crear app SwiftUI en Xcode) e integrar el framework (`embedAndSignAppleFrameworkForXcode`).
+      Probar en Simulador / firmar para dispositivo requiere una sesión de macOS (sirve Mac en la nube).
 
 ## Notas de build
+
+- **CI / GitHub Actions** (`.github/workflows/ci.yml`): tres jobs — Android (build+test, Linux),
+  Web (`compileKotlinWasmJs`, Linux) e iOS (framework, runner macOS). Todos instalan
+  `platforms;android-37` con `android-actions/setup-android` (AGP requiere el SDK al configurar el
+  proyecto, incluso para tareas iOS/web). JDK 21 vía `setup-java` (Temurin trae jlink → no hace
+  falta el workaround local de `org.gradle.java.home`).
 
 - **AGP 9 + KMP**: `com.android.application` + `kotlin.multiplatform` no son compatibles en AGP 9
   sin el workaround oficial: en `gradle.properties` → `android.builtInKotlin=false` y

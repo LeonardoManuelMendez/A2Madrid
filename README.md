@@ -29,7 +29,10 @@ en **web, iOS y Android**.
 - **DI**: Koin · **Asíncrono**: Coroutines/Flow.
 - **Persistencia** (`ScoreStorage`): SharedPreferences (Android) · NSUserDefaults (iOS) ·
   localStorage (Web).
-- **Plataformas**: Android ✅ · Web/wasmJs ✅ · iOS 🚧 (pendiente).
+- **Plataformas**: Android ✅ · Web/wasmJs ✅ · iOS ✅ (código + framework verificado en CI; el
+  `.xcodeproj` ejecutable se genera en un Mac).
+- **CI**: GitHub Actions (`.github/workflows/ci.yml`) — Android (build+test), Web (compile) e
+  iOS (framework en runner macOS).
 
 ## Desarrollo
 
