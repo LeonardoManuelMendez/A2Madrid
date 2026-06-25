@@ -43,20 +43,25 @@ jobs:
           rm -rf build/site && mkdir -p build/site/app
           cp -r landing/. build/site/
           cp -r app/build/dist/wasmJs/productionExecutable/. build/site/app/
+      # Node 18: Node 20 activa "network family autoselection" (Happy Eyeballs), que corta la
+      # conexión al endpoint de token OAuth de Google ("Premature close" → Failed to authenticate).
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.run == 'true'
+        with:
+          node-version: '18'
       - name: Desplegar a Firebase Hosting (canal live)
         if: steps.check.outputs.run == 'true'
-        # IPv4 first directamente en el proceso firebase: evita el "Premature close" de undici/Node
-        # al pedir el token OAuth en los runners (egress IPv6 roto en GitHub-hosted runners).
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           NODE_OPTIONS: --dns-result-order=ipv4first
         run: |
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-          npm i -g firebase-tools
+          node --version
+          npm i -g firebase-tools@13
           ok=0
           for n in 1 2 3; do
-            if firebase deploy --only hosting --project a2madrid --non-interactive; then ok=1; break; fi
+            if firebase deploy --only hosting --project a2madrid --non-interactive --debug 2>&1 | tail -40; then ok=1; break; fi
             echo "::warning::Reintento $n del deploy…"; sleep 8
           done
           [ "$ok" = 1 ]
