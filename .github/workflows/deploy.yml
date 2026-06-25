@@ -45,15 +45,21 @@ jobs:
           cp -r app/build/dist/wasmJs/productionExecutable/. build/site/app/
       - name: Desplegar a Firebase Hosting (canal live)
         if: steps.check.outputs.run == 'true'
-        # IPv4 first: evita el "Premature close" de undici/Node al pedir el token OAuth en runners.
+        # IPv4 first directamente en el proceso firebase: evita el "Premature close" de undici/Node
+        # al pedir el token OAuth en los runners (egress IPv6 roto en GitHub-hosted runners).
         env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           NODE_OPTIONS: --dns-result-order=ipv4first
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: a2madrid
-          channelId: live
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          npm i -g firebase-tools
+          ok=0
+          for n in 1 2 3; do
+            if firebase deploy --only hosting --project a2madrid --non-interactive; then ok=1; break; fi
+            echo "::warning::Reintento $n del deploy…"; sleep 8
+          done
+          [ "$ok" = 1 ]
 
   apk-release:
     name: APK firmado → GitHub Releases
