@@ -34,32 +34,6 @@ en **web, iOS y Android**.
 - **CI**: GitHub Actions (`.github/workflows/ci.yml`) — Android (build+test), Web (compile) e
   iOS (framework en runner macOS).
 
-## Desarrollo
 
-```bash
-# Android (APK debug)
-./gradlew :app:assembleDebug
-
-# Tests
-./gradlew :app:testDebugUnitTest
-
-# Web en local (dev server con http://localhost:8080)
-./gradlew :app:wasmJsBrowserDevelopmentRun
-```
-
-## Publicar la web (Firebase Hosting)
-
-El sitio se aloja en un **proyecto de Firebase propio** (separado de otros proyectos). Una vez
-creado el proyecto y elegido con `firebase use <project-id>`:
-
-```bash
-./scripts/deploy-web.sh
-```
-
-El script compila la web de producción, ensambla `build/site/` (landing en `/` + app en `/app/`)
-y despliega a Firebase Hosting. Para habilitar el botón de descarga de Android, coloca el APK
-firmado en `landing/a2madrid.apk`.
-
----
 
 Hecho con 🤍 por [Leonardo Manuel Méndez](https://leonardomanuelmendez.github.io/).

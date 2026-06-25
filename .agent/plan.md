@@ -153,9 +153,20 @@ Android + iOS + Web (wasmJs).
 
 - **CI / GitHub Actions** (`.github/workflows/ci.yml`): tres jobs — Android (build+test, Linux),
   Web (`compileKotlinWasmJs`, Linux) e iOS (framework, runner macOS). Todos instalan
-  `platforms;android-37` con `android-actions/setup-android` (AGP requiere el SDK al configurar el
+  `platforms;android-36` con `android-actions/setup-android` (AGP requiere el SDK al configurar el
   proyecto, incluso para tareas iOS/web). JDK 21 vía `setup-java` (Temurin trae jlink → no hace
-  falta el workaround local de `org.gradle.java.home`).
+  falta el workaround local de `org.gradle.java.home`). **CI verde en las 3 plataformas.**
+- **Fecha/hora**: migrado de `kotlinx.datetime.Clock/Instant` a `kotlin.time.Clock/Instant`
+  (stdlib, `@OptIn(ExperimentalTime)`) porque el typealias de kotlinx.datetime no resolvía en
+  Kotlin/Native con Kotlin 2.3.20 (en JVM/wasm era solo warning; el CI de iOS lo destapó).
+  `kotlinx-datetime` quedó en `0.7.0-0.6.x-compat` (se usa aún para TimeZone/LocalDateTime/format).
+- **CD / GitHub Actions** (`.github/workflows/deploy.yml`, push a `main`): job `firebase-hosting`
+  (compila web, ensambla landing+app, `firebase deploy --only hosting --project a2madrid` con
+  `FIREBASE_SERVICE_ACCOUNT`) y job `apk-release` (reconstruye el keystore desde
+  `KEYSTORE_BASE64`/`KEYSTORE_PASSWORD`, `assembleRelease`, publica en la release rodante
+  `android-latest`). Cada job se omite en verde si faltan sus secretos. Keystore secrets ya
+  configurados; falta `FIREBASE_SERVICE_ACCOUNT` (lo genera el dueño en consola). iOS no se
+  autodespliega (App Store requiere Apple Developer + firma en macOS).
 
 - **AGP 9 + KMP**: `com.android.application` + `kotlin.multiplatform` no son compatibles en AGP 9
   sin el workaround oficial: en `gradle.properties` → `android.builtInKotlin=false` y
