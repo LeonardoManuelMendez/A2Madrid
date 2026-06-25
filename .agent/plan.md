@@ -159,7 +159,8 @@ Android + iOS + Web (wasmJs).
 
 - **AGP 9 + KMP**: `com.android.application` + `kotlin.multiplatform` no son compatibles en AGP 9
   sin el workaround oficial: en `gradle.properties` → `android.builtInKotlin=false` y
-  `android.newDsl=false` (por eso el bloque `android {}` usa el DSL clásico). `compileSdk = 37`.
+  `android.newDsl=false` (por eso el bloque `android {}` usa el DSL clásico). `compileSdk = 36`
+  (estable; 37 no está en el canal del `sdkmanager` de los runners de CI).
 - **JDK completo (jlink) + config-cache off** ya fijados, sin flags por comando: `jlink` lo
   necesita el `JdkImageTransform` de AGP (compileSdk 37) y el JRE de la extensión Java de VSCode
   no lo trae → `org.gradle.java.home=/usr/lib/jvm/java-21-openjdk-amd64` en

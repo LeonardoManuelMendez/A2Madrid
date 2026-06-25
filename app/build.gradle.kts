@@ -93,7 +93,7 @@ compose.resources {
 
 android {
     namespace = "com.example.a2madrid"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.a2madrid"

@@ -21,8 +21,8 @@ jobs:
           distribution: temurin
           java-version: '21'
       - uses: android-actions/setup-android@v3
-      - name: Instalar plataforma de Android (compileSdk 37)
-        run: sdkmanager "platforms;android-37"
+      - name: Instalar plataforma de Android (compileSdk 36)
+        run: sdkmanager "platforms;android-36"
       - uses: gradle/actions/setup-gradle@v4
       - name: Build + tests
         run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
@@ -37,8 +37,8 @@ jobs:
           distribution: temurin
           java-version: '21'
       - uses: android-actions/setup-android@v3
-      - name: Instalar plataforma de Android (compileSdk 37)
-        run: sdkmanager "platforms;android-37"
+      - name: Instalar plataforma de Android (compileSdk 36)
+        run: sdkmanager "platforms;android-36"
       - uses: gradle/actions/setup-gradle@v4
       - name: Compilar el target web
         run: ./gradlew :app:compileKotlinWasmJs
@@ -54,7 +54,7 @@ jobs:
           java-version: '21'
       - uses: android-actions/setup-android@v3
       - name: Instalar plataforma de Android (necesaria para configurar el proyecto)
-        run: sdkmanager "platforms;android-37"
+        run: sdkmanager "platforms;android-36"
       - uses: gradle/actions/setup-gradle@v4
       - name: Enlazar el framework compartido de iOS (simulador + dispositivo)
         run: ./gradlew :app:linkDebugFrameworkIosSimulatorArm64 :app:linkDebugFrameworkIosArm64
