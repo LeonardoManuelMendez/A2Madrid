@@ -43,15 +43,14 @@ jobs:
           rm -rf build/site && mkdir -p build/site/app
           cp -r landing/. build/site/
           cp -r app/build/dist/wasmJs/productionExecutable/. build/site/app/
-      - name: Desplegar a Firebase Hosting
+      - name: Desplegar a Firebase Hosting (canal live)
         if: steps.check.outputs.run == 'true'
-        env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-        run: |
-          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-          npm i -g firebase-tools
-          firebase deploy --only hosting --project a2madrid --non-interactive
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: a2madrid
+          channelId: live
 
   apk-release:
     name: APK firmado → GitHub Releases
