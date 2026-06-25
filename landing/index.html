@@ -106,6 +106,27 @@
             border-bottom: 2px solid var(--carmesi); padding-bottom: 2px;
         }
 
+        /* Pasos de instalación */
+        .steps { max-width: 640px; margin: 0 auto; list-style: none; counter-reset: step; }
+        .steps li {
+            position: relative; padding: 14px 0 14px 52px;
+            border-bottom: 1px solid var(--border); color: var(--muted);
+        }
+        .steps li:last-child { border-bottom: none; }
+        .steps li::before {
+            counter-increment: step; content: counter(step);
+            position: absolute; left: 0; top: 11px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--carmesi); color: #fff; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+        }
+        .steps strong { color: var(--ink); }
+        .steps code {
+            background: #fdeef0; color: var(--carmesi-dark);
+            padding: 1px 6px; border-radius: 6px; font-size: 0.88em;
+        }
+        .steps-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
         footer { text-align: center; padding: 36px 0; color: var(--muted); font-size: 0.88rem; }
         footer a { color: var(--carmesi); text-decoration: none; }
 
@@ -161,6 +182,20 @@
                     <p>La misma app en el navegador y en Android, con la misma experiencia.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <h2>Cómo instalar en Android</h2>
+            <ol class="steps">
+                <li>Pulsa <strong>"Descargar para Android"</strong> y espera a que termine la descarga del archivo <code>a2madrid.apk</code>.</li>
+                <li>Abre el archivo descargado (desde la notificación o tu app de <strong>Archivos / Descargas</strong>).</li>
+                <li>Android pedirá permiso para <strong>instalar apps de orígenes desconocidos</strong>: actívalo para tu navegador o gestor de archivos.</li>
+                <li>Pulsa <strong>Instalar</strong>. Si aparece un aviso de Play Protect, elige <strong>"Instalar de todos modos"</strong>.</li>
+                <li>¡Listo! Abre <strong>A2Madrid</strong> y empieza a practicar.</li>
+            </ol>
+            <p class="steps-note">Es una app gratuita firmada por su autor. Se instala fuera de Google Play, por eso Android te pide confirmación. ¿Prefieres no instalar nada? Úsala directamente en el navegador.</p>
         </div>
     </section>
 
