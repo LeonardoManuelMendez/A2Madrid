@@ -9,7 +9,8 @@ package com.example.a2madrid.domain.usecase
 import com.example.a2madrid.domain.model.ScoreEntry
 import com.example.a2madrid.domain.repository.QuizRepository
 import kotlinx.coroutines.flow.first
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 /**
  * Persists a finished quiz score to history, reporting whether it set a new personal best
@@ -18,6 +19,7 @@ import kotlinx.datetime.Clock
 class SaveScoreUseCase(
     private val repository: QuizRepository,
 ) {
+    @OptIn(ExperimentalTime::class)
     suspend operator fun invoke(
         examId: String,
         examTitle: String,

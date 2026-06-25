@@ -51,7 +51,8 @@ import androidx.compose.runtime.collectAsState
 import com.example.a2madrid.domain.model.ScoreEntry
 import com.example.a2madrid.presentation.ContentMaxWidth
 import com.example.a2madrid.presentation.theme.A2MadridTheme
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
@@ -306,6 +307,7 @@ private fun EmptyState(modifier: Modifier = Modifier) {
     }
 }
 
+@OptIn(ExperimentalTime::class)
 @Composable
 private fun formatTimestamp(millis: Long): String {
     val dt = remember(millis) {
