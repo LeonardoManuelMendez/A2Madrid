@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2Madrid · Test de oposición Auxiliar C2 (Comunidad de Madrid)</title>
+    <meta name="description" content="App gratuita de test para preparar la oposición de Auxiliar C2 de la Comunidad de Madrid. Pruébala en el navegador o descárgala para Android. Un regalo de Leonardo Manuel Méndez.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="A2Madrid · Test de oposición Auxiliar C2">
+    <meta property="og:description" content="App gratuita de test para preparar la oposición de Auxiliar C2 (Comunidad de Madrid). Web y Android.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    <style>
+        :root {
+            --carmesi: #B11226;
+            --carmesi-dark: #7d0c1b;
+            --ink: #1b1416;
+            --muted: #6b5e62;
+            --bg: #fbf7f7;
+            --card: #ffffff;
+            --border: #ecdfe1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        header {
+            background: linear-gradient(160deg, var(--carmesi) 0%, var(--carmesi-dark) 100%);
+            color: #fff;
+            padding: 72px 0 64px;
+            text-align: center;
+        }
+        .badge-gift {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        header h1 { font-size: 2.8rem; letter-spacing: -0.02em; margin-bottom: 8px; }
+        header .sub { font-size: 1.15rem; opacity: 0.92; max-width: 600px; margin: 0 auto 32px; }
+
+        .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px; border-radius: 12px;
+            font-size: 1rem; font-weight: 600; text-decoration: none;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: #fff; color: var(--carmesi); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+        .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
+        .btn-note { display: block; font-size: 0.78rem; opacity: 0.8; margin-top: 10px; }
+
+        /* Sections */
+        section { padding: 56px 0; }
+        h2 { font-size: 1.6rem; margin-bottom: 24px; text-align: center; letter-spacing: -0.01em; }
+
+        .gift {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--carmesi);
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-top: -36px;
+            box-shadow: 0 8px 30px rgba(125, 12, 27, 0.07);
+        }
+        .gift p { color: var(--muted); }
+        .gift p + p { margin-top: 12px; }
+        .gift strong { color: var(--ink); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+        .feature {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 22px;
+        }
+        .feature .ico { font-size: 1.6rem; }
+        .feature h3 { font-size: 1.05rem; margin: 10px 0 4px; }
+        .feature p { color: var(--muted); font-size: 0.92rem; }
+
+        /* Portfolio */
+        .portfolio { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .portfolio p { text-align: center; color: var(--muted); max-width: 640px; margin: 0 auto 18px; }
+        .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+        .chip {
+            background: #fdeef0; color: var(--carmesi-dark);
+            border: 1px solid var(--border);
+            padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+        }
+        .portfolio .link-row { text-align: center; }
+        .portfolio a.portfolio-link {
+            color: var(--carmesi); font-weight: 600; text-decoration: none;
+            border-bottom: 2px solid var(--carmesi); padding-bottom: 2px;
+        }
+
+        footer { text-align: center; padding: 36px 0; color: var(--muted); font-size: 0.88rem; }
+        footer a { color: var(--carmesi); text-decoration: none; }
+
+        @media (max-width: 560px) {
+            header h1 { font-size: 2.2rem; }
+            header { padding: 56px 0 52px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <span class="badge-gift">🎁 Gratis · sin registro · sin anuncios</span>
+            <h1>A2Madrid</h1>
+            <p class="sub">Prepara la oposición de <strong>Auxiliar C2 de la Comunidad de Madrid</strong> con tests interactivos: corrección al instante, explicaciones e historial de puntuaciones.</p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="/app/">▶ Probar en el navegador</a>
+                <a class="btn btn-ghost" href="/a2madrid.apk" download>⬇ Descargar para Android (APK)</a>
+            </div>
+            <span class="btn-note">La app web funciona en cualquier dispositivo (móvil, tablet, ordenador). El APK se instala sin pasar por Google Play.</span>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <div class="gift">
+            <p><strong>Esto es un regalo</strong> para todas las personas que están preparando esta oposición. Úsalo libremente: no hay registro, ni anuncios, ni coste.</p>
+            <p>También forma parte de mi portafolio como desarrollador: lo he construido con <strong>Kotlin Multiplatform</strong> para demostrar una misma base de código corriendo en <strong>web, iOS y Android</strong>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="wrap">
+            <h2>Qué incluye</h2>
+            <div class="grid">
+                <div class="feature">
+                    <div class="ico">✅</div>
+                    <h3>Corrección inmediata</h3>
+                    <p>Confirmas cada respuesta y ves al momento si es correcta, con su explicación.</p>
+                </div>
+                <div class="feature">
+                    <div class="ico">📚</div>
+                    <h3>Examen oficial</h3>
+                    <p>Modelos basados en el examen oficial: psicotécnico, ortografía y legislación.</p>
+                </div>
+                <div class="feature">
+                    <div class="ico">📊</div>
+                    <h3>Historial y récords</h3>
+                    <p>Guarda tus puntuaciones, destaca tu mejor marca por modelo y mide tu progreso.</p>
+                </div>
+                <div class="feature">
+                    <div class="ico">📱</div>
+                    <h3>En cualquier lado</h3>
+                    <p>La misma app en el navegador y en Android, con la misma experiencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <div class="wrap">
+            <h2>Sobre este proyecto</h2>
+            <p>Desarrollado por <strong>Leonardo Manuel Méndez</strong> como pieza de portafolio, demostrando conocimientos de Kotlin Multiplatform y Compose Multiplatform en las tres plataformas.</p>
+            <div class="chips">
+                <span class="chip">Kotlin Multiplatform</span>
+                <span class="chip">Compose Multiplatform</span>
+                <span class="chip">Web</span>
+                <span class="chip">iOS</span>
+                <span class="chip">Android</span>
+            </div>
+            <div class="link-row">
+                <a class="portfolio-link" href="https://leonardomanuelmendez.github.io/" target="_blank" rel="noopener">Ver mi portafolio →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            Hecho con 🤍 para quienes preparan la oposición ·
+            <a href="https://leonardomanuelmendez.github.io/" target="_blank" rel="noopener">leonardomanuelmendez.github.io</a>
+        </div>
+    </footer>
+</body>
+</html>

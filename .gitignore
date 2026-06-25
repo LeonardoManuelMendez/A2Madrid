@@ -15,3 +15,7 @@
 local.properties
 # Caché del compilador de Kotlin (Kotlin 2.x). El lockfile kotlin-js-store/ sí se versiona.
 .kotlin
+# Firebase: caché de deploy y logs (no versionar). firebase.json y .firebaserc sí.
+.firebase/
+firebase-debug.log*
+.firebase-debug.log*
