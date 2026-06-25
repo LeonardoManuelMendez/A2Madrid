@@ -5,10 +5,10 @@ import com.example.a2madrid.domain.usecase.SaveScoreUseCase
 import com.example.a2madrid.fake.FakeQuizRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class SaveScoreUseCaseTest {
 

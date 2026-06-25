@@ -2,10 +2,10 @@ package com.example.a2madrid.domain
 
 import com.example.a2madrid.domain.model.Question
 import com.example.a2madrid.domain.usecase.EvaluateAnswerUseCase
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class EvaluateAnswerUseCaseTest {
 

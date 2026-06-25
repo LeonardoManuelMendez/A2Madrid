@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Caché del compilador de Kotlin (Kotlin 2.x). El lockfile kotlin-js-store/ sí se versiona.
+.kotlin

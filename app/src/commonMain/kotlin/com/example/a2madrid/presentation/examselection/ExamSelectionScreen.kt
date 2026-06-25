@@ -12,11 +12,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -42,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.runtime.collectAsState
 import com.example.a2madrid.domain.model.Exam
+import com.example.a2madrid.presentation.ContentMaxWidth
 import com.example.a2madrid.presentation.theme.A2MadridTheme
 
 @Composable
@@ -96,22 +98,27 @@ private fun ExamSelectionContent(
                 OutlinedButton(onClick = onRetry) { Text("Reintentar") }
             }
 
-            else -> Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding)
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp, vertical = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+            else -> Box(
+                modifier = Modifier.fillMaxSize().padding(innerPadding),
+                contentAlignment = Alignment.TopCenter,
             ) {
-                Text(
-                    text = "Elige un modelo de examen",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(bottom = 4.dp),
-                )
-                uiState.exams.forEach { exam ->
-                    ExamCard(exam = exam, onClick = { onExamSelected(exam.id) })
+                Column(
+                    modifier = Modifier
+                        .widthIn(max = ContentMaxWidth)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Text(
+                        text = "Elige un modelo de examen",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(bottom = 4.dp),
+                    )
+                    uiState.exams.forEach { exam ->
+                        ExamCard(exam = exam, onClick = { onExamSelected(exam.id) })
+                    }
                 }
             }
         }
@@ -145,7 +152,7 @@ private fun ExamCard(exam: Exam, onClick: () -> Unit) {
 private fun ScoresMenu(onViewScores: () -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     IconButton(onClick = { expanded = true }) {
-        Icon(Icons.Filled.MoreVert, contentDescription = "Opciones")
+        Icon(Icons.Filled.Menu, contentDescription = "Menú")
     }
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         DropdownMenuItem(

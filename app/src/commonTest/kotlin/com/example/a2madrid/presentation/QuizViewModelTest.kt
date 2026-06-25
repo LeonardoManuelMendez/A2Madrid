@@ -7,23 +7,32 @@ import com.example.a2madrid.domain.usecase.GetExamUseCase
 import com.example.a2madrid.domain.usecase.SaveScoreUseCase
 import com.example.a2madrid.fake.FakeQuizRepository
 import com.example.a2madrid.presentation.quiz.QuizViewModel
-import com.example.a2madrid.util.MainDispatcherRule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Rule
-import org.junit.Test
+import kotlinx.coroutines.test.setMain
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class QuizViewModelTest {
 
-    @get:Rule
-    val mainDispatcherRule = MainDispatcherRule()
+    private val mainDispatcher = StandardTestDispatcher()
+
+    @BeforeTest
+    fun setUp() = Dispatchers.setMain(mainDispatcher)
+
+    @AfterTest
+    fun tearDown() = Dispatchers.resetMain()
 
     private val questions = listOf(
         Question(1, "Q1", listOf("a", "b"), correctAnswerIndex = 0),

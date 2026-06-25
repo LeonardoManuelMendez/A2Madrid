@@ -15,7 +15,9 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // Sin repositoriesMode (default PREFER_PROJECT): los plugins de Kotlin/JS+Wasm añaden a nivel
+    // de proyecto el repo de descarga de Node.js (nodejs.org/dist) para empaquetar el target web,
+    // incompatible con FAIL_ON_PROJECT_REPOS.
     repositories {
         google()
         mavenCentral()

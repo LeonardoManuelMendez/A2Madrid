@@ -7,11 +7,14 @@
 package com.example.a2madrid.presentation.result
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -33,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.runtime.collectAsState
 import com.example.a2madrid.domain.model.QuizResult
+import com.example.a2madrid.presentation.ContentMaxWidth
 import com.example.a2madrid.presentation.theme.A2MadridTheme
 
 @Composable
@@ -71,10 +75,15 @@ private fun ResultContent(
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
+        Box(
+            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            contentAlignment = Alignment.TopCenter,
+        ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+                .widthIn(max = ContentMaxWidth)
+                .fillMaxWidth()
+                .fillMaxHeight()
                 .padding(horizontal = 24.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
@@ -131,6 +140,7 @@ private fun ResultContent(
             ) {
                 Text("Ver puntuaciones")
             }
+        }
         }
     }
 }

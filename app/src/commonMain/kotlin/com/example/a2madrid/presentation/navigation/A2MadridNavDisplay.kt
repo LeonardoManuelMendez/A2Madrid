@@ -24,6 +24,14 @@ import com.example.a2madrid.presentation.scorehistory.ScoreHistoryScreen
 fun A2MadridNavHost(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
+    // Vuelve a la pantalla de inicio (selección de modelo) limpiando el back stack.
+    val goHome: () -> Unit = {
+        navController.navigate(ExamSelectionRoute) {
+            popUpTo<ExamSelectionRoute> { inclusive = true }
+            launchSingleTop = true
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = ExamSelectionRoute,
@@ -51,6 +59,7 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                     ) { popUpTo<QuizRoute> { inclusive = true } }
                 },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
+                onGoHome = goHome,
             )
         }
         composable<ResultRoute> { backStackEntry ->
@@ -70,7 +79,10 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
             )
         }
         composable<ScoreHistoryRoute> {
-            ScoreHistoryScreen(onBack = { navController.popBackStack() })
+            ScoreHistoryScreen(
+                onBack = { navController.popBackStack() },
+                onGoHome = goHome,
+            )
         }
     }
 }

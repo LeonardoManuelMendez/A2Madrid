@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -13,6 +14,17 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        outputModuleName.set("a2madrid")
+        browser {
+            commonWebpackConfig {
+                outputFileName = "a2madrid.js"
+            }
+        }
+        binaries.executable()
     }
 
     sourceSets {
@@ -41,6 +53,9 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.kotlinx.coroutines.android)
+        }
+        wasmJsMain.dependencies {
+            implementation(libs.kotlinx.browser)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

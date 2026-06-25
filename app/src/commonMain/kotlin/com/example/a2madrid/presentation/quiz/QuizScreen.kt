@@ -8,16 +8,18 @@
 package com.example.a2madrid.presentation.quiz
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -48,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.collectAsState
 import com.example.a2madrid.domain.model.Question
 import com.example.a2madrid.domain.model.QuizResult
+import com.example.a2madrid.presentation.ContentMaxWidth
 import com.example.a2madrid.presentation.quiz.components.AnswerOptionCard
 import com.example.a2madrid.presentation.quiz.components.OptionState
 import com.example.a2madrid.presentation.theme.A2MadridTheme
@@ -58,6 +61,7 @@ fun QuizScreen(
     examId: String,
     onQuizFinished: (QuizResult, String, String) -> Unit,
     onViewScores: () -> Unit,
+    onGoHome: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: QuizViewModel = koinViewModel(),
 ) {
@@ -82,6 +86,7 @@ fun QuizScreen(
         onNext = viewModel::nextQuestion,
         onRestart = viewModel::restart,
         onViewScores = onViewScores,
+        onGoHome = onGoHome,
         modifier = modifier,
     )
 }
@@ -95,6 +100,7 @@ private fun QuizContent(
     onNext: () -> Unit,
     onRestart: () -> Unit,
     onViewScores: () -> Unit,
+    onGoHome: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showRestartDialog by remember { mutableStateOf(false) }
@@ -107,6 +113,7 @@ private fun QuizContent(
                     title = { Text(uiState.examTitle.ifBlank { "A2Madrid" }) },
                     actions = {
                         QuizOptionsMenu(
+                            onGoHome = onGoHome,
                             onViewScores = onViewScores,
                             onRestart = {
                                 if (uiState.hasProgress) showRestartDialog = true else onRestart()
@@ -178,8 +185,11 @@ private fun QuestionState(
     onSelectOption: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier
+    Box(modifier = modifier, contentAlignment = Alignment.TopCenter) {
+      Column(
+        modifier = Modifier
+            .widthIn(max = ContentMaxWidth)
+            .fillMaxWidth()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp, vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -216,6 +226,7 @@ private fun QuestionState(
                 explanation = question.explanation,
             )
         }
+      }
     }
 }
 
@@ -288,21 +299,28 @@ private fun QuizBottomBar(
     onNext: () -> Unit,
 ) {
     Surface(tonalElevation = 3.dp) {
-        Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)) {
-            if (isAnswerConfirmed) {
-                Button(
-                    onClick = onNext,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(if (isLastQuestion) "Ver resultado" else "Siguiente")
-                }
-            } else {
-                Button(
-                    onClick = onConfirm,
-                    enabled = canConfirm,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text("Confirmar")
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+            Column(
+                modifier = Modifier
+                    .widthIn(max = ContentMaxWidth)
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp, vertical = 12.dp),
+            ) {
+                if (isAnswerConfirmed) {
+                    Button(
+                        onClick = onNext,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(if (isLastQuestion) "Ver resultado" else "Siguiente")
+                    }
+                } else {
+                    Button(
+                        onClick = onConfirm,
+                        enabled = canConfirm,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text("Confirmar")
+                    }
                 }
             }
         }
@@ -346,14 +364,22 @@ private fun ErrorState(
 
 @Composable
 private fun QuizOptionsMenu(
+    onGoHome: () -> Unit,
     onViewScores: () -> Unit,
     onRestart: () -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
     IconButton(onClick = { expanded = true }) {
-        Icon(Icons.Filled.MoreVert, contentDescription = "Opciones")
+        Icon(Icons.Filled.Menu, contentDescription = "Menú")
     }
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenuItem(
+            text = { Text("Inicio") },
+            onClick = {
+                expanded = false
+                onGoHome()
+            },
+        )
         DropdownMenuItem(
             text = { Text("Puntuaciones") },
             onClick = {
@@ -398,6 +424,7 @@ private fun QuizContentQuestionPreview() {
             onNext = {},
             onRestart = {},
             onViewScores = {},
+            onGoHome = {},
         )
     }
 }
@@ -418,6 +445,7 @@ private fun QuizContentAnsweredPreview() {
             onNext = {},
             onRestart = {},
             onViewScores = {},
+            onGoHome = {},
         )
     }
 }
@@ -433,6 +461,7 @@ private fun QuizContentErrorPreview() {
             onNext = {},
             onRestart = {},
             onViewScores = {},
+            onGoHome = {},
         )
     }
 }

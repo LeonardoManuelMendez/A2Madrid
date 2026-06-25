@@ -15,12 +15,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
@@ -48,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.runtime.collectAsState
 import com.example.a2madrid.domain.model.ScoreEntry
+import com.example.a2madrid.presentation.ContentMaxWidth
 import com.example.a2madrid.presentation.theme.A2MadridTheme
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -56,6 +58,7 @@ import kotlinx.datetime.toLocalDateTime
 @Composable
 fun ScoreHistoryScreen(
     onBack: () -> Unit,
+    onGoHome: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ScoreHistoryViewModel = koinViewModel(),
 ) {
@@ -63,6 +66,7 @@ fun ScoreHistoryScreen(
     ScoreHistoryContent(
         entries = history,
         onBack = onBack,
+        onGoHome = onGoHome,
         onDeleteEntry = viewModel::deleteScore,
         onClearAll = viewModel::clearScores,
         modifier = modifier,
@@ -74,6 +78,7 @@ fun ScoreHistoryScreen(
 private fun ScoreHistoryContent(
     entries: List<ScoreEntry>,
     onBack: () -> Unit,
+    onGoHome: () -> Unit,
     onDeleteEntry: (ScoreEntry) -> Unit,
     onClearAll: () -> Unit,
     modifier: Modifier = Modifier,
@@ -92,11 +97,14 @@ private fun ScoreHistoryContent(
                     }
                 },
                 actions = {
-                    if (entries.isNotEmpty()) {
-                        HistoryOptionsMenu(
-                            onClearAll = { showClearDialog = true },
-                        )
-                    }
+                    HistoryOptionsMenu(
+                        onGoHome = onGoHome,
+                        onClearAll = if (entries.isNotEmpty()) {
+                            { showClearDialog = true }
+                        } else {
+                            null
+                        },
+                    )
                 },
             )
         },
@@ -108,25 +116,27 @@ private fun ScoreHistoryContent(
                 entries.groupBy(ScoreEntry::examId)
                     .mapValues { (_, examEntries) -> examEntries.maxOf { it.correctAnswers } }
             }
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(
-                    start = 20.dp,
-                    end = 20.dp,
-                    top = innerPadding.calculateTopPadding() + 12.dp,
-                    bottom = innerPadding.calculateBottomPadding() + 20.dp,
-                ),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                items(
-                    items = entries,
-                    key = { entry -> "${entry.examId}-${entry.timestampMillis}-${entry.correctAnswers}" },
-                ) { entry ->
-                    ScoreRow(
-                        entry = entry,
-                        isBest = entry.correctAnswers == bestCorrectByExam[entry.examId],
-                        onDelete = { pendingDeleteEntry = entry },
-                    )
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                LazyColumn(
+                    modifier = Modifier.widthIn(max = ContentMaxWidth).fillMaxSize(),
+                    contentPadding = PaddingValues(
+                        start = 20.dp,
+                        end = 20.dp,
+                        top = innerPadding.calculateTopPadding() + 12.dp,
+                        bottom = innerPadding.calculateBottomPadding() + 20.dp,
+                    ),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    items(
+                        items = entries,
+                        key = { entry -> "${entry.examId}-${entry.timestampMillis}-${entry.correctAnswers}" },
+                    ) { entry ->
+                        ScoreRow(
+                            entry = entry,
+                            isBest = entry.correctAnswers == bestCorrectByExam[entry.examId],
+                            onDelete = { pendingDeleteEntry = entry },
+                        )
+                    }
                 }
             }
         }
@@ -256,19 +266,31 @@ private fun ScoreRow(
 }
 
 @Composable
-private fun HistoryOptionsMenu(onClearAll: () -> Unit) {
+private fun HistoryOptionsMenu(
+    onGoHome: () -> Unit,
+    onClearAll: (() -> Unit)?,
+) {
     var expanded by remember { mutableStateOf(false) }
     IconButton(onClick = { expanded = true }) {
-        Icon(Icons.Filled.MoreVert, contentDescription = "Opciones")
+        Icon(Icons.Filled.Menu, contentDescription = "Menú")
     }
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         DropdownMenuItem(
-            text = { Text("Borrar historial") },
+            text = { Text("Inicio") },
             onClick = {
                 expanded = false
-                onClearAll()
+                onGoHome()
             },
         )
+        if (onClearAll != null) {
+            DropdownMenuItem(
+                text = { Text("Borrar historial") },
+                onClick = {
+                    expanded = false
+                    onClearAll()
+                },
+            )
+        }
     }
 }
 
@@ -309,6 +331,7 @@ private fun ScoreHistoryContentPreview() {
                 ScoreEntry("modelo_a", "Modelo A · Madrid esencial", 4, 10, 1_718_700_000_000),
             ),
             onBack = {},
+            onGoHome = {},
             onDeleteEntry = {},
             onClearAll = {},
         )
@@ -322,6 +345,7 @@ private fun ScoreHistoryEmptyPreview() {
         ScoreHistoryContent(
             entries = emptyList(),
             onBack = {},
+            onGoHome = {},
             onDeleteEntry = {},
             onClearAll = {},
         )
