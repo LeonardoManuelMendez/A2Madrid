@@ -8,7 +8,7 @@ lifecycleViewmodel = "2.9.6"
 koin = "4.2.2"
 kotlinxSerializationJson = "1.9.0"
 kotlinxCoroutines = "1.10.2"
-kotlinxDatetime = "0.6.2"
+kotlinxDatetime = "0.7.0-0.6.x-compat"
 kotlinxBrowser = "0.3"
 
 [libraries]
