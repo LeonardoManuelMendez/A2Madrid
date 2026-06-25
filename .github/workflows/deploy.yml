@@ -1,0 +1,103 @@
+name: Deploy
+
+# CD: en cada push a main publica la web (landing + app) en Firebase Hosting y el APK firmado
+# en GitHub Releases. Cada job se omite (en verde) si faltan sus secretos, para no dar falsos rojos.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  firebase-hosting:
+    name: Web → Firebase Hosting (a2madrid)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ¿Secreto configurado?
+        id: check
+        run: |
+          if [ -n "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Falta el secreto FIREBASE_SERVICE_ACCOUNT; se omite el deploy de la web."
+          fi
+      - uses: actions/setup-java@v4
+        if: steps.check.outputs.run == 'true'
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        if: steps.check.outputs.run == 'true'
+      - name: Instalar plataforma de Android (compileSdk 36)
+        if: steps.check.outputs.run == 'true'
+        run: sdkmanager "platforms;android-36"
+      - uses: gradle/actions/setup-gradle@v4
+        if: steps.check.outputs.run == 'true'
+      - name: Compilar la web y ensamblar el sitio (landing + app)
+        if: steps.check.outputs.run == 'true'
+        run: |
+          ./gradlew :app:wasmJsBrowserDistribution
+          rm -rf build/site && mkdir -p build/site/app
+          cp -r landing/. build/site/
+          cp -r app/build/dist/wasmJs/productionExecutable/. build/site/app/
+      - name: Desplegar a Firebase Hosting
+        if: steps.check.outputs.run == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          npm i -g firebase-tools
+          firebase deploy --only hosting --project a2madrid --non-interactive
+
+  apk-release:
+    name: APK firmado → GitHub Releases
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: ¿Secretos configurados?
+        id: check
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ] && [ -n "${{ secrets.KEYSTORE_PASSWORD }}" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Faltan KEYSTORE_BASE64/KEYSTORE_PASSWORD; se omite la publicación del APK."
+          fi
+      - uses: actions/setup-java@v4
+        if: steps.check.outputs.run == 'true'
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        if: steps.check.outputs.run == 'true'
+      - name: Instalar plataforma de Android (compileSdk 36)
+        if: steps.check.outputs.run == 'true'
+        run: sdkmanager "platforms;android-36"
+      - uses: gradle/actions/setup-gradle@v4
+        if: steps.check.outputs.run == 'true'
+      - name: Restaurar keystore desde secretos
+        if: steps.check.outputs.run == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > app/a2madrid-release.jks
+          printf 'storeFile=a2madrid-release.jks\nstorePassword=%s\nkeyAlias=a2madrid\nkeyPassword=%s\n' \
+            "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > keystore.properties
+      - name: Compilar APK de release firmado
+        if: steps.check.outputs.run == 'true'
+        run: |
+          ./gradlew :app:assembleRelease
+          cp app/build/outputs/apk/release/app-release.apk a2madrid.apk
+      - name: Publicar en GitHub Releases (tag rodante android-latest)
+        if: steps.check.outputs.run == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: A2Madrid · Android (última versión)
+          body: APK firmado, generado automáticamente desde el último push a main.
+          files: a2madrid.apk
