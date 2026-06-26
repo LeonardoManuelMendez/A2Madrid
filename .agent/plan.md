@@ -23,7 +23,7 @@ sin almacenamiento concreto).
 ```
 app/  (módulo composeApp · Kotlin Multiplatform + Compose Multiplatform)
 └─ src/
-   ├─ commonMain/kotlin/com/example/a2madrid/      ← código COMPARTIDO (Android/iOS/Web)
+   ├─ commonMain/kotlin/io/github/leonardomanuelmendez/a2madrid/      ← código COMPARTIDO (Android/iOS/Web)
    │  ├─ App.kt                  raíz Compose (tema + host de navegación)
    │  ├─ di/Koin.kt              appModule + `expect val platformModule` + initKoin()
    │  ├─ domain/                 model/ · repository/QuizRepository · usecase/ (Get/Evaluate/Save/Observe/Delete/Clear)

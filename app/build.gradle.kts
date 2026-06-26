@@ -88,15 +88,15 @@ kotlin {
 
 compose.resources {
     publicResClass = true
-    packageOfResClass = "com.example.a2madrid.resources"
+    packageOfResClass = "io.github.leonardomanuelmendez.a2madrid.resources"
 }
 
 android {
-    namespace = "com.example.a2madrid"
+    namespace = "io.github.leonardomanuelmendez.a2madrid"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.a2madrid"
+        applicationId = "io.github.leonardomanuelmendez.a2madrid"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
