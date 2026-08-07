@@ -6,6 +6,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Este workflow no usa ningún secreto: solo compila y pasa tests. Por eso puede dispararse
+# con pull_request sin riesgo (GitHub, además, retira los secretos en PRs desde forks).
+# Token de solo lectura: no publica nada.
+permissions:
+  contents: read
+
 # Una sola base de código (Kotlin Multiplatform) verificada en sus plataformas:
 #  - Android: build + tests (Linux)
 #  - iOS: enlazado del framework compartido (macOS)
@@ -20,10 +26,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
       - name: Instalar plataforma de Android (compileSdk 36)
         run: sdkmanager "platforms;android-36"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4
       - name: Build + tests
         run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
 
@@ -36,10 +42,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
       - name: Instalar plataforma de Android (compileSdk 36)
         run: sdkmanager "platforms;android-36"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4
       - name: Compilar el target web
         run: ./gradlew :app:compileKotlinWasmJs
 
@@ -52,9 +58,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
       - name: Instalar plataforma de Android (necesaria para configurar el proyecto)
         run: sdkmanager "platforms;android-36"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4
       - name: Enlazar el framework compartido de iOS (simulador + dispositivo)
         run: ./gradlew :app:linkDebugFrameworkIosSimulatorArm64 :app:linkDebugFrameworkIosArm64

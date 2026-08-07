@@ -7,6 +7,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Mínimo privilegio para el GITHUB_TOKEN: solo lectura por defecto. El job que necesita
+# escribir (apk-release, que publica en Releases) se lo concede a sí mismo.
+permissions:
+  contents: read
+
 jobs:
   firebase-hosting:
     name: Web → Firebase Hosting (a2madrid)
@@ -29,12 +34,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
         if: steps.check.outputs.run == 'true'
       - name: Instalar plataforma de Android (compileSdk 36)
         if: steps.check.outputs.run == 'true'
         run: sdkmanager "platforms;android-36"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4
         if: steps.check.outputs.run == 'true'
       - name: Compilar la web y ensamblar el sitio (landing + app)
         if: steps.check.outputs.run == 'true'
@@ -61,7 +66,7 @@ jobs:
           npm i -g firebase-tools@13
           ok=0
           for n in 1 2 3; do
-            if firebase deploy --only hosting --project a2madrid --non-interactive --debug 2>&1 | tail -40; then ok=1; break; fi
+            if firebase deploy --only hosting --project a2madrid --non-interactive 2>&1 | tail -40; then ok=1; break; fi
             echo "::warning::Reintento $n del deploy…"; sleep 8
           done
           [ "$ok" = 1 ]
@@ -90,12 +95,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
         if: steps.check.outputs.run == 'true'
       - name: Instalar plataforma de Android (compileSdk 36)
         if: steps.check.outputs.run == 'true'
         run: sdkmanager "platforms;android-36"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4
         if: steps.check.outputs.run == 'true'
       - name: Restaurar keystore desde secretos
         if: steps.check.outputs.run == 'true'
@@ -113,7 +118,7 @@ jobs:
           cp app/build/outputs/apk/release/app-release.apk a2madrid.apk
       - name: Publicar en GitHub Releases (tag rodante android-latest)
         if: steps.check.outputs.run == 'true'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           tag_name: android-latest
           name: A2Madrid · Android (última versión)
