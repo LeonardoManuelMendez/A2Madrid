@@ -11,8 +11,8 @@
 # Configuración local de la máquina (rutas del SDK): nunca se versiona.
 local.properties
 
-# Material de la ficha de Google Play (textos, icono, gráfico de funciones, capturas).
-# Se conserva en local para subirlo a Play Console, pero no en el repo público.
+# Material gráfico y textos de ficha de tienda. Se conserva en local, fuera del repo
+# público. El despliegue del proyecto no lo usa (ver docs/despliegue.md).
 /playstore/
 
 # Instrumental de trabajo con agentes de IA (Claude Code, Cursor…). Es del entorno de

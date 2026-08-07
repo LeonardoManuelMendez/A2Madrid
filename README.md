@@ -39,5 +39,7 @@ en **web, iOS y Android**.
   `.xcodeproj` ejecutable se genera en un Mac).
 - **CI**: GitHub Actions (`.github/workflows/ci.yml`) — Android (build+test), Web (compile) e
   iOS (framework en runner macOS).
+- **Despliegue**: en cada push a `main`, la web va a Firebase Hosting y el APK firmado a GitHub
+  Releases. Sin tiendas de por medio — ver [docs/despliegue.md](docs/despliegue.md).
 
 Hecho con 🤍 por [Leonardo Manuel Méndez](https://leonardomanuelmendez.github.io/).
