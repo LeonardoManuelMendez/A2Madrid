@@ -1,0 +1,2887 @@
+{
+  "exams": [
+    {
+      "id": "orden_2411_2017_c2_2018_aptitudes",
+      "title": "Orden 2411/2017 · C2 (2018) — Psicotécnico y ortografía",
+      "contexts": {
+        "rejilla_letras": "pNMeqbFYGhmLBNcepNMeqbYFpNMbqeFYpNMqebFYpMNqebFYpNMbeqFYpMNqebFY\nCDKzhAprCKDhzArppNMqedFYpMNedqFYCKDhzApwpMNeqbFYpNMeqdYFCKDhzArp\npNMeqbFypNMqedFYpNMbqeFYpNMeqbYFpNMeqbFYpMNeqbYFGhmBNLcepMNeqbFy\nGhmBNLcepMNeqbFyGhmLBNcePnMEbqFYpMNeqbFYCDKzhAprpNMbqeFYCDKzhApr\npNMbqeFYpNMqedFYPnMEbqFYpMNeqbFypNMeqdFypNMqedFYCKDhzArpGhmBNLce\npNMeqdYFpNMebqYFpNMbqeFYpMNedqFYpNMbqeFYGhmLBNcepNMeqbFYPnMEbqFY",
+        "tabla_empleados": "884ABD | 02/02/2012 | 234 | 638 256 323\n562GGA | 18/04/2012 | 123 | 699 320 415\n190LKU | 05/06/2012 | 67 | 605 503 488\n562TYN | 06/04/2012 | 226 | 638 541 724\n484FEH | 07/09/2012 | 301 | 653 281 455\n526ABR | 03/05/2012 | 78 | 699 234 441\n448VRW | 09/04/2012 | 93 | 699 101 214\n327BFA | 09/08/2012 | 98 | 649 702 542\n901ARC | 14/04/2012 | 234 | 628 254 393\n884UQP | 07/05/2012 | 127 | 617 231 346\n562YGF | 14/04/2012 | 125 | 653 923 870\n109BDR | 23/04/2012 | 116 | 659 131 405\n723EAY | 20/04/2012 | 291 | 653 120 903\n190HLN | 09/06/2012 | 312 | 632 587 624\n256PGK | 08/03/2012 | 145 | 638 207 129\n448NMD | 08/05/2012 | 254 | 659 452 790\n723KMZ | 10/04/2012 | 241 | 605 924 215\n562PTS | 01/07/2012 | 182 | 649 576 820\n901GTU | 11/03/2012 | 158 | 699 324 782\n526TTB | 11/04/2012 | 320 | 653 871 291\n273FTV | 11/05/2012 | 196 | 632 100 211\n910DBL | 30/03/2012 | 156 | 649 102 453\n488EER | 08/07/2012 | 252 | 659 776 810\n526HIH | 03/08/2012 | 299 | 638 309 254\n723YET | 18/04/2012 | 310 | 617 402 435\n448DWG | 22/05/2012 | 174 | 628 432 781\n848BCM | 11/06/2012 | 213 | 605 078 955\n562GKU | 10/02/2012 | 113 | 628 500 326\n448VNN | 22/04/2012 | 131 | 649 408 900\n723SSC | 09/02/2012 | 218 | 632 411 475\n\nDepartamentos por prefijo del código: Contabilidad 190/848/526/327; Recursos Humanos 723/910/884; Informática 562/448; Publicidad 488/901; Producción 256/273/109/484.\nArchivadores por fecha de ingreso: EZF/4 entre 01/02/2012 y 07/04/2012; ZZF/4 entre 08/04/2012 y 01/05/2012; EPP/3 entre 02/05/2012 y 07/06/2012; PEP/3 entre 08/06/2012 y 01/08/2012; ZPE/4 entre 02/08/2012 y 08/09/2012."
+      },
+      "questions": [
+        {
+          "id": 1,
+          "text": "Indique cuántas palabras contienen algún error ortográfico en el siguiente grupo: lividez, captor, rábano, lacayo, esaltamiento, tesela, hibisco, urogayo, bacuo, reptar.",
+          "options": [
+            "2",
+            "3",
+            "1",
+            "4"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Son 3 las palabras mal escritas: esaltamiento, urogayo y bacuo. Las otras siete son correctas aunque suenen poco habituales.",
+            "points": [
+              {
+                "term": "esaltamiento",
+                "text": "se escribe exaltamiento, con x: el prefijo ex- ante vocal se mantiene (exaltar, exhalar, exuberante)."
+              },
+              {
+                "term": "urogayo",
+                "text": "se escribe urogallo, con ll: es el gallo silvestre (uro- + gallo)."
+              },
+              {
+                "term": "bacuo",
+                "text": "se escribe vacuo, con v: significa 'vacío', de la misma familia que vacante o evacuar."
+              },
+              {
+                "term": "Sí son correctas",
+                "text": "lividez (palidez), tesela (cada pieza de un mosaico) e hibisco (planta ornamental) existen y están bien escritas."
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "text": "Indique cuántas palabras contienen algún error ortográfico en el siguiente grupo: astracto, hignoto, zarcillo, tuvería, besamanos, bosquejo, humo, excabeche, plebeyo, vadeable.",
+          "options": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Son 4 los errores: astracto, hignoto, tuvería y excabeche.",
+            "points": [
+              {
+                "term": "astracto",
+                "text": "es abstracto, con b: del latín abstractus (abs- + tractus)."
+              },
+              {
+                "term": "hignoto",
+                "text": "es ignoto ('desconocido'), sin h inicial y sin g intercalada."
+              },
+              {
+                "term": "tuvería",
+                "text": "es tubería, con b, porque viene de tubo. Con v, 'tuve' es del verbo tener."
+              },
+              {
+                "term": "excabeche",
+                "text": "es escabeche, con s: procede del árabe sikbāŷ, no lleva el prefijo ex-."
+              },
+              {
+                "term": "Sí son correctas",
+                "text": "zarcillo, besamanos, bosquejo, humo, plebeyo y vadeable ('que se puede vadear')."
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "text": "Indique cuántas palabras contienen algún error ortográfico relativo a la tilde en el siguiente grupo: quirurgico, fraccion, brío, caridád, lapislázuli, aldába, tandem, mitologia, almibar, encefálica.",
+          "options": [
+            "6",
+            "5",
+            "4",
+            "7"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Siete palabras tienen mal la tilde: quirurgico, fraccion, caridád, aldába, tandem, mitologia y almibar.",
+            "points": [
+              {
+                "term": "quirurgico",
+                "text": "es quirúrgico: esdrújula, y todas las esdrújulas llevan tilde."
+              },
+              {
+                "term": "fraccion",
+                "text": "es fracción: aguda terminada en -n."
+              },
+              {
+                "term": "caridád",
+                "text": "es caridad: aguda terminada en -d, así que NO lleva tilde."
+              },
+              {
+                "term": "aldába",
+                "text": "es aldaba: llana terminada en vocal, no lleva tilde."
+              },
+              {
+                "term": "tandem",
+                "text": "es tándem: llana terminada en -m; la regla solo exime a las llanas acabadas en vocal, -n o -s."
+              },
+              {
+                "term": "mitologia",
+                "text": "es mitología: la í tónica en hiato con otra vocal siempre lleva tilde."
+              },
+              {
+                "term": "almibar",
+                "text": "es almíbar: llana terminada en -r."
+              },
+              {
+                "term": "Sí están bien",
+                "text": "brío, lapislázuli y encefálica."
+              }
+            ],
+            "source": {
+              "label": "Reglas de acentuación · RAE",
+              "quote": "Agudas: llevan tilde si terminan en vocal, -n o -s. Llanas: llevan tilde si NO terminan en vocal, -n o -s. Esdrújulas y sobresdrújulas: llevan tilde siempre."
+            }
+          }
+        },
+        {
+          "id": 4,
+          "text": "Indique cuántas palabras contienen algún error ortográfico relativo a la tilde en el siguiente grupo: realidad, inclito, pómez, chimpance, colibrí, cinéfilo, huracán, véga, superávit, riesgo.",
+          "options": [
+            "3",
+            "2",
+            "5",
+            "4"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Solo hay 3 errores de tilde: inclito, chimpance y véga.",
+            "points": [
+              {
+                "term": "inclito",
+                "text": "es ínclito: esdrújula, lleva tilde siempre."
+              },
+              {
+                "term": "chimpance",
+                "text": "es chimpancé: aguda terminada en vocal."
+              },
+              {
+                "term": "véga",
+                "text": "es vega: llana terminada en vocal, no lleva tilde."
+              },
+              {
+                "term": "Sí están bien",
+                "text": "pómez (llana terminada en -z) y superávit (llana terminada en -t) llevan tilde con razón; realidad y riesgo no la necesitan."
+              }
+            ],
+            "source": {
+              "label": "Reglas de acentuación · RAE",
+              "quote": "Agudas: llevan tilde si terminan en vocal, -n o -s. Llanas: llevan tilde si NO terminan en vocal, -n o -s. Esdrújulas y sobresdrújulas: llevan tilde siempre."
+            }
+          }
+        },
+        {
+          "id": 5,
+          "text": "Una vez realizadas las operaciones numéricas de las series siguientes, ¿cuál es el resultado de sumar los 3 totales?\n5 × 8 + 7 - 5 + 2 - 6 - 4 = ____\n7 × 5 - 8 + 9 : 3 + 8 - 3 - 5 = ____\n8 - 4 + 8 : 4 × 9 - 5 - 4 = ____",
+          "options": [
+            "76",
+            "78",
+            "77",
+            "75"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Respetando la jerarquía de operaciones, los tres totales son 34, 30 y 13. Su suma es 77.",
+            "points": [
+              {
+                "term": "Serie 1",
+                "text": "5 × 8 = 40 → 40 + 7 − 5 + 2 − 6 − 4 = 34."
+              },
+              {
+                "term": "Serie 2",
+                "text": "7 × 5 = 35 y 9 : 3 = 3 → 35 − 8 + 3 + 8 − 3 − 5 = 30."
+              },
+              {
+                "term": "Serie 3",
+                "text": "8 : 4 = 2 y 2 × 9 = 18 (de izquierda a derecha) → 8 − 4 + 18 − 5 − 4 = 13."
+              },
+              {
+                "term": "Total",
+                "text": "34 + 30 + 13 = 77."
+              }
+            ],
+            "source": {
+              "label": "Jerarquía de operaciones",
+              "quote": "Primero los paréntesis; después multiplicaciones y divisiones, de izquierda a derecha; por último sumas y restas."
+            }
+          }
+        },
+        {
+          "id": 6,
+          "text": "Una vez realizadas las operaciones numéricas de las series siguientes, ¿cuál es el resultado de sumar los 3 totales?\n8 + 13 + 12 - 6 - 9 - 15 - 11 + 18 = ____\n5 - 2 + 8 - 10 + 7 + 16 - 8 - 9 = ____\n6 - 2 + 9 - 7 - 3 + 5 - 8 + 2 = ____",
+          "options": [
+            "19",
+            "21",
+            "20",
+            "18"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Solo hay sumas y restas, así que se opera de izquierda a derecha: 10, 7 y 2. Total, 19.",
+            "points": [
+              {
+                "term": "Serie 1",
+                "text": "8 + 13 + 12 = 33; 33 − 6 − 9 − 15 − 11 = −8; −8 + 18 = 10."
+              },
+              {
+                "term": "Serie 2",
+                "text": "5 − 2 + 8 − 10 + 7 + 16 − 8 − 9 = 7."
+              },
+              {
+                "term": "Serie 3",
+                "text": "6 − 2 + 9 − 7 − 3 + 5 − 8 + 2 = 2."
+              },
+              {
+                "term": "Total",
+                "text": "10 + 7 + 2 = 19."
+              },
+              {
+                "term": "Atajo",
+                "text": "en cada serie puedes sumar aparte los positivos y los negativos y restar al final; se cometen menos errores que encadenando."
+              }
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "text": "Observe las siguientes igualdades: R = a + b + c ; S = a - b - c ; T = a × b × c. En dichas igualdades se establece: a = 10, b = 1/4, c = 2. ¿Cuál es el resultado de R + S - T?",
+          "options": [
+            "29",
+            "19",
+            "25",
+            "15"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Con a = 10, b = 1/4 y c = 2: R = 12,25, S = 7,75 y T = 5. Por tanto R + S − T = 15.",
+            "points": [
+              {
+                "term": "R = a + b + c",
+                "text": "10 + 0,25 + 2 = 12,25."
+              },
+              {
+                "term": "S = a − b − c",
+                "text": "10 − 0,25 − 2 = 7,75."
+              },
+              {
+                "term": "T = a × b × c",
+                "text": "10 × 0,25 × 2 = 5."
+              },
+              {
+                "term": "Resultado",
+                "text": "12,25 + 7,75 − 5 = 20 − 5 = 15."
+              },
+              {
+                "term": "Atajo",
+                "text": "al sumar R y S las fracciones se cancelan (+0,25 y −0,25) y queda 2a = 20; solo hay que restarle T."
+              }
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "text": "Una vez realizadas las operaciones numéricas de las series siguientes, ¿cuál es el resultado de sumar los 2 totales?\n0,23 + 1,49 - 0,07 - 1,13 = ____\n3,49 + 1,03 - 0,16 - 4,01 = ____",
+          "options": [
+            "1,77",
+            "0,77",
+            "1,87",
+            "0,87"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Los dos totales son 0,52 y 0,35, que suman 0,87.",
+            "points": [
+              {
+                "term": "Serie 1",
+                "text": "0,23 + 1,49 = 1,72; 1,72 − 0,07 = 1,65; 1,65 − 1,13 = 0,52."
+              },
+              {
+                "term": "Serie 2",
+                "text": "3,49 + 1,03 = 4,52; 4,52 − 0,16 = 4,36; 4,36 − 4,01 = 0,35."
+              },
+              {
+                "term": "Total",
+                "text": "0,52 + 0,35 = 0,87."
+              },
+              {
+                "term": "Cuidado",
+                "text": "las opciones se diferencian en una sola cifra: conviene alinear las comas y operar por columnas antes de elegir."
+              }
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "contextId": "rejilla_letras",
+          "text": "Observe el siguiente cuadro: Indique cuántas veces se encuentra incluida exactamente y en la misma secuencia la serie pNMeqbFY.",
+          "options": [
+            "5",
+            "3",
+            "4",
+            "2"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "La serie pNMeqbFY aparece exactamente 3 veces. La rejilla está formada por bloques de 8 letras, así que basta comparar bloque a bloque.",
+            "points": [
+              {
+                "term": "1.ª aparición",
+                "text": "fila 1, primer bloque."
+              },
+              {
+                "term": "2.ª aparición",
+                "text": "fila 3, quinto bloque."
+              },
+              {
+                "term": "3.ª aparición",
+                "text": "fila 6, séptimo bloque."
+              },
+              {
+                "term": "Trampa",
+                "text": "no cuentan pNMeqbFy (con y minúscula final) ni pNMeqbYF (con las dos últimas letras cambiadas): el orden y las mayúsculas deben coincidir exactamente."
+              }
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "contextId": "rejilla_letras",
+          "text": "Observe el siguiente cuadro: Indique cuántas veces se encuentra incluida exactamente y en la misma secuencia la serie pMNeqbFy.",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "La serie pMNeqbFy aparece 3 veces. Ojo: empieza por pMN (y no pNM) y acaba en y minúscula.",
+            "points": [
+              {
+                "term": "1.ª aparición",
+                "text": "fila 3, octavo bloque."
+              },
+              {
+                "term": "2.ª aparición",
+                "text": "fila 4, segundo bloque."
+              },
+              {
+                "term": "3.ª aparición",
+                "text": "fila 5, cuarto bloque."
+              },
+              {
+                "term": "Trampa",
+                "text": "en la fila 2 hay un pMNeqbFY que solo se diferencia en la Y final mayúscula: no cuenta."
+              }
+            ]
+          }
+        },
+        {
+          "id": 11,
+          "contextId": "rejilla_letras",
+          "text": "Observe el siguiente cuadro: Indique cuántas veces se encuentra incluida exactamente y en la misma secuencia la serie pMNebqFY.",
+          "options": [
+            "1",
+            "Ninguna",
+            "2",
+            "3"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Ninguna. En la rejilla no hay ningún bloque con esa secuencia exacta.",
+            "points": [
+              {
+                "term": "Los parecidos",
+                "text": "sí aparecen pNMbeqFY y pMNqebFY, que llevan las mismas letras pero en otro orden."
+              },
+              {
+                "term": "Cómo verlo rápido",
+                "text": "fija primero las tres primeras letras (pMN) y solo compara esos bloques; después contrasta la parte ebq."
+              },
+              {
+                "term": "En este examen",
+                "text": "'Ninguna' es una opción real: no descartes que la respuesta sea cero."
+              }
+            ]
+          }
+        },
+        {
+          "id": 12,
+          "contextId": "rejilla_letras",
+          "text": "Observe el siguiente cuadro: Indique cuántas veces se encuentra incluida exactamente y en la misma secuencia la serie pNMbqeFY.",
+          "options": [
+            "5",
+            "8",
+            "7",
+            "6"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "La serie pNMbqeFY aparece 6 veces; es la más repetida de la rejilla.",
+            "points": [
+              {
+                "term": "Fila 1",
+                "text": "cuarto bloque."
+              },
+              {
+                "term": "Fila 3",
+                "text": "tercer bloque."
+              },
+              {
+                "term": "Fila 4",
+                "text": "séptimo bloque."
+              },
+              {
+                "term": "Fila 5",
+                "text": "primer bloque."
+              },
+              {
+                "term": "Fila 6",
+                "text": "tercer y quinto bloque."
+              },
+              {
+                "term": "Trampa",
+                "text": "hay muchos bloques que empiezan por pNM; lo que distingue a este es el trío bqe en el centro."
+              }
+            ]
+          }
+        },
+        {
+          "id": 13,
+          "contextId": "rejilla_letras",
+          "text": "Observe el siguiente cuadro: Indique cuántas veces se encuentra incluida exactamente y en la misma secuencia la serie pNMeqdYF.",
+          "options": [
+            "4",
+            "3",
+            "2",
+            "5"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La serie pNMeqdYF aparece 2 veces.",
+            "points": [
+              {
+                "term": "1.ª aparición",
+                "text": "fila 2, séptimo bloque."
+              },
+              {
+                "term": "2.ª aparición",
+                "text": "fila 6, primer bloque."
+              },
+              {
+                "term": "Trampa",
+                "text": "conviven en la rejilla pNMeqdFy, pNMeqdYF y pNMqedFY: la diferencia está en las tres últimas letras."
+              }
+            ]
+          }
+        },
+        {
+          "id": 14,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: b a z y d c x ...",
+          "options": [
+            "w",
+            "v",
+            "y",
+            "u"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Son parejas de letras consecutivas hacia atrás, alternando el principio y el final del abecedario: b-a, z-y, d-c, x-w.",
+            "points": [
+              {
+                "term": "Parejas del principio",
+                "text": "b-a (2-1) y d-c (4-3): cada una empieza dos posiciones más adelante."
+              },
+              {
+                "term": "Parejas del final",
+                "text": "z-y (27-26) y x-w (25-24): cada una empieza dos posiciones más atrás."
+              },
+              {
+                "term": "Toca",
+                "text": "tras d-c vuelve el bloque del final; después de z-y corresponde x-w, y como ya está la x, la letra que sigue es la w."
+              }
+            ]
+          }
+        },
+        {
+          "id": 15,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: a b f g k l o ...",
+          "options": [
+            "q",
+            "p",
+            "ñ",
+            "r"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Van de dos en dos letras seguidas, y cada pareja empieza cinco posiciones después de la anterior: a-b, f-g, k-l, o-p.",
+            "points": [
+              {
+                "term": "Posiciones",
+                "text": "a(1)-b(2), f(6)-g(7), k(11)-l(12), o(16)-p(17)."
+              },
+              {
+                "term": "La serie corta a mitad de pareja",
+                "text": "o es la primera letra del cuarto par, así que falta su compañera: la p."
+              },
+              {
+                "term": "Clave",
+                "text": "el abecedario del examen incluye la ñ entre la n y la o (…m, n, ñ, o, p…). Sin contarla, el salto de cinco no cuadra."
+              }
+            ]
+          }
+        },
+        {
+          "id": 16,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: ñ m q j u f z ...",
+          "options": [
+            "n",
+            "b",
+            "x",
+            "a"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Hay dos series entrelazadas: una que sube (ñ, q, u, z) y otra que baja (m, j, f, …). La letra pedida pertenece a la que baja, y es la a.",
+            "points": [
+              {
+                "term": "Serie que sube",
+                "text": "ñ(15) → q(18) → u(22) → z(27): saltos de +3, +4 y +5."
+              },
+              {
+                "term": "Serie que baja",
+                "text": "m(13) → j(10) → f(6): saltos de −3 y −4; ahora toca −5, y 6 − 5 = 1, es decir, la a."
+              },
+              {
+                "term": "Posición",
+                "text": "la letra que falta es la octava de la serie, o sea la cuarta de la subserie descendente."
+              }
+            ]
+          }
+        },
+        {
+          "id": 17,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: z y c d v u g ...",
+          "options": [
+            "f",
+            "i",
+            "h",
+            "t"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Alternan parejas de letras consecutivas: unas descienden desde el final (z-y, v-u) y otras ascienden desde el principio (c-d, g-h). Falta la compañera de g: la h.",
+            "points": [
+              {
+                "term": "Parejas del final",
+                "text": "z(27)-y(26) y v(23)-u(22): cada pareja arranca cuatro posiciones más atrás."
+              },
+              {
+                "term": "Parejas del principio",
+                "text": "c(3)-d(4) y g(7)-h(8): cada pareja arranca cuatro posiciones más adelante."
+              },
+              {
+                "term": "Toca",
+                "text": "la serie se interrumpe en g, primera letra de su pareja, así que la siguiente es la h."
+              }
+            ]
+          }
+        },
+        {
+          "id": 18,
+          "text": "Observe el grupo de palabras: estío - estrépito - cesión - desprecio - lustre. Indique la respuesta que contenga un sinónimo para cada palabra del grupo observado.",
+          "options": [
+            "confluencia / desdén / renuncia / esplendor / verano",
+            "renuncia / esplendor / verano / ostentación / desdén",
+            "ostentación / verano / extensión / renuncia / desdén",
+            "esplendor / desdén / ostentación / lentitud / verano"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "La opción correcta es la única que cubre las cinco palabras, aunque las presente en otro orden: cesión-renuncia, lustre-esplendor, estío-verano, estrépito-ostentación y desprecio-desdén.",
+            "points": [
+              {
+                "term": "estío",
+                "text": "verano."
+              },
+              {
+                "term": "estrépito",
+                "text": "ostentación. Además de 'ruido grande', el diccionario recoge estrépito como 'ostentación, aparato'."
+              },
+              {
+                "term": "cesión",
+                "text": "renuncia."
+              },
+              {
+                "term": "desprecio",
+                "text": "desdén."
+              },
+              {
+                "term": "lustre",
+                "text": "esplendor."
+              },
+              {
+                "term": "Por qué fallan las demás",
+                "text": "incluyen confluencia, extensión o lentitud, que no son sinónimos de ninguna de las cinco palabras."
+              }
+            ]
+          }
+        },
+        {
+          "id": 19,
+          "text": "Observe el grupo de palabras: ropero - pócima - garganta - doblez - rastrillo. Indique la respuesta que contenga un sinónimo para cada palabra del grupo observado.",
+          "options": [
+            "mercadillo / estrechura / malicia / cocimiento / efigie",
+            "armario / fuste / mercadillo / estrechura / cocimiento",
+            "cocimiento / malicia / armario / advertencia / mercadillo",
+            "malicia / mercadillo / armario / cocimiento / estrechura"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Los cinco sinónimos aparecen desordenados: doblez-malicia, rastrillo-mercadillo, ropero-armario, pócima-cocimiento y garganta-estrechura.",
+            "points": [
+              {
+                "term": "ropero",
+                "text": "armario donde se guarda la ropa."
+              },
+              {
+                "term": "pócima",
+                "text": "cocimiento: bebida medicinal obtenida cociendo materias vegetales."
+              },
+              {
+                "term": "garganta",
+                "text": "estrechura: paso angosto entre montañas o por donde corre un río."
+              },
+              {
+                "term": "doblez",
+                "text": "malicia: obrar con doble intención."
+              },
+              {
+                "term": "rastrillo",
+                "text": "mercadillo de objetos usados, como el Rastro."
+              },
+              {
+                "term": "Descartes",
+                "text": "las demás opciones cuelan palabras como efigie, fuste o advertencia, que no traducen ninguna de las cinco."
+              }
+            ]
+          }
+        },
+        {
+          "id": 21,
+          "text": "Se hace un pedido de 3 conceptos: 430 bolígrafos a 1,20 euros (IVA no incluido) cada bolígrafo; 45 paquetes de papel A4 a 7,26 euros (IVA incluido) cada paquete; 2.800 carpetas a 6,06 euros (IVA no incluido) cada carpeta. Si el IVA de todos los conceptos es del 21%, ¿cuál es el importe de la factura, IVA no incluido?",
+          "options": [
+            "21.425,64 euros",
+            "17.810,70 euros",
+            "17.754,00 euros",
+            "21.482,34 euros"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Hay que llevar los tres conceptos a base imponible: el papel viene con el IVA ya incluido, así que se divide entre 1,21. La factura sin IVA es de 17.754,00 euros.",
+            "points": [
+              {
+                "term": "Bolígrafos",
+                "text": "430 × 1,20 = 516,00 € (el precio ya era sin IVA)."
+              },
+              {
+                "term": "Papel A4",
+                "text": "7,26 € con IVA → 7,26 : 1,21 = 6,00 € sin IVA; 45 × 6,00 = 270,00 €."
+              },
+              {
+                "term": "Carpetas",
+                "text": "2.800 × 6,06 = 16.968,00 € (precio sin IVA)."
+              },
+              {
+                "term": "Total",
+                "text": "516 + 270 + 16.968 = 17.754,00 €."
+              },
+              {
+                "term": "Trampas",
+                "text": "17.810,70 € sale de no quitarle el IVA al papel; 21.482,34 € es esta misma factura pero CON el IVA (17.754 × 1,21)."
+              }
+            ]
+          }
+        },
+        {
+          "id": 22,
+          "text": "Observe el grupo de palabras: recalcitrar - frasear - arremeter - iterar - solapar. Indique la respuesta que contenga un sinónimo para cada palabra del grupo observado.",
+          "options": [
+            "enunciar / localizar / ocultar / acometer / resistir",
+            "enunciar / ocultar / acaparar / resistir / acometer",
+            "repetir / enunciar / acometer / ocultar / licuar",
+            "acometer / resistir / repetir / enunciar / ocultar"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "La opción correcta recoge los cinco verbos: arremeter-acometer, recalcitrar-resistir, iterar-repetir, frasear-enunciar y solapar-ocultar.",
+            "points": [
+              {
+                "term": "recalcitrar",
+                "text": "resistir, obstinarse en no obedecer."
+              },
+              {
+                "term": "frasear",
+                "text": "enunciar, formar frases."
+              },
+              {
+                "term": "arremeter",
+                "text": "acometer con ímpetu."
+              },
+              {
+                "term": "iterar",
+                "text": "repetir (de ahí 'reiterar')."
+              },
+              {
+                "term": "solapar",
+                "text": "ocultar algo con mala intención."
+              },
+              {
+                "term": "Descartes",
+                "text": "las otras opciones incluyen localizar, acaparar o licuar, que no equivalen a ninguno de los cinco verbos."
+              }
+            ]
+          }
+        },
+        {
+          "id": 23,
+          "text": "Observe el grupo de palabras: extremado - primoroso - flamante - apacible - bonancible. Indique la respuesta que contenga un sinónimo para cada palabra del grupo observado.",
+          "options": [
+            "sereno / excesivo / delicado / rugoso / agradable",
+            "lúcido / delicado / agradable / excesivo / sereno",
+            "agradable / estepario / lúcido / sereno / delicado",
+            "noctámbulo / delicado / agradable / excesivo / sereno"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "La correspondencia es: flamante-lúcido, primoroso-delicado, apacible-agradable, extremado-excesivo y bonancible-sereno.",
+            "points": [
+              {
+                "term": "extremado",
+                "text": "excesivo, que llega al extremo."
+              },
+              {
+                "term": "primoroso",
+                "text": "delicado, hecho con primor."
+              },
+              {
+                "term": "flamante",
+                "text": "lúcido, resplandeciente (además de 'recién estrenado')."
+              },
+              {
+                "term": "apacible",
+                "text": "agradable, de trato dulce."
+              },
+              {
+                "term": "bonancible",
+                "text": "sereno, tranquilo; se dice sobre todo del mar y del tiempo."
+              },
+              {
+                "term": "Descartes",
+                "text": "basta ver rugoso, estepario o noctámbulo para eliminar el resto de opciones."
+              }
+            ]
+          }
+        },
+        {
+          "id": 24,
+          "text": "¿Cuál es el valor del 3,1% del 82,5% de 3.840?",
+          "options": [
+            "98,208",
+            "1,443",
+            "9.820,800",
+            "1.021,935"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Se encadenan los dos porcentajes: 3.840 × 0,825 = 3.168, y 3.168 × 0,031 = 98,208.",
+            "points": [
+              {
+                "term": "82,5 % de 3.840",
+                "text": "3.840 × 0,825 = 3.168."
+              },
+              {
+                "term": "3,1 % de 3.168",
+                "text": "3.168 × 0,031 = 98,208."
+              },
+              {
+                "term": "Atajo",
+                "text": "0,825 × 0,031 = 0,025575, y 3.840 × 0,025575 = 98,208 en un solo paso."
+              },
+              {
+                "term": "Trampa",
+                "text": "9.820,800 es el mismo resultado con la coma desplazada dos lugares: el error típico de convertir mal los porcentajes."
+              }
+            ]
+          }
+        },
+        {
+          "id": 25,
+          "text": "Del presupuesto disponible en un departamento para material fungible se gastan 4/13. Más tarde se recibe la aportación de 81,00 euros. Posteriormente se gastan 2/9 de la cantidad disponible en ese momento. Quedan 2.604,00 euros. ¿Cuál era el presupuesto inicial? Tenga en cuenta que el cálculo se ha realizado redondeando a dos decimales.",
+          "options": [
+            "5.367,11 euros",
+            "4.253,11 euros",
+            "4.685,57 euros",
+            "4.719,00 euros"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Se resuelve hacia atrás, partiendo de los 2.604 € finales: el presupuesto inicial era de 4.719,00 €.",
+            "points": [
+              {
+                "term": "Último gasto",
+                "text": "si se gastan 2/9, quedan 7/9. Luego antes había 2.604 : 7 × 9 = 3.348 €."
+              },
+              {
+                "term": "Aportación",
+                "text": "esos 3.348 € incluyen los 81 € recibidos: 3.348 − 81 = 3.267 €."
+              },
+              {
+                "term": "Primer gasto",
+                "text": "si se gastan 4/13, quedan 9/13. Luego el presupuesto era 3.267 : 9 × 13 = 4.719 €."
+              },
+              {
+                "term": "Comprobación",
+                "text": "4.719 − 1.452 (4/13) = 3.267; +81 = 3.348; −744 (2/9) = 2.604 €."
+              }
+            ]
+          }
+        },
+        {
+          "id": 26,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas que hayan ingresado antes del 10/05/2012 tienen un teléfono que acabe en 5 y, a la vez, contenga un 3.",
+          "options": [
+            "5",
+            "4",
+            "6",
+            "7"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Son 4 personas. Hay que cruzar tres filtros a la vez: ingreso anterior al 10/05/2012, teléfono acabado en 5 y que además contenga algún 3.",
+            "points": [
+              {
+                "term": "562GGA",
+                "text": "18/04/2012 · 699 320 415."
+              },
+              {
+                "term": "109BDR",
+                "text": "23/04/2012 · 659 131 405."
+              },
+              {
+                "term": "723YET",
+                "text": "18/04/2012 · 617 402 435."
+              },
+              {
+                "term": "723SSC",
+                "text": "09/02/2012 · 632 411 475."
+              },
+              {
+                "term": "Cuidado",
+                "text": "el 3 puede aparecer en cualquier posición del número, no solo en el prefijo; y 'antes del 10/05' excluye ese mismo día."
+              }
+            ]
+          }
+        },
+        {
+          "id": 27,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas del departamento de Recursos Humanos, con más de 120 horas de formación, tienen sus expedientes guardados en el archivador EPP/3.",
+          "options": [
+            "2",
+            "Ninguna",
+            "1",
+            "3"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Solo 1 persona: 884UQP. Recursos Humanos son los códigos 723, 910 y 884, y el archivador EPP/3 cubre del 02/05/2012 al 07/06/2012.",
+            "points": [
+              {
+                "term": "884UQP",
+                "text": "es de RRHH (884), ingresó el 07/05/2012 → EPP/3, y tiene 127 horas de formación (más de 120)."
+              },
+              {
+                "term": "Descartes",
+                "text": "el resto de RRHH con formación suficiente ingresó fuera de ese tramo: 723EAY (20/04), 723KMZ (10/04) y 723YET (18/04) van a ZZF/4, y 884ABD (02/02), 723SSC (09/02) y 910DBL (30/03) a EZF/4."
+              },
+              {
+                "term": "Orden de filtrado",
+                "text": "empieza por el filtro más restrictivo (el archivador) y solo después mira departamento y horas."
+              }
+            ]
+          }
+        },
+        {
+          "id": 28,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas con más de 132 horas dedicadas a la formación tienen un teléfono que empieza por 638 y, a la vez, contiene un 7 en el número de teléfono.",
+          "options": [
+            "3",
+            "5",
+            "4",
+            "2"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Son 2 personas. De los cuatro teléfonos que empiezan por 638, solo dos contienen además un 7, y ambos superan las 132 horas.",
+            "points": [
+              {
+                "term": "562TYN",
+                "text": "226 horas · 638 541 724."
+              },
+              {
+                "term": "256PGK",
+                "text": "145 horas · 638 207 129."
+              },
+              {
+                "term": "Descartes",
+                "text": "884ABD (638 256 323) y 526HIH (638 309 254) también empiezan por 638 y tienen horas de sobra, pero no contienen ningún 7."
+              },
+              {
+                "term": "Cuidado",
+                "text": "'más de 132 horas' excluye exactamente 132."
+              }
+            ]
+          }
+        },
+        {
+          "id": 29,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas pertenecen al departamento de Informática.",
+          "options": [
+            "9",
+            "10",
+            "8",
+            "7"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Son 9 personas. Informática agrupa los códigos que empiezan por 562 y por 448.",
+            "points": [
+              {
+                "term": "Prefijo 562",
+                "text": "562GGA, 562TYN, 562YGF, 562PTS y 562GKU → 5 personas."
+              },
+              {
+                "term": "Prefijo 448",
+                "text": "448VRW, 448NMD, 448DWG y 448VNN → 4 personas."
+              },
+              {
+                "term": "Total",
+                "text": "5 + 4 = 9."
+              }
+            ]
+          }
+        },
+        {
+          "id": 30,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántos expedientes están guardados en el archivador PEP/3.",
+          "options": [
+            "4",
+            "6",
+            "7",
+            "5"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Son 4 expedientes. El archivador PEP/3 recoge los ingresos entre el 08/06/2012 y el 01/08/2012, ambos incluidos.",
+            "points": [
+              {
+                "term": "190HLN",
+                "text": "09/06/2012."
+              },
+              {
+                "term": "848BCM",
+                "text": "11/06/2012."
+              },
+              {
+                "term": "562PTS",
+                "text": "01/07/2012."
+              },
+              {
+                "term": "488EER",
+                "text": "08/07/2012."
+              },
+              {
+                "term": "Ojo con los límites",
+                "text": "190LKU (05/06) todavía cae en EPP/3 y 526HIH (03/08) ya pasa a ZPE/4."
+              }
+            ]
+          }
+        },
+        {
+          "id": 31,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas del departamento de Contabilidad con más de 90 horas de formación tienen sus expedientes guardados en el archivador ZZF/4.",
+          "options": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Solo 1: 526TTB. Contabilidad son los códigos 190, 848, 526 y 327, y ZZF/4 cubre del 08/04/2012 al 01/05/2012.",
+            "points": [
+              {
+                "term": "526TTB",
+                "text": "Contabilidad (526), ingreso el 11/04/2012 → ZZF/4, con 320 horas de formación (más de 90)."
+              },
+              {
+                "term": "Descartes",
+                "text": "de Contabilidad, 526ABR (03/05) y 190LKU (05/06) quedan fuera del tramo de ZZF/4, y encima no llegan a 90 horas (78 y 67)."
+              },
+              {
+                "term": "Cuidado",
+                "text": "solo son cuatro días de margen los que separan ZZF/4 de EZF/4; comprueba bien el 07 y el 08 de abril."
+              }
+            ]
+          }
+        },
+        {
+          "id": 32,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas han ingresado en el centro entre el 20/06/2012 y el 05/09/2012.",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Son 4 personas las que ingresaron entre el 20/06/2012 y el 05/09/2012.",
+            "points": [
+              {
+                "term": "562PTS",
+                "text": "01/07/2012."
+              },
+              {
+                "term": "488EER",
+                "text": "08/07/2012."
+              },
+              {
+                "term": "526HIH",
+                "text": "03/08/2012."
+              },
+              {
+                "term": "327BFA",
+                "text": "09/08/2012."
+              },
+              {
+                "term": "Cuidado",
+                "text": "190HLN (09/06) y 848BCM (11/06) se quedan justo antes del 20/06 y no cuentan."
+              }
+            ]
+          }
+        },
+        {
+          "id": 33,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántos expedientes están guardados en el archivador EZF/4.",
+          "options": [
+            "10",
+            "8",
+            "9",
+            "7"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Son 7 expedientes. EZF/4 guarda los ingresos entre el 01/02/2012 y el 07/04/2012.",
+            "points": [
+              {
+                "term": "Febrero",
+                "text": "884ABD (02/02), 723SSC (09/02) y 562GKU (10/02)."
+              },
+              {
+                "term": "Marzo",
+                "text": "256PGK (08/03), 901GTU (11/03) y 910DBL (30/03)."
+              },
+              {
+                "term": "Abril",
+                "text": "562TYN (06/04). El 07/04 es el último día del tramo."
+              },
+              {
+                "term": "Trampa",
+                "text": "562GGA y 723YET ingresaron el 18/04, es decir, ya en ZZF/4."
+              }
+            ]
+          }
+        },
+        {
+          "id": 34,
+          "contextId": "tabla_empleados",
+          "text": "En una base de datos, tenemos una lista de personas empleadas en un centro, registradas mediante un código de identificación, con fecha de ingreso, horas de formación y teléfono móvil: Indique cuántas personas del departamento de Publicidad tienen sus expedientes guardados en el archivador ZPE/4.",
+          "options": [
+            "1",
+            "Ninguna",
+            "2",
+            "3"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Ninguna. Publicidad son los códigos 488 y 901, y ninguno de sus tres expedientes cae en el tramo de ZPE/4 (02/08/2012 – 08/09/2012).",
+            "points": [
+              {
+                "term": "488EER",
+                "text": "08/07/2012 → PEP/3."
+              },
+              {
+                "term": "901ARC",
+                "text": "14/04/2012 → ZZF/4."
+              },
+              {
+                "term": "901GTU",
+                "text": "11/03/2012 → EZF/4."
+              },
+              {
+                "term": "En este examen",
+                "text": "'Ninguna' aparece como opción varias veces: no la descartes por sistema."
+              }
+            ]
+          }
+        },
+        {
+          "id": 35,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: z y v u r q ñ ...",
+          "options": [
+            "n",
+            "o",
+            "m",
+            "p"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Son parejas de letras consecutivas hacia atrás, y cada pareja empieza cuatro posiciones antes que la anterior: z-y, v-u, r-q, ñ-n.",
+            "points": [
+              {
+                "term": "Posiciones",
+                "text": "z(27)-y(26), v(23)-u(22), r(19)-q(18), ñ(15)-n(14)."
+              },
+              {
+                "term": "Falta la compañera de la ñ",
+                "text": "la letra inmediatamente anterior a la ñ en el abecedario español es la n."
+              },
+              {
+                "term": "Clave",
+                "text": "la ñ va entre la n y la o; si no se cuenta, el patrón de cuatro en cuatro se rompe."
+              }
+            ]
+          }
+        },
+        {
+          "id": 36,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: b a a h g g n ...",
+          "options": [
+            "o",
+            "n",
+            "ñ",
+            "m"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "El patrón se repite en grupos de tres: una letra, la anterior, y esa misma repetida. Así: b-a-a, h-g-g y n-m-m.",
+            "points": [
+              {
+                "term": "Grupo 1",
+                "text": "b, a, a."
+              },
+              {
+                "term": "Grupo 2",
+                "text": "h, g, g."
+              },
+              {
+                "term": "Grupo 3",
+                "text": "n, m, ?: falta la m repetida, que es la letra pedida."
+              },
+              {
+                "term": "Salto entre grupos",
+                "text": "b(2), h(8), n(14): cada grupo arranca seis posiciones más adelante."
+              }
+            ]
+          }
+        },
+        {
+          "id": 37,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: g i a o q b x ...",
+          "options": [
+            "c",
+            "d",
+            "z",
+            "y"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Se repiten tríos con el esquema 'una letra, la que está dos después, y una letra que avanza a, b, c…': g-i-a, o-q-b, x-z-c.",
+            "points": [
+              {
+                "term": "Trío 1",
+                "text": "g(7), i(9) y a."
+              },
+              {
+                "term": "Trío 2",
+                "text": "o(16), q(18) y b."
+              },
+              {
+                "term": "Trío 3",
+                "text": "x(25), ? y c. Dos posiciones después de la x está la z."
+              },
+              {
+                "term": "Cuidado",
+                "text": "de la x se salta la y para llegar a la z, igual que de la g se saltaba la h hasta la i."
+              }
+            ]
+          }
+        },
+        {
+          "id": 38,
+          "text": "Continúe la serie usando el abecedario español que incluye la ñ y no incluye ch, ll ni rr.\nSerie: z x t r ñ m i ...",
+          "options": [
+            "h",
+            "g",
+            "f",
+            "e"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Se retrocede alternando saltos de −2 y −4 posiciones. Tras la i toca un −2, que da la g.",
+            "points": [
+              {
+                "term": "Recorrido",
+                "text": "z(27) −2→ x(25) −4→ t(21) −2→ r(19) −4→ ñ(15) −2→ m(13) −4→ i(9)."
+              },
+              {
+                "term": "Toca −2",
+                "text": "9 − 2 = 7, es decir, la g."
+              },
+              {
+                "term": "Clave",
+                "text": "el abecedario del examen incluye la ñ (posición 15) y excluye ch, ll y rr."
+              }
+            ]
+          }
+        },
+        {
+          "id": 39,
+          "text": "Indique cuántas palabras contienen algún error ortográfico en el siguiente grupo: exacerbar, habilidad, yelmo, ehuforia, selladura, ventisca, tracción, probocador, abadejo, asiológico.",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "2"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Son 3 los errores: ehuforia, probocador y asiológico.",
+            "points": [
+              {
+                "term": "ehuforia",
+                "text": "es euforia: no lleva h intercalada."
+              },
+              {
+                "term": "probocador",
+                "text": "es provocador, con v, porque viene de provocar."
+              },
+              {
+                "term": "asiológico",
+                "text": "es axiológico, con x: de axiología, el estudio de los valores."
+              },
+              {
+                "term": "Sí son correctas",
+                "text": "selladura (acción de sellar), abadejo (el bacalao) y yelmo (pieza de la armadura) existen y están bien escritas."
+              }
+            ]
+          }
+        },
+        {
+          "id": 40,
+          "text": "Indique cuántas palabras contienen algún error ortográfico en el siguiente grupo: bayena, auecado, ebullición, baladí, oyente, oxidante, devacle, tayudo, activo, orda.",
+          "options": [
+            "4",
+            "7",
+            "6",
+            "5"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Son 5 los errores: bayena, auecado, devacle, tayudo y orda.",
+            "points": [
+              {
+                "term": "bayena",
+                "text": "es ballena, con ll."
+              },
+              {
+                "term": "auecado",
+                "text": "es ahuecado: del verbo ahuecar, con h intercalada."
+              },
+              {
+                "term": "devacle",
+                "text": "es debacle, con b (del francés débâcle)."
+              },
+              {
+                "term": "tayudo",
+                "text": "es talludo, con ll: 'que ha echado tallo'."
+              },
+              {
+                "term": "orda",
+                "text": "es horda, con h."
+              },
+              {
+                "term": "Sí están bien",
+                "text": "ebullición, baladí, oyente, oxidante y activo."
+              }
+            ]
+          }
+        },
+        {
+          "id": 41,
+          "text": "Indique cuántas palabras contienen algún error ortográfico relativo a la tilde en el siguiente grupo: específicamente, lápiz, algodón, cesped, pértiga, aguarrás, árido, artífice, absorbér, reiterádamente.",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "2"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Solo 3 palabras tienen mal la tilde: cesped, absorbér y reiterádamente.",
+            "points": [
+              {
+                "term": "cesped",
+                "text": "es césped: llana terminada en -d, así que lleva tilde."
+              },
+              {
+                "term": "absorbér",
+                "text": "es absorber: aguda terminada en -r, no lleva tilde."
+              },
+              {
+                "term": "reiterádamente",
+                "text": "es reiteradamente: los adverbios en -mente conservan la tilde del adjetivo, y 'reiterada' no la lleva."
+              },
+              {
+                "term": "Sí están bien",
+                "text": "específicamente (de específico, que sí lleva tilde), lápiz, algodón, pértiga, aguarrás, árido y artífice."
+              }
+            ],
+            "source": {
+              "label": "Reglas de acentuación · RAE",
+              "quote": "Los adverbios terminados en -mente conservan la tilde del adjetivo del que derivan: rápido → rápidamente; reiterada → reiteradamente."
+            }
+          }
+        },
+        {
+          "id": 42,
+          "text": "Indique cuántas palabras contienen algún error ortográfico relativo a la tilde en el siguiente grupo: ámbos, inquietud, cuadrúpedo, contrarrelój, datil, aquí, torax, epica, adiós, verosímil.",
+          "options": [
+            "4",
+            "6",
+            "7",
+            "5"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Son 5 los errores de tilde: ámbos, contrarrelój, datil, torax y epica.",
+            "points": [
+              {
+                "term": "ámbos",
+                "text": "es ambos: llana terminada en -s, no lleva tilde."
+              },
+              {
+                "term": "contrarrelój",
+                "text": "es contrarreloj: aguda terminada en -j, no lleva tilde."
+              },
+              {
+                "term": "datil",
+                "text": "es dátil: llana terminada en -l."
+              },
+              {
+                "term": "torax",
+                "text": "es tórax: llana terminada en -x."
+              },
+              {
+                "term": "epica",
+                "text": "es épica: esdrújula, lleva tilde siempre."
+              },
+              {
+                "term": "Sí están bien",
+                "text": "inquietud, cuadrúpedo, aquí, adiós y verosímil."
+              }
+            ],
+            "source": {
+              "label": "Reglas de acentuación · RAE",
+              "quote": "Las palabras llanas llevan tilde cuando NO terminan en vocal, -n o -s. Por eso la llevan dátil, tórax o cárcel, pero no ambos ni inquietud (esta última es aguda acabada en -d)."
+            }
+          }
+        },
+        {
+          "id": 43,
+          "text": "Recto es a torcido como afable es a ___________:",
+          "options": [
+            "Enflautado",
+            "Grave",
+            "Desagradable",
+            "Nato"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La relación es de antonimia: recto es lo contrario de torcido, así que afable pide su contrario, desagradable.",
+            "points": [
+              {
+                "term": "Clave",
+                "text": "en estas analogías lo primero es identificar la relación; aquí no es de sinonimia, sino de oposición."
+              },
+              {
+                "term": "afable",
+                "text": "agradable, dulce en la conversación y el trato → su contrario es desagradable."
+              },
+              {
+                "term": "Descartes",
+                "text": "grave y nato no se oponen a afable, y enflautado no guarda ninguna relación."
+              }
+            ]
+          }
+        },
+        {
+          "id": 44,
+          "text": "Mesura es a desmesura como inmediatez es a ___________:",
+          "options": [
+            "Tardanza",
+            "Irrealidad",
+            "Prominencia",
+            "Distracción"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "De nuevo antonimia: mesura se opone a desmesura, luego inmediatez se opone a tardanza.",
+            "points": [
+              {
+                "term": "inmediatez",
+                "text": "cualidad de lo que ocurre sin demora; su contrario es la tardanza."
+              },
+              {
+                "term": "Pista del prefijo",
+                "text": "des- en 'desmesura' marca ya la oposición del primer par."
+              },
+              {
+                "term": "Descartes",
+                "text": "irrealidad, prominencia y distracción se oponen a otras palabras (realidad, hondonada, atención), no a inmediatez."
+              }
+            ]
+          }
+        },
+        {
+          "id": 45,
+          "text": "Encontrar es a perder como estorbar es a ___________:",
+          "options": [
+            "Distraer",
+            "Facilitar",
+            "Limpiar",
+            "Injertar"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Encontrar y perder son antónimos; el contrario de estorbar (poner dificultades) es facilitar.",
+            "points": [
+              {
+                "term": "estorbar",
+                "text": "poner obstáculos a algo → lo contrario es facilitar, allanar el camino."
+              },
+              {
+                "term": "Descartes",
+                "text": "distraer, limpiar e injertar no se oponen a estorbar."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "orden_2411_2017_c2_2018_legislacion",
+      "title": "Orden 2411/2017 · C2 (2018) — Legislación",
+      "questions": [
+        {
+          "id": 46,
+          "text": "Los ciudadanos y los poderes públicos están sujetos a:",
+          "options": [
+            "La Constitución y a la ley.",
+            "La Constitución y al resto del ordenamiento jurídico.",
+            "La ley y al resto del ordenamiento jurídico.",
+            "La Constitución, la ley y al resto del ordenamiento jurídico"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Es el artículo 9.1 de la Constitución: la sujeción alcanza a la Constitución y a todo el resto del ordenamiento jurídico, no solo a 'la ley'.",
+            "points": [
+              {
+                "term": "Por qué no las otras",
+                "text": "las opciones que hablan solo de 'la ley' se quedan cortas: el ordenamiento incluye además reglamentos, costumbre y principios generales del derecho."
+              },
+              {
+                "term": "Contexto",
+                "text": "el art. 9.1 abre el Título Preliminar; el 9.3 añade las garantías (legalidad, jerarquía normativa, publicidad, irretroactividad, seguridad jurídica, responsabilidad e interdicción de la arbitrariedad)."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 9.1",
+              "quote": "Los ciudadanos y los poderes públicos están sujetos a la Constitución y al resto del ordenamiento jurídico."
+            }
+          }
+        },
+        {
+          "id": 47,
+          "text": "Conforme a lo establecido en la Constitución Española de 1978 cualquier ciudadano podrá recabar ante los Tribunales ordinarios por un procedimiento basado en los principios de preferencia y sumariedad y, en su caso, a través del recurso de amparo ante el Tribunal Constitucional, la tutela de:",
+          "options": [
+            "Las libertades y derechos reconocidos en el artículo 14 y la Sección primera del Capítulo II del Título I.",
+            "Las libertades y derechos reconocidos en el artículo 14 y la Sección segunda del Capítulo II del Título I.",
+            "Los principios rectores reconocidos en el Capítulo III del Título I.",
+            "La respuesta b) es correcta y además el recurso de amparo será aplicable a la objeción de conciencia reconocida en el artículo 30."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "El procedimiento preferente y sumario y el recurso de amparo protegen la igualdad del artículo 14 y los derechos de la Sección 1.ª del Capítulo II del Título I (arts. 15 a 29), más la objeción de conciencia del art. 30.2.",
+            "points": [
+              {
+                "term": "Sección 1.ª, no 2.ª",
+                "text": "la Sección 2.ª (arts. 30 a 38: propiedad, trabajo, libertad de empresa…) no goza de amparo."
+              },
+              {
+                "term": "Capítulo III",
+                "text": "los principios rectores (arts. 39 a 52) solo pueden alegarse ante la jurisdicción ordinaria de acuerdo con las leyes que los desarrollen (art. 53.3)."
+              },
+              {
+                "term": "La opción d)",
+                "text": "acierta al mencionar la objeción de conciencia, pero se apoya en la b), que sitúa mal la Sección; por eso es incorrecta."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 53.2",
+              "quote": "Cualquier ciudadano podrá recabar la tutela de las libertades y derechos reconocidos en el artículo 14 y la Sección primera del Capítulo segundo ante los Tribunales ordinarios por un procedimiento basado en los principios de preferencia y sumariedad y, en su caso, a través del recurso de amparo ante el Tribunal Constitucional. Este último recurso será aplicable a la objeción de conciencia reconocida en el artículo 30."
+            }
+          }
+        },
+        {
+          "id": 48,
+          "text": "Cuando se propusiere la revisión total de la Constitución se requiere:",
+          "options": [
+            "Aprobación del principio por mayoría de dos tercios de cada Cámara.",
+            "Aprobación del proyecto por mayoría de dos tercios de cada Cámara.",
+            "El proyecto por mayoría de ambas Cámaras después del referéndum.",
+            "La disolución de las Cámaras después de aprobado el proyecto de reforma."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "En la reforma agravada del art. 168, el primer paso es aprobar el principio de la revisión por dos tercios de cada Cámara. Todo lo demás viene después.",
+            "points": [
+              {
+                "term": "Orden completo",
+                "text": "1) aprobación del principio por 2/3 de cada Cámara; 2) disolución inmediata de las Cortes; 3) ratificación de la decisión por las nuevas Cámaras; 4) estudio y aprobación del nuevo texto por 2/3 de ambas; 5) referéndum de ratificación."
+              },
+              {
+                "term": "Trampa",
+                "text": "'aprobación del principio' y 'aprobación del proyecto' son fases distintas, y la disolución va antes de aprobar el proyecto, no después."
+              },
+              {
+                "term": "Cuándo se aplica",
+                "text": "revisión total, o parcial que afecte al Título Preliminar, a la Sección 1.ª del Capítulo II del Título I, o al Título II (la Corona)."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 168.1",
+              "quote": "Cuando se propusiere la revisión total de la Constitución o una parcial que afecte al Título preliminar, al Capítulo segundo, Sección primera del Título I, o al Título II, se procederá a la aprobación del principio por mayoría de dos tercios de cada Cámara, y a la disolución inmediata de las Cortes."
+            }
+          }
+        },
+        {
+          "id": 49,
+          "text": "Para la distribución de escaños en la Asamblea de Madrid, sólo serán tenidas en cuenta las listas que hayan obtenido:",
+          "options": [
+            "Al menos, el 1 por 100 de los sufragios válidamente emitidos.",
+            "Al menos, el 5 por 100 de los sufragios válidamente emitidos.",
+            "Más del 2 por 100 de los sufragios válidamente emitidos.",
+            "Más del 0.5 por 100 de los sufragios válidamente emitidos."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "La barrera electoral en la Comunidad de Madrid es del 5 % de los sufragios válidamente emitidos: las listas que no la alcanzan quedan fuera del reparto de escaños.",
+            "points": [
+              {
+                "term": "Sobre qué se calcula",
+                "text": "sobre los votos válidamente emitidos, no sobre el censo ni sobre los votos a candidaturas."
+              },
+              {
+                "term": "Sistema",
+                "text": "superada la barrera, los escaños se reparten con criterios de representación proporcional (regla D'Hondt)."
+              },
+              {
+                "term": "Truco",
+                "text": "las opciones que dicen 'más del' en lugar de 'al menos el' ya cambian el sentido de la regla."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid (LO 3/1983), art. 10",
+              "quote": "…sólo serán tenidas en cuenta aquellas listas que hubieran obtenido, al menos, el 5 por 100 de los sufragios válidamente emitidos."
+            }
+          }
+        },
+        {
+          "id": 50,
+          "text": "La Comunidad de Madrid no tiene competencia exclusiva en materia de:",
+          "options": [
+            "Pesca fluvial.",
+            "Espectáculos públicos.",
+            "Helipuertos deportivos.",
+            "Aeropuertos que desarrollen actividades comerciales."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "La Comunidad asume aeropuertos y helipuertos que NO desarrollen actividades comerciales. En cuanto hay actividad comercial, la competencia es del Estado.",
+            "points": [
+              {
+                "term": "Sí son exclusivas",
+                "text": "la pesca fluvial y lacustre, los espectáculos públicos y los helipuertos deportivos figuran en la lista de competencias exclusivas del Estatuto."
+              },
+              {
+                "term": "Regla general",
+                "text": "puertos y aeropuertos de interés general son competencia exclusiva del Estado (art. 149.1.20 CE); el criterio comercial es la frontera habitual."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid, art. 26 (competencias exclusivas)",
+              "quote": "…puertos, aeropuertos y helipuertos deportivos y, en general, los que no desarrollen actividades comerciales."
+            }
+          }
+        },
+        {
+          "id": 51,
+          "text": "Según el Estatuto de Autonomía de la Comunidad de Madrid.",
+          "options": [
+            "La Comunidad de Madrid podrá establecer acuerdos de cooperación con otras Comunidades Autónomas, previa autorización de las Cortes Generales.",
+            "La Comunidad de Madrid no podrá establecer acuerdos de cooperación con otras Comunidades Autónomas.",
+            "La Comunidad de Madrid podrá establecer acuerdos de cooperación con otras Comunidades Autónomas, sin autorización de las Cortes Generales.",
+            "Ninguna respuesta es correcta."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Sí puede celebrarlos, pero necesita autorización previa de las Cortes Generales.",
+            "points": [
+              {
+                "term": "Dos regímenes distintos",
+                "text": "los convenios para la gestión y prestación de servicios propios solo se comunican a las Cortes; los demás acuerdos de cooperación requieren su autorización."
+              },
+              {
+                "term": "Por qué existe el control",
+                "text": "es una garantía frente a acuerdos entre Comunidades que puedan afectar al equilibrio del Estado autonómico."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 145.2",
+              "quote": "Los Estatutos podrán prever los supuestos, requisitos y términos en que las Comunidades Autónomas podrán celebrar convenios entre sí para la gestión y prestación de servicios propios de las mismas, así como el carácter y efectos de la correspondiente comunicación a las Cortes Generales. En los demás supuestos, los acuerdos de cooperación entre las Comunidades Autónomas necesitarán la autorización de las Cortes Generales."
+            }
+          }
+        },
+        {
+          "id": 52,
+          "text": "Ordenar la publicación en el “Boletín Oficial de la Comunidad de Madrid” del nombramiento de Presidente del Tribunal Superior de Justicia de Madrid, es competencia de:",
+          "options": [
+            "Consejero de Justicia.",
+            "Presidente de la Asamblea de la Comunidad de Madrid.",
+            "El Rey.",
+            "Presidente de la Comunidad de Madrid."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Corresponde al Presidente de la Comunidad de Madrid ordenar la publicación en el BOCM del nombramiento del Presidente del Tribunal Superior de Justicia.",
+            "points": [
+              {
+                "term": "Quién nombra",
+                "text": "el nombramiento lo hace el Rey a propuesta del Consejo General del Poder Judicial: la Comunidad no interviene en la designación."
+              },
+              {
+                "term": "Qué hace la Comunidad",
+                "text": "solo ordenar la publicación en su boletín, un acto de relevancia institucional reservado al Presidente."
+              },
+              {
+                "term": "Descartes",
+                "text": "el Presidente de la Asamblea representa al poder legislativo autonómico y el Consejero de Justicia no tiene atribuida esta función."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid · Presidente de la Comunidad y Administración de Justicia"
+            }
+          }
+        },
+        {
+          "id": 53,
+          "text": "Las normas con rango de ley emanadas del Consejo de Gobierno son denominadas:",
+          "options": [
+            "Decretos.",
+            "Reales Decretos.",
+            "Decretos Legislativos.",
+            "Decretos Leyes."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Se llaman Decretos Legislativos: son normas con rango de ley que el Consejo de Gobierno dicta cuando la Asamblea le delega expresamente la potestad legislativa.",
+            "points": [
+              {
+                "term": "Decretos",
+                "text": "sin apellido, son normas reglamentarias del Consejo de Gobierno: rango inferior a la ley."
+              },
+              {
+                "term": "Reales Decretos",
+                "text": "son del Gobierno de la Nación; una Comunidad Autónoma nunca dicta 'reales' decretos."
+              },
+              {
+                "term": "Decretos-Leyes",
+                "text": "son normas de urgencia y el Estatuto de Madrid no atribuye esa potestad a su Consejo de Gobierno."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid · potestad legislativa delegada"
+            }
+          }
+        },
+        {
+          "id": 54,
+          "text": "La situación de interinidad en la Presidencia de la Comunidad de Madrid:",
+          "options": [
+            "No podrá ser superior a dos meses, ampliables en otros dos.",
+            "Tendrá duración indefinida hasta que cese la causa que produjo la interinidad.",
+            "No podrá ser superior a cuatro meses, ampliable en uno más.",
+            "Tendrá duración indefinida hasta que el Consejo de Gobierno comunique la desaparición de las circunstancias que motivaron la interinidad."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "La interinidad en la Presidencia no puede durar más de dos meses, ampliables en otros dos.",
+            "points": [
+              {
+                "term": "Cuándo se produce",
+                "text": "cuando el Presidente cesa por causa distinta a la renovación de la Asamblea (dimisión, fallecimiento, incapacidad, condena penal…)."
+              },
+              {
+                "term": "Clave del enunciado",
+                "text": "es un plazo máximo, no una situación indefinida: descarta de entrada las dos opciones que hablan de 'duración indefinida'."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid · Presidencia de la Comunidad"
+            }
+          }
+        },
+        {
+          "id": 55,
+          "text": "Según el artículo 94 de la Constitución Española, los tratados internacionales de carácter político:",
+          "options": [
+            "Deben ser inmediatamente informados, una vez concluidos, al Congreso y al Senado.",
+            "Requieren previa autorización de las Cortes Generales.",
+            "Exigen una revisión constitucional previa.",
+            "No son vinculantes."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Los tratados de carácter político son el primer supuesto del art. 94.1 CE: exigen autorización previa de las Cortes Generales antes de que el Estado preste su consentimiento.",
+            "points": [
+              {
+                "term": "Los demás supuestos del 94.1",
+                "text": "tratados de carácter militar; los que afecten a la integridad territorial o a los derechos y deberes del Título I; los que impliquen obligaciones financieras para la Hacienda Pública; y los que supongan modificación o derogación de una ley o exijan medidas legislativas."
+              },
+              {
+                "term": "Art. 94.2",
+                "text": "para el resto de tratados basta con informar de inmediato al Congreso y al Senado una vez concluidos."
+              },
+              {
+                "term": "Art. 95",
+                "text": "solo si el tratado contiene estipulaciones contrarias a la Constitución hace falta revisión constitucional previa."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 94.1",
+              "quote": "La prestación del consentimiento del Estado para obligarse por medio de tratados o convenios requerirá la previa autorización de las Cortes Generales, en los siguientes casos: a) Tratados de carácter político."
+            }
+          }
+        },
+        {
+          "id": 56,
+          "text": "Las formas de ejercicio y requisitos de la iniciativa popular para la presentación de proposiciones de ley está regulado por:",
+          "options": [
+            "Un reglamento.",
+            "Una ley ordinaria.",
+            "Una ley orgánica.",
+            "La Constitución Española."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La iniciativa legislativa popular se regula por ley orgánica (hoy, la LO 3/1984). La Constitución solo fija el mínimo de firmas y las materias excluidas.",
+            "points": [
+              {
+                "term": "Firmas",
+                "text": "no menos de 500.000 firmas acreditadas."
+              },
+              {
+                "term": "Materias excluidas",
+                "text": "las propias de ley orgánica, las tributarias, las de carácter internacional y la prerrogativa de gracia."
+              },
+              {
+                "term": "Por qué ley orgánica",
+                "text": "porque desarrolla un cauce de participación política directamente vinculado al art. 23 CE."
+              }
+            ],
+            "source": {
+              "label": "Constitución Española, art. 87.3",
+              "quote": "Una ley orgánica regulará las formas de ejercicio y requisitos de la iniciativa popular para la presentación de proposiciones de ley. En todo caso se exigirán no menos de 500.000 firmas acreditadas. No procederá dicha iniciativa en materias propias de ley orgánica, tributarias o de carácter internacional, ni en lo relativo a la prerrogativa de gracia."
+            }
+          }
+        },
+        {
+          "id": 57,
+          "text": "Conforme a lo establecido en el artículo 1 del Código Civil, son fuentes del ordenamiento jurídico español:",
+          "options": [
+            "La ley, la costumbre y la jurisprudencia.",
+            "La ley, la costumbre y los principios generales del derecho y la jurisprudencia.",
+            "La ley, la costumbre y los principios generales del derecho.",
+            "La constitución y la ley."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Las fuentes son tres: la ley, la costumbre y los principios generales del derecho. La jurisprudencia NO es fuente.",
+            "points": [
+              {
+                "term": "Jurisprudencia",
+                "text": "el art. 1.6 CC dice que 'complementará el ordenamiento jurídico' con la doctrina reiterada del Tribunal Supremo; complementar no es ser fuente."
+              },
+              {
+                "term": "Orden de aplicación",
+                "text": "la costumbre solo rige en defecto de ley aplicable, y los principios generales, en defecto de ley y costumbre."
+              },
+              {
+                "term": "La Constitución",
+                "text": "es ley, la norma suprema del ordenamiento; no constituye una categoría de fuente aparte en el art. 1 CC."
+              }
+            ],
+            "source": {
+              "label": "Código Civil, art. 1.1",
+              "quote": "Las fuentes del ordenamiento jurídico español son la ley, la costumbre y los principios generales del derecho."
+            }
+          }
+        },
+        {
+          "id": 58,
+          "text": "Conforme al artículo 51 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, cuando un órgano declare la nulidad o anule las actuaciones y disponga la conservación de aquel acto cuyo contenido se hubiera mantenido igual de no haberse cometido la infracción, se produce respecto de dicho acto:",
+          "options": [
+            "Su conversión.",
+            "Su ratificación.",
+            "Su convalidación.",
+            "Su conservación."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Es la conservación de actos y trámites: el acto se mantiene porque su contenido habría sido idéntico aunque no se hubiera cometido la infracción.",
+            "points": [
+              {
+                "term": "Conversión (art. 50)",
+                "text": "un acto nulo o anulable que contiene los elementos de otro distinto produce los efectos de este último."
+              },
+              {
+                "term": "Convalidación (art. 52)",
+                "text": "la Administración subsana los vicios de anulabilidad de un acto; aquí no hay nada que subsanar."
+              },
+              {
+                "term": "Ratificación",
+                "text": "no es una de las figuras de este capítulo; el término aparece en otros contextos, no en el saneamiento de actos."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 51",
+              "quote": "El órgano que declare la nulidad o anule las actuaciones dispondrá siempre la conservación de aquellos actos y trámites cuyo contenido se hubiera mantenido igual de no haberse cometido la infracción."
+            }
+          }
+        },
+        {
+          "id": 59,
+          "text": "Según la ley 39/2015, se entenderá desestimado un recurso extraordinario de revisión si desde su interposición han trascurrido sin haberse dictado y notificado la resolución más de:",
+          "options": [
+            "1 mes.",
+            "2 meses.",
+            "3 meses.",
+            "6 meses."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Tres meses desde la interposición sin resolución notificada: se entiende desestimado y queda abierta la vía contencioso-administrativa.",
+            "points": [
+              {
+                "term": "Plazos para interponerlo",
+                "text": "cuatro años si se funda en el error de hecho, y tres meses desde el conocimiento de los documentos o desde que quedó firme la sentencia judicial, en los demás casos."
+              },
+              {
+                "term": "No confundir",
+                "text": "en el recurso de alzada el silencio desestimatorio también llega a los tres meses, pero en el de reposición se produce al mes."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 126.3",
+              "quote": "Transcurrido el plazo de tres meses desde la interposición del recurso extraordinario de revisión sin haberse dictado y notificado la resolución, se entenderá desestimado, quedando expedita la vía jurisdiccional contencioso-administrativa."
+            }
+          }
+        },
+        {
+          "id": 60,
+          "text": "Supone una alteración de la titularidad de la competencia de un órgano administrativo:",
+          "options": [
+            "La encomienda de gestión.",
+            "La delegación de firma y la suplencia.",
+            "La encomienda de gestión, la delegación de firma y la suplencia.",
+            "Ninguna respuesta es correcta."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Ninguna de las tres. Encomienda de gestión, delegación de firma y suplencia son formas de EJERCER la competencia; la ley dice expresamente que no alteran su titularidad.",
+            "points": [
+              {
+                "term": "Encomienda de gestión (art. 11)",
+                "text": "no supone cesión de la titularidad de la competencia ni de los elementos sustantivos de su ejercicio."
+              },
+              {
+                "term": "Delegación de firma (art. 12)",
+                "text": "no altera la competencia: el acto se considera dictado por el órgano delegante, que debe constar en la firma."
+              },
+              {
+                "term": "Suplencia (art. 13)",
+                "text": "cubre vacantes, ausencias o enfermedades y no implica alteración de la competencia."
+              },
+              {
+                "term": "Ojo",
+                "text": "tampoco la delegación de competencias del art. 9 traslada la titularidad. La única técnica que sí la altera es la desconcentración."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 11.1",
+              "quote": "La realización de actividades de carácter material o técnico de la competencia de los órganos administrativos podrá ser encomendada a otros órganos o Entidades... Esta encomienda no supone cesión de la titularidad de la competencia ni de los elementos sustantivos de su ejercicio."
+            }
+          }
+        },
+        {
+          "id": 61,
+          "text": "El ámbito subjetivo de aplicación de la ley 39/2015 del Procedimiento Administrativo Común de las Administraciones Públicas no incluye a:",
+          "options": [
+            "Cualesquiera organismos públicos y entidades de derecho público vinculados o dependientes de las Administraciones Públicas.",
+            "Las Universidades privadas en el territorio de la Comunidad de Madrid.",
+            "La Administración General del Estado.",
+            "Las Entidades que integran la Administración Local."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Las universidades privadas no forman parte del sector público, así que quedan fuera del ámbito subjetivo de la ley.",
+            "points": [
+              {
+                "term": "Sí quedan dentro",
+                "text": "la Administración General del Estado, las de las Comunidades Autónomas, las Entidades locales y el sector público institucional (organismos públicos y entidades de derecho público vinculados o dependientes)."
+              },
+              {
+                "term": "Universidades públicas",
+                "text": "se rigen por su normativa específica y, supletoriamente, por esta ley."
+              },
+              {
+                "term": "Ojo al enunciado",
+                "text": "pregunta qué NO se incluye; con prisas es fácil marcar la primera opción que sí está dentro."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 2.1",
+              "quote": "La presente Ley se aplica al sector público, que comprende: a) La Administración General del Estado. b) Las Administraciones de las Comunidades Autónomas. c) Las Entidades que integran la Administración Local. d) El sector público institucional."
+            }
+          }
+        },
+        {
+          "id": 62,
+          "text": "Cuando un procedimiento se inicia por denuncia, se entiende que se ha iniciado:",
+          "options": [
+            "A instancia de parte.",
+            "Como consecuencia de orden superior.",
+            "De oficio.",
+            "No puede iniciarse por denuncia."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La denuncia no convierte al denunciante en promotor: el procedimiento lo inicia la Administración de oficio, por acuerdo del órgano competente.",
+            "points": [
+              {
+                "term": "Formas de inicio de oficio",
+                "text": "por propia iniciativa, como consecuencia de orden superior, a petición razonada de otros órganos o por denuncia."
+              },
+              {
+                "term": "Consecuencia práctica",
+                "text": "el denunciante no adquiere por sí solo la condición de interesado; solo se le comunica la iniciación cuando la denuncia invoque un perjuicio en su patrimonio."
+              },
+              {
+                "term": "A instancia de parte",
+                "text": "sería el caso de la solicitud del interesado, no el de la denuncia."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 58",
+              "quote": "Los procedimientos se iniciarán de oficio por acuerdo del órgano competente, bien por propia iniciativa o como consecuencia de orden superior, a petición razonada de otros órganos o por denuncia."
+            }
+          }
+        },
+        {
+          "id": 63,
+          "text": "¿En qué momento pueden los interesados en un procedimiento administrativo alegar defectos de tramitación?",
+          "options": [
+            "Antes del trámite de audiencia.",
+            "Antes de que se redacte la propuesta de resolución.",
+            "En cualquier momento.",
+            "En el período de prueba."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "En cualquier momento del procedimiento: los defectos de tramitación no tienen la limitación temporal de las alegaciones ordinarias.",
+            "points": [
+              {
+                "term": "Qué son",
+                "text": "paralizaciones, infracción de los plazos preceptivamente señalados u omisión de trámites que puedan subsanarse antes de la resolución definitiva."
+              },
+              {
+                "term": "No confundir",
+                "text": "las alegaciones y documentos ordinarios (art. 76.1) sí tienen tope: en cualquier momento ANTERIOR al trámite de audiencia."
+              },
+              {
+                "term": "Efecto",
+                "text": "alegarlos puede dar lugar a la exigencia de responsabilidad disciplinaria del personal al que sea imputable el defecto."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 76.2",
+              "quote": "En todo momento podrán los interesados alegar los defectos de tramitación y, en especial, los que supongan paralización, infracción de los plazos preceptivamente señalados o la omisión de trámites que puedan ser subsanados antes de la resolución definitiva del asunto."
+            }
+          }
+        },
+        {
+          "id": 64,
+          "text": "El plazo para interponer el recurso contencioso-administrativo contra un acto expreso es de:",
+          "options": [
+            "Tres meses.",
+            "Seis meses.",
+            "Un mes.",
+            "Dos meses."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Dos meses, contados desde el día siguiente a la notificación o publicación del acto expreso que ponga fin a la vía administrativa.",
+            "points": [
+              {
+                "term": "Silencio administrativo",
+                "text": "si el acto es presunto, el plazo se amplía a seis meses."
+              },
+              {
+                "term": "No confundir con los recursos administrativos",
+                "text": "la alzada tiene un mes contra actos expresos y la reposición, también un mes."
+              },
+              {
+                "term": "Naturaleza",
+                "text": "es un plazo de caducidad: pasado, el acto deviene firme y consentido."
+              }
+            ],
+            "source": {
+              "label": "Ley 29/1998, art. 46.1",
+              "quote": "El plazo para interponer el recurso contencioso-administrativo será de dos meses contados desde el día siguiente al de la publicación de la disposición impugnada o al de la notificación o publicación del acto que ponga fin a la vía administrativa, si fuera expreso. Si no lo fuera, el plazo será de seis meses…"
+            }
+          }
+        },
+        {
+          "id": 65,
+          "text": "Quedan excluidas del ámbito contencioso-administrativo:",
+          "options": [
+            "La responsabilidad patrimonial de las Administraciones Públicas.",
+            "El recurso contencioso disciplinario militar.",
+            "Los actos y disposiciones del Consejo General del Poder Judicial.",
+            "La protección jurisdiccional de los derechos fundamentales."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "El recurso contencioso-disciplinario militar está expresamente excluido: lo resuelve la jurisdicción militar, no la contencioso-administrativa.",
+            "points": [
+              {
+                "term": "Sí corresponden a este orden",
+                "text": "la responsabilidad patrimonial de las Administraciones —cualquiera que sea la naturaleza de la actividad o el tipo de relación—, los actos y disposiciones del CGPJ y la protección jurisdiccional de los derechos fundamentales."
+              },
+              {
+                "term": "Otras exclusiones",
+                "text": "las cuestiones atribuidas a los órdenes civil, penal y social, aunque estén relacionadas con la actividad de la Administración."
+              }
+            ],
+            "source": {
+              "label": "Ley 29/1998, art. 3",
+              "quote": "No corresponden al orden jurisdiccional contencioso-administrativo: … b) El recurso contencioso-disciplinario militar."
+            }
+          }
+        },
+        {
+          "id": 66,
+          "text": "Según Ley 29/1998, de 13 de julio, reguladora de la Jurisdicción Contencioso- administrativa desde que el pleito haya sido declarado concluso, la sentencia se dictará en un plazo de:",
+          "options": [
+            "Siete días.",
+            "Diez días.",
+            "Quince días.",
+            "Veinte días."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Diez días desde que el pleito haya sido declarado concluso.",
+            "points": [
+              {
+                "term": "Qué decide",
+                "text": "la sentencia puede declarar la inadmisibilidad del recurso, estimarlo o desestimarlo, y siempre se pronuncia sobre las costas."
+              },
+              {
+                "term": "Truco",
+                "text": "diez días es también el plazo típico de otros trámites de esta ley; el examen suele jugar con 7, 15 y 20."
+              }
+            ],
+            "source": {
+              "label": "Ley 29/1998, art. 67.1",
+              "quote": "La sentencia se dictará en el plazo de diez días desde que el pleito haya sido declarado concluso…"
+            }
+          }
+        },
+        {
+          "id": 67,
+          "text": "El Presidente del Consejo de Transparencia y Buen Gobierno cesará en su cargo",
+          "options": [
+            "Mediante Real Decreto, a propuesta del titular del Ministerio de Hacienda y Administraciones Públicas.",
+            "Por la expiración de su mandato anual.",
+            "A petición propia o por separación acordada por el Gobierno.",
+            "Incapacidad sobrevenida."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Cesa a petición propia o por separación acordada por el Gobierno, previa instrucción del correspondiente procedimiento, además de por expirar su mandato.",
+            "points": [
+              {
+                "term": "Mandato",
+                "text": "es de cinco años desde su nombramiento y no es renovable; por eso la opción del 'mandato anual' es falsa."
+              },
+              {
+                "term": "Causas de separación",
+                "text": "incumplimiento grave de sus obligaciones, incapacidad sobrevenida, incompatibilidad o condena por delito doloso. Ninguna opera automáticamente: hay que instruir expediente."
+              },
+              {
+                "term": "Nombramiento",
+                "text": "por real decreto, a propuesta del titular del Ministerio competente, y previa comparecencia de la persona propuesta ante la comisión correspondiente del Congreso."
+              }
+            ],
+            "source": {
+              "label": "Ley 19/2013, art. 37 (Presidente del Consejo de Transparencia y Buen Gobierno)"
+            }
+          }
+        },
+        {
+          "id": 68,
+          "text": "Las disposiciones del Título I “Transparencia de la actividad pública” de la Ley 19/2013 de transparencia, acceso a la información pública y buen gobierno, se aplicarán a:",
+          "options": [
+            "Las corporaciones de Derecho Público, en lo relativo a todas sus actividades.",
+            "Entre otros, a la Casa de su Majestad el Rey, el Congreso de los Diputados, el Senado, el Tribunal Constitucional y el Consejo General del Poder Judicial, así como el Banco de España, el Consejo de Estado, el Defensor del Pueblo, el Tribunal de Cuentas, el Consejo Económico y Social y las instituciones autonómicas análogas, en relación con sus actividades sujetas a Derecho Civil.",
+            "Las sociedades mercantiles en cuyo capital social la participación, directa o indirecta, de las entidades previstas en este artículo sea inferior al 50 por 100.",
+            "Las fundaciones del sector público previstas en la legislación en materia de fundaciones."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Las fundaciones del sector público están expresamente incluidas en el ámbito del Título I.",
+            "points": [
+              {
+                "term": "Corporaciones de Derecho Público",
+                "text": "entran solo en lo relativo a sus actividades sujetas a Derecho Administrativo, no en todas sus actividades."
+              },
+              {
+                "term": "Casa del Rey, Cortes, TC, CGPJ, Banco de España…",
+                "text": "también en relación con sus actividades sujetas a Derecho ADMINISTRATIVO; la opción cambia esa palabra por 'Civil'."
+              },
+              {
+                "term": "Sociedades mercantiles",
+                "text": "solo cuando la participación pública, directa o indirecta, sea SUPERIOR al 50 %; la opción dice 'inferior'."
+              }
+            ],
+            "source": {
+              "label": "Ley 19/2013, art. 2.1",
+              "quote": "Las disposiciones de este título se aplicarán a: … g) Las fundaciones del sector público previstas en la legislación en materia de fundaciones."
+            }
+          }
+        },
+        {
+          "id": 69,
+          "text": "El Plan de Gobierno recogido en el Portal de transparencia de la Comunidad de Madrid facilita información acerca de:",
+          "options": [
+            "El organigrama con identificación de los responsables de las unidades, su perfil y trayectoria profesional.",
+            "La información sobre altos cargos: retribuciones, declaraciones de bienes y de renta.",
+            "El conjunto de compromisos adquiridos por la Comunidad de Madrid.",
+            "Las memorias e Informes incluidos en los expedientes de elaboración de textos normativos."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "El Plan de Gobierno recoge el conjunto de compromisos adquiridos por la Comunidad de Madrid, y permite seguir su grado de cumplimiento.",
+            "points": [
+              {
+                "term": "Las otras opciones también están en el Portal",
+                "text": "pero en apartados distintos: el organigrama y los perfiles, en información institucional y organizativa; las retribuciones y declaraciones de altos cargos, en información sobre altos cargos; y las memorias de los expedientes normativos, en información normativa."
+              },
+              {
+                "term": "Idea clave",
+                "text": "'plan' remite a compromisos y objetivos, no a datos estructurales de la organización."
+              }
+            ],
+            "source": {
+              "label": "Portal de Transparencia de la Comunidad de Madrid · Plan de Gobierno"
+            }
+          }
+        },
+        {
+          "id": 70,
+          "text": "Según la Ley 9/2017, de 8 de noviembre, de Contratos del Sector Público en toda contratación pública se incorporarán de manera transversal y preceptiva:",
+          "options": [
+            "Los mecanismos necesarios para una mejor relación calidad-precio.",
+            "Criterios ambientales y profesionales siempre que guarden relación con el objeto del contrato.",
+            "Mecanismos sociales y de análisis de impacto ambiental que permitan una buena relacion calidad-precio.",
+            "Criterios sociales y medioambientales siempre que guarde relación con el objeto del contrato."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Criterios SOCIALES y MEDIOAMBIENTALES, de manera transversal y preceptiva, siempre que guarden relación con el objeto del contrato.",
+            "points": [
+              {
+                "term": "Palabras clave",
+                "text": "'sociales y medioambientales' (no 'ambientales y profesionales') y 'transversal y preceptiva'."
+              },
+              {
+                "term": "El límite",
+                "text": "la vinculación al objeto del contrato: sin esa relación, el criterio no puede incorporarse."
+              },
+              {
+                "term": "Calidad-precio",
+                "text": "también es un objetivo de la ley, pero se articula en los criterios de adjudicación, no en este mandato transversal."
+              }
+            ],
+            "source": {
+              "label": "Ley 9/2017, art. 1.3",
+              "quote": "En toda contratación pública se incorporarán de manera transversal y preceptiva criterios sociales y medioambientales siempre que guarde relación con el objeto del contrato…"
+            }
+          }
+        },
+        {
+          "id": 71,
+          "text": "Según la ley 9/2017, de 8 de noviembre, de Contratos del Sector Público, los contratos de obras se consideran menores cuando el valor estimado es inferior a:",
+          "options": [
+            "15.000 euros.",
+            "20.000 euros.",
+            "40.000 euros.",
+            "100.000 euros."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Obras: valor estimado inferior a 40.000 euros. Suministros y servicios: inferior a 15.000 euros.",
+            "points": [
+              {
+                "term": "Valor estimado",
+                "text": "los umbrales se miden sobre el valor estimado del contrato, siempre sin IVA."
+              },
+              {
+                "term": "Duración",
+                "text": "el contrato menor no puede durar más de un año ni ser objeto de prórroga."
+              },
+              {
+                "term": "Tramitación",
+                "text": "basta con el informe de necesidad, la aprobación del gasto y la factura; en obras se añade el presupuesto de las obras."
+              }
+            ],
+            "source": {
+              "label": "Ley 9/2017, art. 118.1",
+              "quote": "Se consideran contratos menores los contratos de valor estimado inferior a 40.000 euros, cuando se trate de contratos de obras, o a 15.000 euros, cuando se trate de contratos de suministro o de servicios…"
+            }
+          }
+        },
+        {
+          "id": 72,
+          "text": "Son contratos de suministros:",
+          "options": [
+            "Los que tienen por objeto la adquisición, el arrendamiento financiero, o el arrendamiento, con o sin opción a compra, de productos o bienes muebles.",
+            "Los relativos a propiedades incorporales o valores negociables.",
+            "a y b son correctas.",
+            "Ninguna respuesta es correcta."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Suministro es la adquisición, el arrendamiento financiero o el arrendamiento, con o sin opción de compra, de productos o bienes muebles.",
+            "points": [
+              {
+                "term": "Propiedades incorporales y valores negociables",
+                "text": "quedan EXCLUIDOS de la ley como negocios patrimoniales; por eso la opción b) es falsa y, con ella, la c)."
+              },
+              {
+                "term": "También son suministro",
+                "text": "la adquisición de energía o combustibles, la entrega sucesiva por precio unitario sin fijar la cuantía total, y la fabricación de bienes conforme a características fijadas por la Administración."
+              },
+              {
+                "term": "No son suministro",
+                "text": "los bienes inmuebles: su compra o arrendamiento se rige por la legislación patrimonial."
+              }
+            ],
+            "source": {
+              "label": "Ley 9/2017, art. 16.1",
+              "quote": "Son contratos de suministro los que tienen por objeto la adquisición, el arrendamiento financiero, o el arrendamiento, con o sin opción de compra, de productos o bienes muebles."
+            }
+          }
+        },
+        {
+          "id": 73,
+          "text": "Son empleados públicos:",
+          "options": [
+            "Los Funcionarios interinos.",
+            "Personal eventual.",
+            "Personal laboral temporal.",
+            "Todas son correctas."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Todas: el TREBEP reconoce cuatro clases de empleados públicos, y las tres opciones están entre ellas.",
+            "points": [
+              {
+                "term": "Las cuatro clases",
+                "text": "funcionarios de carrera, funcionarios interinos, personal laboral (fijo, por tiempo indefinido o temporal) y personal eventual."
+              },
+              {
+                "term": "Funcionario interino",
+                "text": "ocupa plazas de funcionario de carrera por razones expresamente justificadas de necesidad y urgencia."
+              },
+              {
+                "term": "Personal eventual",
+                "text": "desempeña puestos de confianza o asesoramiento especial; su nombramiento y cese son libres y cesa con la autoridad a la que asiste."
+              }
+            ],
+            "source": {
+              "label": "TREBEP (RDLeg. 5/2015), art. 8.2",
+              "quote": "Los empleados públicos se clasifican en: a) Funcionarios de carrera. b) Funcionarios interinos. c) Personal laboral, ya sea fijo, por tiempo indefinido o temporal. d) Personal eventual."
+            }
+          }
+        },
+        {
+          "id": 74,
+          "text": "De acuerdo con la Ley de la Función Pública de la Comunidad de Madrid, el puesto asignado con carácter provisional a un funcionario que no tenga derecho a reserva de puesto de trabajo, se convocará para su provisión definitiva:",
+          "options": [
+            "En el plazo máximo de dieciocho meses.",
+            "En el plazo de dieciocho meses.",
+            "En el plazo máximo de un año.",
+            "En el plazo de un año"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "En el plazo MÁXIMO de un año: es un tope, no un plazo fijo, y la convocatoria se hace para proveer el puesto con carácter definitivo.",
+            "points": [
+              {
+                "term": "Trampa de las opciones",
+                "text": "'en el plazo de un año' (sin 'máximo') y los dieciocho meses no responden a lo que dice la norma; aquí se examina la literalidad."
+              },
+              {
+                "term": "Adscripción provisional",
+                "text": "se produce, entre otros casos, cuando el funcionario queda sin puesto por remoción o supresión, o reingresa al servicio activo sin reserva de puesto."
+              }
+            ],
+            "source": {
+              "label": "Ley 1/1986, de la Función Pública de la Comunidad de Madrid"
+            }
+          }
+        },
+        {
+          "id": 75,
+          "text": "Cuando un funcionario de carrera es autorizado para realizar una misión por período superior a 6 meses en un organismo internacional pasará a ser declarado en situación de:",
+          "options": [
+            "Servicios en otras Administraciones Públicas.",
+            "Servicio activo, pues su situación no cambia.",
+            "Excedencia forzosa.",
+            "Servicios especiales."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Servicios especiales: es la situación del funcionario autorizado a realizar una misión por período determinado superior a seis meses en organismos internacionales.",
+            "points": [
+              {
+                "term": "Efectos",
+                "text": "se percibe la retribución del puesto que se desempeña, no la de origen, pero el tiempo computa a efectos de ascensos, trienios, carrera y derechos pasivos, con reserva del puesto."
+              },
+              {
+                "term": "Servicios en otras Administraciones",
+                "text": "es la de quien pasa a otra Administración por transferencia o por obtener un puesto mediante los sistemas de provisión."
+              },
+              {
+                "term": "Excedencia forzosa",
+                "text": "no es una de las situaciones del TREBEP en estos términos; la clave del enunciado son los 'seis meses' y el 'organismo internacional'."
+              }
+            ],
+            "source": {
+              "label": "TREBEP (RDLeg. 5/2015), art. 87.1",
+              "quote": "Los funcionarios de carrera serán declarados en situación de servicios especiales: … Cuando sean autorizados para realizar una misión por período determinado superior a seis meses en Organismos Internacionales, Gobiernos o Entidades Públicas extranjeras o en programas de cooperación internacional."
+            }
+          }
+        },
+        {
+          "id": 76,
+          "text": "Dentro de las actividades que tienen atribuidas las Mutuas colaboradoras con la Seguridad Social, seleccione la respuesta correcta",
+          "options": [
+            "La gestión de las prestaciones económicas no sanitaria, comprendidas en la protección de las contingencias de accidentes de trabajo y enfermedades profesionales de la Seguridad Social sin incluir aquellas actividades de prevención de las mismas.",
+            "La gestión de la prestación por cuidado de menores de naturaleza no sanitaria.",
+            "La gestión de la prestación por cuidado de menores afectados por cáncer u otra enfermedad grave.",
+            "La gestión de la prestación económica por incapacidad total derivada de contingencias exclusivamente de naturaleza profesional."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Entre las actividades de las Mutuas está la gestión de la prestación económica por cuidado de menores afectados por cáncer u otra enfermedad grave.",
+            "points": [
+              {
+                "term": "Qué más gestionan",
+                "text": "las prestaciones económicas y la asistencia sanitaria de las contingencias profesionales, la incapacidad temporal por contingencias comunes, el riesgo durante el embarazo y durante la lactancia natural, y el cese de actividad de los trabajadores autónomos."
+              },
+              {
+                "term": "Error de la opción a)",
+                "text": "las Mutuas SÍ desarrollan actividades de prevención de las contingencias profesionales; la opción las excluye."
+              },
+              {
+                "term": "Error de la opción d)",
+                "text": "las Mutuas no gestionan la incapacidad permanente total: su declaración y pago corresponden al INSS."
+              }
+            ],
+            "source": {
+              "label": "TRLGSS (RDLeg. 8/2015), art. 80 · actividades de las Mutuas colaboradoras"
+            }
+          }
+        },
+        {
+          "id": 77,
+          "text": "La Ley General de Seguridad Social viene regulada en:",
+          "options": [
+            "Real Decreto Ley 8/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social.",
+            "Ley 8/2015, de 30 de octubre, General de la Seguridad Social.",
+            "Real Decreto 8/2015, de 10 de octubre por el que se aprueba el texto refundido de la Ley General de la Seguridad Social.",
+            "Real Decreto Legislativo 8/2015, de 30 de octubre por el que se aprueba el texto refundido de la Ley General de Seguridad Social."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Real Decreto Legislativo 8/2015, de 30 de octubre. Es un TEXTO REFUNDIDO, y los textos refundidos se aprueban siempre por real decreto legislativo.",
+            "points": [
+              {
+                "term": "Por qué 'legislativo'",
+                "text": "el Gobierno refunde textos legales por delegación expresa de las Cortes (art. 82 CE) y el resultado tiene rango de ley."
+              },
+              {
+                "term": "Real Decreto-ley",
+                "text": "es la norma provisional de urgencia del art. 86 CE; no sirve para refundir."
+              },
+              {
+                "term": "Real Decreto",
+                "text": "a secas es un reglamento: no tiene rango de ley."
+              }
+            ],
+            "source": {
+              "label": "Real Decreto Legislativo 8/2015, de 30 de octubre, texto refundido de la Ley General de la Seguridad Social"
+            }
+          }
+        },
+        {
+          "id": 78,
+          "text": "Señale la respuesta correcta:",
+          "options": [
+            "Prescribirá a los cinco años la acción para imponer sanciones por incumplimiento de las normas de Seguridad Social.",
+            "El derecho al percibo de las prestaciones a tanto alzado y por una sola vez caducará a los tres años, a contar desde el día siguiente al de haber sido notificada en forma al interesado su reconocimiento.",
+            "Prescribirá a los cuatro años el derecho de la Administración de la Seguridad Social para determinar las deudas por cuotas y por conceptos de recaudación conjunta mediante las oportunas liquidaciones.",
+            "Caducará a los tres años la acción para exigir el pago de las deudas por cuotas de la Seguridad Social y conceptos de recaudación conjunta."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Cuatro años: es el plazo de prescripción del derecho de la Administración de la Seguridad Social a determinar las deudas por cuotas mediante las oportunas liquidaciones.",
+            "points": [
+              {
+                "term": "También cuatro años",
+                "text": "la acción para exigir el pago de esas deudas PRESCRIBE (no caduca) igualmente a los cuatro años: por eso la última opción es falsa por partida doble."
+              },
+              {
+                "term": "Prestaciones a tanto alzado",
+                "text": "el derecho a percibirlas caduca al año desde la notificación de su reconocimiento, no a los tres años."
+              },
+              {
+                "term": "Reconocimiento de prestaciones",
+                "text": "el derecho a que se reconozcan prescribe a los cinco años."
+              },
+              {
+                "term": "Sanciones",
+                "text": "las infracciones en materia de Seguridad Social prescriben a los cuatro años, no a los cinco."
+              }
+            ],
+            "source": {
+              "label": "TRLGSS (RDLeg. 8/2015), art. 24.1",
+              "quote": "Prescribirán a los cuatro años los siguientes derechos y acciones: a) El derecho de la Administración de la Seguridad Social para determinar las deudas por cuotas y por conceptos de recaudación conjunta mediante las oportunas liquidaciones."
+            }
+          }
+        },
+        {
+          "id": 79,
+          "text": "Son principios de actuación de la Comunidad de Madrid en materia de Hacienda Pública:",
+          "options": [
+            "Legalidad, eficiencia, control, universalidad, solidaridad intrarregional y coordinación entre sus órganos y Entidades.",
+            "Legalidad, eficacia, control, universalidad, solidaridad intrarregional y coordinación entre sus órganos y Entidades.",
+            "Legalidad, eficiencia, control, universalidad, solidaridad interregional y coordinación entre sus órganos y Entidades.",
+            "Legalidad, eficacia, control, universalidad, solidaridad interregional y coordinación entre sus órganos y Entidades."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Legalidad, EFICACIA, control, universalidad, solidaridad INTRARREGIONAL y coordinación entre sus órganos y Entidades.",
+            "points": [
+              {
+                "term": "eficacia, no eficiencia",
+                "text": "eficacia es alcanzar los objetivos; eficiencia es lograrlos con el menor coste. La norma emplea la primera."
+              },
+              {
+                "term": "intrarregional, no interregional",
+                "text": "'intra' = dentro de la propia región: la solidaridad se predica entre los territorios de la Comunidad de Madrid."
+              },
+              {
+                "term": "Método",
+                "text": "en preguntas así, localiza las dos palabras que cambian entre opciones y decide solo sobre ellas."
+              }
+            ],
+            "source": {
+              "label": "Ley 9/1990, reguladora de la Hacienda de la Comunidad de Madrid"
+            }
+          }
+        },
+        {
+          "id": 80,
+          "text": "De acuerdo con la Ley reguladora de la Hacienda de la Comunidad de Madrid, sí estarán sometidos a intervención previa:",
+          "options": [
+            "Las subvenciones con asignación nominativa en los Presupuestos Generales de la Comunidad de Madrid.",
+            "Los gastos de carácter periódico y demás de tracto sucesivo, una vez intervenido el gasto correspondiente al período inicial del acto o contrato del que deriven o sus modificaciones.",
+            "Los contratos menores.",
+            "Gastos mayores de 5.000 euros que, de acuerdo con la normativa vigente, se hagan efectivos a través del sistema de anticipos de caja fija."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Los anticipos de caja fija están pensados para gastos pequeños: si el gasto supera los 5.000 euros, vuelve al régimen de intervención previa.",
+            "points": [
+              {
+                "term": "Exentos de intervención previa",
+                "text": "los gastos de material no inventariable, los contratos menores, las subvenciones con asignación nominativa en los Presupuestos y los gastos de carácter periódico y demás de tracto sucesivo, una vez intervenido el gasto correspondiente al período inicial."
+              },
+              {
+                "term": "Lectura del enunciado",
+                "text": "el 'sí' del enunciado invierte la pregunta: las otras tres opciones son justamente los supuestos exentos."
+              }
+            ],
+            "source": {
+              "label": "Ley 9/1990, reguladora de la Hacienda de la Comunidad de Madrid · función interventora"
+            }
+          }
+        },
+        {
+          "id": 81,
+          "text": "La administración de la Hacienda de la Comunidad de Madrid está sometida:",
+          "options": [
+            "Al régimen de presupuesto anual aprobado por Consejo de Gobierno. El presupuesto de la Comunidad será único, por programas con indicación de objetivos de actuación, e incluirá la totalidad de los ingresos y gastos del sector público de la Comunidad de Madrid excluyendo el presupuesto de sus Organismos Autónomos y demás Entes Públicos",
+            "Al régimen de presupuesto anual aprobado por la Asamblea. El presupuesto de la Comunidad será único, por programas con indicación de objetivos de actuación, e incluirá la totalidad de los ingresos y gastos del sector público de la Comunidad de Madrid excluyendo el presupuesto de sus Organismos Autónomos y demás Entes Públicos.",
+            "Al régimen de presupuesto anual aprobado por Consejo de Gobierno. El presupuesto de la Comunidad será único, por programas con indicación de objetivos de actuación, e incluirá la totalidad de los ingresos y gastos del sector público de la Comunidad de Madrid.",
+            "Al régimen de presupuesto anual aprobado por la Asamblea. El presupuesto de la Comunidad será único, por programas con indicación de objetivos de actuación, e incluirá la totalidad de los ingresos y gastos del sector público de la Comunidad de Madrid."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Presupuesto anual aprobado por la ASAMBLEA, único, por programas con indicación de objetivos, y que incluye la totalidad de ingresos y gastos del sector público de la Comunidad, sin excluir a nadie.",
+            "points": [
+              {
+                "term": "Quién aprueba",
+                "text": "el Consejo de Gobierno lo elabora y lo remite; la aprobación corresponde a la Asamblea de Madrid, como cámara de representación."
+              },
+              {
+                "term": "Principio de universalidad",
+                "text": "por eso ninguna opción que 'excluya' el presupuesto de los Organismos Autónomos y demás Entes Públicos puede ser correcta."
+              },
+              {
+                "term": "Método",
+                "text": "hay dos variables (quién aprueba y si excluye o no): descarta primero por el órgano y después por la exclusión."
+              }
+            ],
+            "source": {
+              "label": "Estatuto de Autonomía de la Comunidad de Madrid · Economía y Hacienda"
+            }
+          }
+        },
+        {
+          "id": 82,
+          "text": "Los Juzgados de Violencia sobre la Mujer se crean por:",
+          "options": [
+            "La Ley 30/2003 de 13 de octubre sobre medidas para incorporar la valoración de impacto de género en las disposiciones normativas que elabore el gobierno",
+            "La Ley orgánica 1/2004 de Medidas de Protección Integral contra la Violencia de Género",
+            "La Ley de Enjuiciamiento Criminal",
+            "La Ley de Planta y Demarcación Judicial"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Los crea la Ley Orgánica 1/2004, de 28 de diciembre, de Medidas de Protección Integral contra la Violencia de Género.",
+            "points": [
+              {
+                "term": "Qué son",
+                "text": "juzgados especializados que concentran las causas penales por violencia de género y determinados asuntos civiles conexos (familia, filiación, guarda y custodia)."
+              },
+              {
+                "term": "Ley 30/2003",
+                "text": "regula la valoración del impacto de género en las disposiciones normativas del Gobierno; no crea órganos judiciales."
+              },
+              {
+                "term": "Por qué ley orgánica",
+                "text": "porque la creación de órganos judiciales y la regulación de delitos y penas exigen ese rango."
+              }
+            ],
+            "source": {
+              "label": "Ley Orgánica 1/2004, de 28 de diciembre, de Medidas de Protección Integral contra la Violencia de Género"
+            }
+          }
+        },
+        {
+          "id": 83,
+          "text": "Las medidas de igualdad de trato y oportunidades han de plasmarse en un Plan de igualdad que han de elaborar todas las empresas de más de:",
+          "options": [
+            "25 trabajadores.",
+            "100 trabajadores.",
+            "250 trabajadores.",
+            "300 trabajadores."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "En la convocatoria de este examen el umbral era de más de 250 personas trabajadoras.",
+            "points": [
+              {
+                "term": "Atención: norma modificada",
+                "text": "el Real Decreto-ley 6/2019 rebajó el umbral hasta 50 personas trabajadoras, con aplicación gradual finalizada en 2022. La respuesta oficial de esta prueba (de 2018) sigue siendo 250."
+              },
+              {
+                "term": "Otros supuestos de obligatoriedad",
+                "text": "cuando lo establezca el convenio colectivo aplicable y cuando lo acuerde la autoridad laboral en un procedimiento sancionador, sustituyendo las sanciones accesorias."
+              },
+              {
+                "term": "Voluntariedad",
+                "text": "en las demás empresas la elaboración del plan es voluntaria, previa consulta a la representación legal de las personas trabajadoras."
+              }
+            ],
+            "source": {
+              "label": "Ley Orgánica 3/2007, art. 45 (redacción vigente en la convocatoria)"
+            }
+          }
+        },
+        {
+          "id": 84,
+          "text": "La no discriminación por motivos de identidad de género, expresión de género o características sexuales se encuentra regulada en:",
+          "options": [
+            "La Ley 2/2016, de 29 de marzo, de Identidad y Expresión de Género e Igualdad Social y no Discriminación de la Comunidad de Madrid.",
+            "La Ley 3/2016, de 29 de marzo, de Identidad de Género e Igualdad Social y no Discriminación de la Comunidad de Madrid.",
+            "La Ley 3/2017, de 29 de marzo, de Reconocimiento de Identidad de Género e Igualdad y no Discriminación de la Comunidad de Madrid.",
+            "La Ley 6/2016, de 29 de marzo, de Identidad de Género e Igualdad Social y no Discriminación de la Comunidad de Madrid."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Ley 2/2016, de 29 de marzo, de Identidad y Expresión de Género e Igualdad Social y no Discriminación, de la Comunidad de Madrid.",
+            "points": [
+              {
+                "term": "No confundir",
+                "text": "la Ley 3/2016, de 22 de julio, también madrileña, es la de Protección Integral contra la LGTBifobia y la Discriminación por Razón de Orientación e Identidad Sexual."
+              },
+              {
+                "term": "Truco",
+                "text": "las cuatro opciones repiten la fecha 29 de marzo y cambian el número o el título: fíjate en que el título correcto incluye 'y Expresión' de género."
+              }
+            ],
+            "source": {
+              "label": "Ley 2/2016, de 29 de marzo, de la Comunidad de Madrid"
+            }
+          }
+        },
+        {
+          "id": 85,
+          "text": "Cuando la notificación por medios electrónicos sea de carácter obligatorio, o haya sido expresamente elegida por el interesado, se entenderá rechazada:",
+          "options": [
+            "Cuando hayan transcurrido diez días desde la puesta a disposición de la notificación sin que se acceda a su contenido.",
+            "Cuando hayan transcurrido quince días naturales desde la puesta a disposición de la notificación sin que se acceda a su contenido.",
+            "Cuando hayan transcurrido diez días naturales desde la puesta a disposición de la notificación sin que se acceda a su contenido.",
+            "Cuando hayan transcurrido quince días desde la puesta a disposición de la notificación sin que se acceda a su contenido."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "A los diez días NATURALES desde la puesta a disposición sin acceder a su contenido: se entiende rechazada y el trámite se da por efectuado.",
+            "points": [
+              {
+                "term": "Días naturales",
+                "text": "es una excepción a la regla general de cómputo en días hábiles; el examen suele jugar precisamente con esa palabra."
+              },
+              {
+                "term": "Cuándo se entiende practicada",
+                "text": "en el momento en que se accede al contenido de la notificación."
+              },
+              {
+                "term": "Excepción",
+                "text": "no se tiene por rechazada si se comprueba de oficio o a instancia del destinatario la imposibilidad técnica o material del acceso."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 43.2",
+              "quote": "Las notificaciones por medios electrónicos se entenderán practicadas en el momento en que se produzca el acceso a su contenido. Cuando la notificación por medios electrónicos sea de carácter obligatorio, o haya sido expresamente elegida por el interesado, se entenderá rechazada cuando hayan transcurrido diez días naturales desde la puesta a disposición de la notificación sin que se acceda a su contenido."
+            }
+          }
+        },
+        {
+          "id": 86,
+          "text": "Según el Decreto de Atención al Ciudadano ¿Que órgano actúa como administrador del Sistema de Atención al Ciudadano?",
+          "options": [
+            "Cada Unidad Administrativa actuará de administrador sobre la información que emita.",
+            "Los Coordinadores de Atención al Ciudadano de cada Consejería",
+            "La Oficina de Atención al Ciudadano.",
+            "El Consejero de Presidencia."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La Oficina de Atención al Ciudadano actúa como administrador del Sistema de Atención al Ciudadano.",
+            "points": [
+              {
+                "term": "Qué implica ser administrador",
+                "text": "coordinar y supervisar el sistema y velar por que la información sea homogénea, veraz y esté actualizada."
+              },
+              {
+                "term": "Coordinadores de Consejería",
+                "text": "existen y colaboran, pero su papel es de enlace en su ámbito, no el de administrador del conjunto del sistema."
+              },
+              {
+                "term": "Unidades administrativas",
+                "text": "son responsables de la información que emiten, pero no administran el sistema."
+              }
+            ],
+            "source": {
+              "label": "Decreto de Atención al Ciudadano de la Comunidad de Madrid"
+            }
+          }
+        },
+        {
+          "id": 87,
+          "text": "¿Cómo se denomina la capacidad de los sistemas de información y de los procedimientos, de compartir datos y posibilitar el intercambio de información y conocimiento entre ellos?:",
+          "options": [
+            "Interoperabilidad.",
+            "Interacción.",
+            "Intercambiabilidad.",
+            "Intercooperación."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Interoperabilidad, tal y como la define el Esquema Nacional de Interoperabilidad.",
+            "points": [
+              {
+                "term": "Tres dimensiones",
+                "text": "organizativa (acuerdos y procesos), semántica (que los datos signifiquen lo mismo) y técnica (formatos y protocolos)."
+              },
+              {
+                "term": "Truco",
+                "text": "interacción, intercambiabilidad e intercooperación no son términos definidos por la normativa: son distractores."
+              }
+            ],
+            "source": {
+              "label": "Esquema Nacional de Interoperabilidad (RD 4/2010) · Anexo de definiciones",
+              "quote": "Interoperabilidad: capacidad de los sistemas de información y de los procedimientos a los que estos dan soporte, de compartir datos y posibilitar el intercambio de información y conocimiento entre ellos."
+            }
+          }
+        },
+        {
+          "id": 88,
+          "text": "En base al artículo 53 de la Ley 39/2015, de 1 de octubre, de Procedimiento Administrativo Común a las Administraciones Públicas, los interesados en un procedimiento administrativo no tienen obligación de presentar documentos",
+          "options": [
+            "No exigidos por las normas aplicables al procedimiento de que se trata.",
+            "Que ya se encuentren en poder de las Administraciones Públicas.",
+            "Que hayan sido elaborados por las Administraciones Públicas.",
+            "Todas las respuestas anteriores son correctas."
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Los tres supuestos son correctos: no hay que aportar documentos no exigidos por la norma, ni los que ya estén en poder de la Administración, ni los elaborados por ella.",
+            "points": [
+              {
+                "term": "Cómo se materializa",
+                "text": "las Administraciones deben recabar esos documentos electrónicamente a través de sus redes corporativas o de una consulta a las plataformas de intermediación de datos."
+              },
+              {
+                "term": "Excepción",
+                "text": "el interesado puede oponerse a la consulta cuando la ley especial aplicable lo permita; en ese caso sí deberá aportarlos."
+              },
+              {
+                "term": "Estrategia",
+                "text": "cuando las tres opciones son afirmaciones compatibles y todas suenan razonables, 'todas son correctas' suele ser la respuesta."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 53.1.d)",
+              "quote": "A no presentar datos y documentos no exigidos por las normas aplicables al procedimiento de que se trate, que ya se encuentren en poder de las Administraciones Públicas o que hayan sido elaborados por éstas."
+            }
+          }
+        },
+        {
+          "id": 89,
+          "text": "Los documentos presentados de manera presencial ante las Administraciones Públicas, ¿deberán ser digitalizados?:",
+          "options": [
+            "Sí, por la oficina de asistencia en materia de registros en la que hayan sido presentados.",
+            "Sí, por el interesado y, en su defecto, por la oficina de asistencia en materia de registros en la que hayan sido presentados.",
+            "Sí, por cualquier dependencia administrativa de la Administración responsable del registro.",
+            "No."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Sí: los digitaliza la oficina de asistencia en materia de registros en la que se presentaron, que devuelve después los originales al interesado.",
+            "points": [
+              {
+                "term": "Para qué",
+                "text": "para incorporarlos al expediente administrativo electrónico, ya que el expediente es electrónico en todo caso."
+              },
+              {
+                "term": "No es tarea del interesado",
+                "text": "quien presenta en papel no tiene que digitalizar nada: por eso la segunda opción es incorrecta."
+              },
+              {
+                "term": "Excepciones",
+                "text": "cuando el documento, por su formato o tamaño, no admita digitalización, o cuando una norma exija conservar el original."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 16.5",
+              "quote": "Los documentos presentados de manera presencial ante las Administraciones Públicas, deberán ser digitalizados… por la oficina de asistencia en materia de registros en la que hayan sido presentados para su incorporación al expediente administrativo electrónico, devolviéndose los originales al interesado…"
+            }
+          }
+        },
+        {
+          "id": 90,
+          "text": "Los interesados podrán solicitar, en cualquier momento, la expedición de copias auténticas de los documentos públicos administrativos que hayan sido válidamente emitidos por las Administraciones Públicas. La solicitud se dirigirá al órgano que emitió el documento original, debiendo expedirse:",
+          "options": [
+            "En el plazo de diez días a contar desde el día siguiente al de la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente.",
+            "En el plazo de quince días a contar desde la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente.",
+            "En el plazo de diez días a contar desde la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente.",
+            "En el plazo de quince días a contar desde el día siguiente al de la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Quince días a contar desde la recepción de la solicitud en el registro electrónico del órgano competente.",
+            "points": [
+              {
+                "term": "Dos trampas a la vez",
+                "text": "el plazo es de quince días, no de diez, y se cuenta desde la RECEPCIÓN, no desde el día siguiente."
+              },
+              {
+                "term": "A quién se pide",
+                "text": "al órgano que emitió el documento original, y puede solicitarse en cualquier momento."
+              },
+              {
+                "term": "Límite",
+                "text": "se exceptúan los supuestos derivados de la aplicación de la Ley 19/2013 de transparencia (por ejemplo, cuando el acceso deba limitarse)."
+              }
+            ],
+            "source": {
+              "label": "Ley 39/2015, art. 27.2",
+              "quote": "La solicitud se dirigirá al órgano que emitió el documento original, debiendo expedirse… en el plazo de quince días a contar desde la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

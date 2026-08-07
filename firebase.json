@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "build/site",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.wasm",
+        "headers": [
+          { "key": "Content-Type", "value": "application/wasm" }
+        ]
+      }
+    ]
+  }
+}

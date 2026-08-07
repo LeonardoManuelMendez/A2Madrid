@@ -1,0 +1,42 @@
+[versions]
+agp = "9.3.1"
+kotlin = "2.3.20"
+composeMultiplatform = "1.10.3"
+androidActivityCompose = "1.10.1"
+navigationCompose = "2.9.2"
+lifecycleViewmodel = "2.9.6"
+koin = "4.2.2"
+kotlinxSerializationJson = "1.9.0"
+kotlinxCoroutines = "1.10.2"
+kotlinxDatetime = "0.7.0-0.6.x-compat"
+kotlinxBrowser = "0.3"
+
+[libraries]
+# Android-only (androidMain)
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityCompose" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+# Web-only (wasmJsMain)
+kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinxBrowser" }
+
+# Multiplatform (commonMain)
+jetbrains-navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+jetbrains-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycleViewmodel" }
+jetbrains-lifecycle-viewmodel-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodel" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+
+# Test
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

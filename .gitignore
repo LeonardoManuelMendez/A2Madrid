@@ -1,0 +1,45 @@
+# Gradle y compilación
+*.iml
+.gradle
+/build
+/captures
+.externalNativeBuild
+.cxx
+# Caché del compilador de Kotlin (Kotlin 2.x). El lockfile kotlin-js-store/ sí se versiona.
+.kotlin
+
+# Configuración local de la máquina (rutas del SDK): nunca se versiona.
+local.properties
+
+# Material de la ficha de Google Play (textos, icono, gráfico de funciones, capturas).
+# Se conserva en local para subirlo a Play Console, pero no en el repo público.
+/playstore/
+
+# Instrumental de trabajo con agentes de IA (Claude Code, Cursor…). Es del entorno de
+# desarrollo, no del proyecto: se conserva en local, fuera del repo demostrativo.
+/.agent-skills/
+/.clauderules
+/.cursorrules
+/AGENTS.md
+/.vscode/
+
+# IDE: config de Android Studio / IntelliJ. Es del equipo de cada uno, no del proyecto.
+.idea/
+.DS_Store
+
+# Firebase: caché de deploy y logs (no versionar). firebase.json y .firebaserc sí.
+.firebase/
+firebase-debug.log*
+.firebase-debug.log*
+
+# Firma de release: NUNCA versionar el keystore ni sus contraseñas.
+*.jks
+*.keystore
+keystore.properties
+
+# iOS / Xcode (el .xcodeproj se genera en un Mac; sus artefactos no se versionan).
+xcuserdata/
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+iosApp/build/
+**/DerivedData/

@@ -1,0 +1,4 @@
+/build
+# Artefactos de release (APK/AAB firmados y el bundle descomprimido). Se regeneran con
+# `./gradlew :app:assembleRelease` / `:app:bundleRelease`; pesan decenas de MB y no se versionan.
+/release

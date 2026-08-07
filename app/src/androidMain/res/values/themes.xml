@@ -1,0 +1,5 @@
+<resources>
+
+    <!-- Base window theme used before Compose draws. Colors come from the Compose M3 theme. -->
+    <style name="Theme.A2Madrid" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

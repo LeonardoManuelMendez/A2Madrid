@@ -1,0 +1,5 @@
+<resources>
+
+    <!-- Dark variant of the base window theme. -->
+    <style name="Theme.A2Madrid" parent="android:Theme.Material.NoActionBar" />
+</resources>
