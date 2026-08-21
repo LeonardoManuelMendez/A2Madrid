@@ -2,7 +2,10 @@
 
 App de tests para preparar la oposición de **Auxiliar C2 de la Comunidad de Madrid**: eliges un
 modelo, respondes preguntas de opción múltiple, recibes corrección y explicación al instante, y al
-terminar ves tu puntuación con un historial de marcas.
+terminar ves tu puntuación, el desglose pregunta a pregunta y un historial de marcas.
+
+La app recuerda lo que fallaste: desde el resultado —o días después, desde el historial— puedes
+lanzar un test compuesto **solo por las preguntas que fallaste** en un intento concreto.
 
 > 🎁 **Esto es un regalo** para todas las personas que están preparando esta oposición. Úsalo
 > libremente: sin registro, sin anuncios y sin coste.
