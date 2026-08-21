@@ -1,11 +1,17 @@
 /*
  * ══ CAPA DE PRESENTACIÓN · UiState ══
  * Foto inmutable de la pantalla de test (examen, pregunta actual, opción elegida,
- * confirmada, aciertos, resultado...). Incluye propiedades derivadas (progress, canConfirm,
- * hasProgress) para que la View sea "tonta" y no calcule nada. Lo emite QuizViewModel.
+ * confirmada, respuestas dadas, resultado...). Incluye propiedades derivadas (progress,
+ * canConfirm, hasProgress) para que la View sea "tonta" y no calcule nada.
+ * Lo emite QuizViewModel.
+ *
+ * `answers` es la memoria del intento: cada respuesta confirmada se acumula aquí en vez de
+ * descartarse. De ella se derivan los aciertos (una sola fuente de verdad, sin contador
+ * paralelo) y la lista de fallos que alimenta el repaso.
  */
 package io.github.leonardomanuelmendez.a2madrid.presentation.quiz
 
+import io.github.leonardomanuelmendez.a2madrid.domain.model.AnswerResult
 import io.github.leonardomanuelmendez.a2madrid.domain.model.Question
 import io.github.leonardomanuelmendez.a2madrid.domain.model.QuizResult
 
@@ -19,7 +25,10 @@ data class QuizUiState(
     val currentIndex: Int = 0,
     val selectedOptionIndex: Int? = null,
     val isAnswerConfirmed: Boolean = false,
-    val correctAnswers: Int = 0,
+    /** True when this session only covers the questions failed in an earlier attempt. */
+    val isReview: Boolean = false,
+    /** Every answer confirmed so far, in the order they were given. */
+    val answers: List<AnswerResult> = emptyList(),
     val result: QuizResult? = null,
 ) {
     val currentQuestion: Question? get() = questions.getOrNull(currentIndex)
@@ -27,6 +36,15 @@ data class QuizUiState(
     val totalQuestions: Int get() = questions.size
     val isLastQuestion: Boolean get() = questions.isNotEmpty() && currentIndex == questions.lastIndex
     val canConfirm: Boolean get() = selectedOptionIndex != null && !isAnswerConfirmed
+
+    /** A review that has nothing left to review: the previous attempt has no pending failures. */
+    val isEmptyReview: Boolean
+        get() = isReview && !isLoading && errorMessage == null && questions.isEmpty()
+
+    val correctAnswers: Int get() = answers.count { it.isCorrect }
+
+    /** The questions answered wrongly so far — what a review session is built from. */
+    val wrongAnswers: List<AnswerResult> get() = answers.filterNot { it.isCorrect }
 
     val progress: Float
         get() = if (questions.isEmpty()) 0f else questionNumber.toFloat() / totalQuestions

@@ -23,6 +23,18 @@ data class ResultRoute(
     val correctAnswers: Int,
     val totalQuestions: Int,
     val isNewBestScore: Boolean,
+    /** Identifica el intento en el historial para recuperar su desglose. */
+    val attemptMillis: Long,
+    /** Un repaso cubre un subconjunto: su marcador no es comparable con el del modelo. */
+    val isReview: Boolean = false,
+)
+
+/** Repaso de los fallos de un intento concreto: mismo test, solo las preguntas falladas. */
+@Serializable
+data class ReviewRoute(
+    val examId: String,
+    val examTitle: String,
+    val attemptMillis: Long,
 )
 
 @Serializable

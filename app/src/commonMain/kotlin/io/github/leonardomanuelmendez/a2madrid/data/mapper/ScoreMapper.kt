@@ -5,7 +5,9 @@
  */
 package io.github.leonardomanuelmendez.a2madrid.data.mapper
 
+import io.github.leonardomanuelmendez.a2madrid.data.dto.AnsweredQuestionDto
 import io.github.leonardomanuelmendez.a2madrid.data.dto.ScoreEntryDto
+import io.github.leonardomanuelmendez.a2madrid.domain.model.AnsweredQuestion
 import io.github.leonardomanuelmendez.a2madrid.domain.model.ScoreEntry
 
 fun ScoreEntryDto.toDomain(): ScoreEntry = ScoreEntry(
@@ -14,6 +16,8 @@ fun ScoreEntryDto.toDomain(): ScoreEntry = ScoreEntry(
     correctAnswers = correctAnswers,
     totalQuestions = totalQuestions,
     timestampMillis = timestampMillis,
+    answers = answers.map { it.toDomain() },
+    isReview = isReview,
 )
 
 fun ScoreEntry.toDto(): ScoreEntryDto = ScoreEntryDto(
@@ -22,4 +26,12 @@ fun ScoreEntry.toDto(): ScoreEntryDto = ScoreEntryDto(
     correctAnswers = correctAnswers,
     totalQuestions = totalQuestions,
     timestampMillis = timestampMillis,
+    answers = answers.map { it.toDto() },
+    isReview = isReview,
 )
+
+private fun AnsweredQuestionDto.toDomain(): AnsweredQuestion =
+    AnsweredQuestion(questionId = questionId, selectedOptionIndex = selectedOptionIndex)
+
+private fun AnsweredQuestion.toDto(): AnsweredQuestionDto =
+    AnsweredQuestionDto(questionId = questionId, selectedOptionIndex = selectedOptionIndex)

@@ -60,6 +60,7 @@ import kotlinx.datetime.toLocalDateTime
 fun ScoreHistoryScreen(
     onBack: () -> Unit,
     onGoHome: () -> Unit,
+    onReviewAttempt: (ScoreEntry) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ScoreHistoryViewModel = koinViewModel(),
 ) {
@@ -68,6 +69,7 @@ fun ScoreHistoryScreen(
         entries = history,
         onBack = onBack,
         onGoHome = onGoHome,
+        onReviewAttempt = onReviewAttempt,
         onDeleteEntry = viewModel::deleteScore,
         onClearAll = viewModel::clearScores,
         modifier = modifier,
@@ -80,6 +82,7 @@ private fun ScoreHistoryContent(
     entries: List<ScoreEntry>,
     onBack: () -> Unit,
     onGoHome: () -> Unit,
+    onReviewAttempt: (ScoreEntry) -> Unit,
     onDeleteEntry: (ScoreEntry) -> Unit,
     onClearAll: () -> Unit,
     modifier: Modifier = Modifier,
@@ -114,7 +117,8 @@ private fun ScoreHistoryContent(
             EmptyState(Modifier.fillMaxSize().padding(innerPadding))
         } else {
             val bestCorrectByExam = remember(entries) {
-                entries.groupBy(ScoreEntry::examId)
+                entries.filterNot { it.isReview }
+                    .groupBy(ScoreEntry::examId)
                     .mapValues { (_, examEntries) -> examEntries.maxOf { it.correctAnswers } }
             }
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
@@ -134,7 +138,9 @@ private fun ScoreHistoryContent(
                     ) { entry ->
                         ScoreRow(
                             entry = entry,
-                            isBest = entry.correctAnswers == bestCorrectByExam[entry.examId],
+                            isBest = !entry.isReview &&
+                                entry.correctAnswers == bestCorrectByExam[entry.examId],
+                            onReview = { onReviewAttempt(entry) },
                             onDelete = { pendingDeleteEntry = entry },
                         )
                     }
@@ -198,6 +204,7 @@ private fun ScoreHistoryContent(
 private fun ScoreRow(
     entry: ScoreEntry,
     isBest: Boolean,
+    onReview: () -> Unit,
     onDelete: () -> Unit,
 ) {
     val container = if (isBest) {
@@ -236,6 +243,9 @@ private fun ScoreRow(
                                 .size(20.dp),
                         )
                     }
+                    if (entry.isReview) {
+                        ReviewChip(modifier = Modifier.padding(start = 8.dp))
+                    }
                 }
                 Text(
                     text = entry.displayTitle,
@@ -258,11 +268,37 @@ private fun ScoreRow(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                 )
+                if (entry.canReview) {
+                    TextButton(onClick = onReview) {
+                        Text(
+                            if (entry.wrongAnswers == 1) "Repasar 1 fallo"
+                            else "Repasar ${entry.wrongAnswers} fallos",
+                        )
+                    }
+                }
                 TextButton(onClick = onDelete) {
                     Text("Borrar")
                 }
             }
         }
+    }
+}
+
+/** Distintivo que marca una entrada como repaso de fallos, no como intento completo. */
+@Composable
+private fun ReviewChip(modifier: Modifier = Modifier) {
+    Surface(
+        shape = RoundedCornerShape(50),
+        color = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        modifier = modifier,
+    ) {
+        Text(
+            text = "Repaso",
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+        )
     }
 }
 
@@ -334,6 +370,7 @@ private fun ScoreHistoryContentPreview() {
             ),
             onBack = {},
             onGoHome = {},
+            onReviewAttempt = {},
             onDeleteEntry = {},
             onClearAll = {},
         )
@@ -348,6 +385,7 @@ private fun ScoreHistoryEmptyPreview() {
             entries = emptyList(),
             onBack = {},
             onGoHome = {},
+            onReviewAttempt = {},
             onDeleteEntry = {},
             onClearAll = {},
         )

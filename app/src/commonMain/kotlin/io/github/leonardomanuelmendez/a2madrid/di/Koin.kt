@@ -13,6 +13,7 @@ import io.github.leonardomanuelmendez.a2madrid.domain.repository.QuizRepository
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ClearScoresUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.DeleteScoreUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.EvaluateAnswerUseCase
+import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetAttemptReviewUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamsUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetOppositionsUseCase
@@ -43,6 +44,7 @@ val appModule = module {
     factoryOf(::GetOppositionsUseCase)
     factoryOf(::GetExamsUseCase)
     factoryOf(::GetExamUseCase)
+    factoryOf(::GetAttemptReviewUseCase)
     factoryOf(::EvaluateAnswerUseCase)
     factoryOf(::SaveScoreUseCase)
     factoryOf(::ObserveScoreHistoryUseCase)

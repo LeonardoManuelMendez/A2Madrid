@@ -1,18 +1,27 @@
 /*
  * ══ CAPA DE PRESENTACIÓN · ViewModel (corazón del patrón MVVM) ══
  * Contiene la lógica de PRESENTACIÓN del test (no la de negocio, que vive en los UseCase):
- *   1) Recibe eventos de la View: loadExam, selectOption, confirmAnswer, nextQuestion, restart.
- *   2) Llama a casos de uso: GetExamUseCase, EvaluateAnswerUseCase, SaveScoreUseCase.
+ *   1) Recibe eventos de la View: loadExam, loadReview, selectOption, confirmAnswer,
+ *      nextQuestion, restart.
+ *   2) Llama a casos de uso: GetExamUseCase, GetAttemptReviewUseCase, EvaluateAnswerUseCase,
+ *      SaveScoreUseCase.
  *   3) Publica un StateFlow<QuizUiState> que la View observa y repinta automáticamente.
  * No importa nada de Compose ni de Android UI → se puede testear con un repositorio fake
  * (ver QuizViewModelTest). Koin lo provee (viewModelOf).
+ *
+ * Tiene dos modos, y la única diferencia entre ellos es de QUÉ preguntas se compone la sesión:
+ * el test completo carga el examen entero; el repaso carga solo las falladas en un intento
+ * anterior. Todo lo demás (confirmar, avanzar, guardar) es idéntico.
  */
 package io.github.leonardomanuelmendez.a2madrid.presentation.quiz
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.github.leonardomanuelmendez.a2madrid.domain.model.AnsweredQuestion
+import io.github.leonardomanuelmendez.a2madrid.domain.model.Question
 import io.github.leonardomanuelmendez.a2madrid.domain.model.QuizResult
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.EvaluateAnswerUseCase
+import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetAttemptReviewUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.SaveScoreUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,6 +38,7 @@ class QuizViewModel constructor(
     private val getExam: GetExamUseCase,
     private val evaluateAnswer: EvaluateAnswerUseCase,
     private val saveScore: SaveScoreUseCase,
+    private val getAttemptReview: GetAttemptReviewUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(QuizUiState())
@@ -36,31 +46,49 @@ class QuizViewModel constructor(
 
     private var loadedExamId: String? = null
 
+    /** Attempt being reviewed, or `null` when this is a full run of the exam. */
+    private var reviewAttemptMillis: Long? = null
+
     /** Loads the given exam once; ignores repeat calls for the same exam (e.g. config changes). */
     fun loadExam(examId: String) {
-        if (examId == loadedExamId) return
+        if (examId == loadedExamId && reviewAttemptMillis == null) return
+        reviewAttemptMillis = null
         reload(examId)
     }
 
-    /** Restarts the current exam from scratch. */
+    /** Loads a session made only of the questions failed in the attempt at [attemptMillis]. */
+    fun loadReview(examId: String, attemptMillis: Long) {
+        if (examId == loadedExamId && attemptMillis == reviewAttemptMillis) return
+        reviewAttemptMillis = attemptMillis
+        reload(examId)
+    }
+
+    /** Restarts the current session from scratch, keeping its mode. */
     fun restart() {
         loadedExamId?.let { reload(it) }
     }
 
     private fun reload(examId: String) {
         loadedExamId = examId
-        _uiState.value = QuizUiState(isLoading = true)
+        val attemptMillis = reviewAttemptMillis
+        val isReview = attemptMillis != null
+        _uiState.value = QuizUiState(isLoading = true, isReview = isReview)
         viewModelScope.launch {
-            runCatching { getExam(examId) }
-                .onSuccess { exam ->
-                    _uiState.value = if (exam == null) {
-                        QuizUiState(isLoading = false, errorMessage = "Examen no encontrado")
+            runCatching { loadSession(examId, attemptMillis) }
+                .onSuccess { session ->
+                    _uiState.value = if (session == null) {
+                        QuizUiState(
+                            isLoading = false,
+                            errorMessage = "Examen no encontrado",
+                            isReview = isReview,
+                        )
                     } else {
                         QuizUiState(
                             isLoading = false,
-                            examId = exam.id,
-                            examTitle = exam.title,
-                            questions = exam.questions,
+                            examId = session.examId,
+                            examTitle = session.examTitle,
+                            questions = session.questions,
+                            isReview = isReview,
                         )
                     }
                 }
@@ -68,10 +96,30 @@ class QuizViewModel constructor(
                     _uiState.value = QuizUiState(
                         isLoading = false,
                         errorMessage = throwable.message ?: "No se pudo cargar el examen",
+                        isReview = isReview,
                     )
                 }
         }
     }
+
+    private suspend fun loadSession(examId: String, attemptMillis: Long?): Session? {
+        val exam = getExam(examId) ?: return null
+        val questions = if (attemptMillis == null) {
+            exam.questions
+        } else {
+            getAttemptReview(examId, attemptMillis)
+                .filterNot { it.isCorrect }
+                .map { it.question }
+        }
+        return Session(exam.id, exam.title, questions)
+    }
+
+    /** The questions this run is made of, plus the exam they belong to. */
+    private data class Session(
+        val examId: String,
+        val examTitle: String,
+        val questions: List<Question>,
+    )
 
     fun selectOption(optionIndex: Int) {
         if (_uiState.value.isAnswerConfirmed) return
@@ -88,7 +136,7 @@ class QuizViewModel constructor(
         _uiState.update {
             it.copy(
                 isAnswerConfirmed = true,
-                correctAnswers = it.correctAnswers + if (answer.isCorrect) 1 else 0,
+                answers = it.answers + answer,
             )
         }
     }
@@ -112,18 +160,23 @@ class QuizViewModel constructor(
     private fun finishQuiz(state: QuizUiState) {
         val examId = state.examId ?: return
         viewModelScope.launch {
-            val isNewBest = saveScore(
+            val saved = saveScore(
                 examId = examId,
                 examTitle = state.examTitle,
                 correctAnswers = state.correctAnswers,
                 totalQuestions = state.totalQuestions,
+                answers = state.answers.map {
+                    AnsweredQuestion(it.question.id, it.selectedOptionIndex)
+                },
+                isReview = state.isReview,
             )
             _uiState.update {
                 it.copy(
                     result = QuizResult(
                         correctAnswers = state.correctAnswers,
                         totalQuestions = state.totalQuestions,
-                        isNewBestScore = isNewBest,
+                        isNewBestScore = saved.isNewBestScore,
+                        attemptMillis = saved.entry.timestampMillis,
                     ),
                 )
             }

@@ -4,8 +4,9 @@
  * A cada Screen se le inyectan callbacks que navegan con el NavController. Los ViewModels los
  * provee Koin dentro de cada Screen (koinViewModel()), con scope por destino de navegación.
  *
- *   ExamSelection ──(examId)──► Quiz ──(resultado)──► Result
- *         └───────────────► ScoreHistory ◄──────────────┘
+ *   ExamSelection ──(examId)──► Quiz ──(resultado)──► Result ──(fallos)──► Review ──┐
+ *         └───────────────► ScoreHistory ◄──────────────┘                            │
+ *                                  └──────────(fallos de un intento anterior)─────────┘
  */
 package io.github.leonardomanuelmendez.a2madrid.presentation.navigation
 
@@ -67,8 +68,31 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                             correctAnswers = result.correctAnswers,
                             totalQuestions = result.totalQuestions,
                             isNewBestScore = result.isNewBestScore,
+                            attemptMillis = result.attemptMillis,
                         ),
                     ) { popUpTo<QuizRoute> { inclusive = true } }
+                },
+                onViewScores = { navController.navigate(ScoreHistoryRoute) },
+                onGoHome = goHome,
+            )
+        }
+        composable<ReviewRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<ReviewRoute>()
+            QuizScreen(
+                examId = route.examId,
+                reviewAttemptMillis = route.attemptMillis,
+                onQuizFinished = { result, examId, examTitle ->
+                    navController.navigate(
+                        ResultRoute(
+                            examId = examId,
+                            examTitle = examTitle,
+                            correctAnswers = result.correctAnswers,
+                            totalQuestions = result.totalQuestions,
+                            isNewBestScore = result.isNewBestScore,
+                            attemptMillis = result.attemptMillis,
+                            isReview = true,
+                        ),
+                    ) { popUpTo<ReviewRoute> { inclusive = true } }
                 },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
                 onGoHome = goHome,
@@ -82,10 +106,21 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                 correctAnswers = route.correctAnswers,
                 totalQuestions = route.totalQuestions,
                 isNewBestScore = route.isNewBestScore,
+                attemptMillis = route.attemptMillis,
+                isReview = route.isReview,
                 onRestart = {
                     navController.navigate(QuizRoute(route.examId)) {
                         popUpTo<ResultRoute> { inclusive = true }
                     }
+                },
+                onReviewWrong = {
+                    navController.navigate(
+                        ReviewRoute(
+                            examId = route.examId,
+                            examTitle = route.examTitle,
+                            attemptMillis = route.attemptMillis,
+                        ),
+                    ) { popUpTo<ResultRoute> { inclusive = true } }
                 },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
             )
@@ -94,6 +129,15 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
             ScoreHistoryScreen(
                 onBack = { navController.popBackStack() },
                 onGoHome = goHome,
+                onReviewAttempt = { entry ->
+                    navController.navigate(
+                        ReviewRoute(
+                            examId = entry.examId,
+                            examTitle = entry.examTitle,
+                            attemptMillis = entry.timestampMillis,
+                        ),
+                    )
+                },
             )
         }
     }

@@ -66,13 +66,19 @@ fun QuizScreen(
     onQuizFinished: (QuizResult, String, String) -> Unit,
     onViewScores: () -> Unit,
     onGoHome: () -> Unit,
+    /** Cuando llega un intento, la sesión se compone solo de las preguntas que se fallaron en él. */
+    reviewAttemptMillis: Long? = null,
     modifier: Modifier = Modifier,
     viewModel: QuizViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    androidx.compose.runtime.LaunchedEffect(examId) {
-        viewModel.loadExam(examId)
+    androidx.compose.runtime.LaunchedEffect(examId, reviewAttemptMillis) {
+        if (reviewAttemptMillis == null) {
+            viewModel.loadExam(examId)
+        } else {
+            viewModel.loadReview(examId, reviewAttemptMillis)
+        }
     }
 
     // Fire navigation exactly once when the quiz completes.
@@ -114,7 +120,10 @@ private fun QuizContent(
         topBar = {
             Column {
                 TopAppBar(
-                    title = { Text(uiState.examTitle.ifBlank { "A2Madrid" }) },
+                    title = {
+                        val title = uiState.examTitle.ifBlank { "A2Madrid" }
+                        Text(if (uiState.isReview) "Repaso · $title" else title)
+                    },
                     actions = {
                         QuizOptionsMenu(
                             onGoHome = onGoHome,
@@ -153,6 +162,10 @@ private fun QuizContent(
                 onRetry = onRestart,
                 modifier = Modifier.fillMaxSize().padding(innerPadding),
             )
+            uiState.isEmptyReview -> EmptyReviewState(
+                onGoHome = onGoHome,
+                modifier = Modifier.fillMaxSize().padding(innerPadding),
+            )
             uiState.currentQuestion != null -> QuestionState(
                 uiState = uiState,
                 question = uiState.currentQuestion!!,
@@ -179,6 +192,28 @@ private fun QuizContent(
                 TextButton(onClick = { showRestartDialog = false }) { Text("Cancelar") }
             },
         )
+    }
+}
+
+/** Un repaso al que no le queda ningún fallo pendiente: se celebra, no se trata como error. */
+@Composable
+private fun EmptyReviewState(
+    onGoHome: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier = modifier.padding(32.dp), contentAlignment = Alignment.Center) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            Text(
+                text = "No te queda ningún fallo por repasar de este intento.",
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Button(onClick = onGoHome) { Text("Volver al inicio") }
+        }
     }
 }
 
