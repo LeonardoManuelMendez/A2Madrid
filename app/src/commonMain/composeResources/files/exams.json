@@ -1675,7 +1675,8 @@
               "label": "Constitución Española, art. 145.2",
               "quote": "Los Estatutos podrán prever los supuestos, requisitos y términos en que las Comunidades Autónomas podrán celebrar convenios entre sí para la gestión y prestación de servicios propios de las mismas, así como el carácter y efectos de la correspondiente comunicación a las Cortes Generales. En los demás supuestos, los acuerdos de cooperación entre las Comunidades Autónomas necesitarán la autorización de las Cortes Generales."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 52,
@@ -1956,7 +1957,8 @@
               "label": "Ley 39/2015, art. 11.1",
               "quote": "La realización de actividades de carácter material o técnico de la competencia de los órganos administrativos podrá ser encomendada a otros órganos o Entidades... Esta encomienda no supone cesión de la titularidad de la competencia ni de los elementos sustantivos de su ejercicio."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 61,
@@ -2326,7 +2328,8 @@
               "label": "Ley 9/2017, art. 16.1",
               "quote": "Son contratos de suministro los que tienen por objeto la adquisición, el arrendamiento financiero, o el arrendamiento, con o sin opción de compra, de productos o bienes muebles."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 73,
@@ -2358,7 +2361,8 @@
               "label": "TREBEP (RDLeg. 5/2015), art. 8.2",
               "quote": "Los empleados públicos se clasifican en: a) Funcionarios de carrera. b) Funcionarios interinos. c) Personal laboral, ya sea fijo, por tiempo indefinido o temporal. d) Personal eventual."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 74,
@@ -2437,11 +2441,11 @@
                 "text": "las prestaciones económicas y la asistencia sanitaria de las contingencias profesionales, la incapacidad temporal por contingencias comunes, el riesgo durante el embarazo y durante la lactancia natural, y el cese de actividad de los trabajadores autónomos."
               },
               {
-                "term": "Error de la opción a)",
+                "term": "Prevención de contingencias",
                 "text": "las Mutuas SÍ desarrollan actividades de prevención de las contingencias profesionales; la opción las excluye."
               },
               {
-                "term": "Error de la opción d)",
+                "term": "Incapacidad permanente total",
                 "text": "las Mutuas no gestionan la incapacidad permanente total: su declaración y pago corresponden al INSS."
               }
             ],
@@ -2880,6 +2884,1507 @@
             "source": {
               "label": "Ley 39/2015, art. 27.2",
               "quote": "La solicitud se dirigirá al órgano que emitió el documento original, debiendo expedirse… en el plazo de quince días a contar desde la recepción de la solicitud en el registro electrónico de la Administración u Organismo competente."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ofimatica_c2_2026",
+      "title": "Ofimática · Temas 16-21 (C2 · convocatoria 2026)",
+      "contexts": {
+        "hoja_importes": "     A         B      C      D       E\n1  Producto  Precio  Uds  Importe  Con IVA\n2  Teclado    25,00   4\n3  Ratón      12,50   6\n4  Monitor   150,00   2\n5\n6  IVA         0,21"
+      },
+      "questions": [
+        {
+          "id": 101,
+          "text": "En una aplicación de Office, el menú Backstage se abre desde la ficha Archivo. ¿Qué lo distingue del resto de fichas de la Cinta de Opciones?",
+          "options": [
+            "Agrupa los comandos de formato más usados sobre el texto seleccionado.",
+            "No opera sobre el contenido del documento, sino sobre su gestión global: guardar, imprimir, exportar y opciones.",
+            "Es la única ficha que puede personalizarse añadiendo o quitando grupos.",
+            "Sustituye a la barra de herramientas de acceso rápido cuando la ventana es estrecha."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "El resto de fichas actúan sobre el contenido; Backstage actúa sobre el documento como pieza.",
+            "points": [
+              {
+                "term": "Fichas",
+                "text": "son las divisiones superiores (Inicio, Insertar, Vista…) y cada una engloba un área funcional."
+              },
+              {
+                "term": "Grupos",
+                "text": "dentro de cada ficha reúnen comandos relacionados, como Portapapeles con Cortar, Copiar y Pegar."
+              },
+              {
+                "term": "Backstage",
+                "text": "guardar, imprimir, exportar y configurar la aplicación: nada de eso modifica el texto."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 y Office · Cinta de Opciones"
+            }
+          }
+        },
+        {
+          "id": 102,
+          "text": "¿Qué combinación de teclas abre directamente el Explorador de archivos en Windows 10?",
+          "options": [
+            "Win + E",
+            "Win + X",
+            "Ctrl + E",
+            "Win + R"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Win + E abre una ventana nueva del Explorador, situada en Acceso rápido o Este equipo.",
+            "points": [
+              {
+                "term": "Win + X",
+                "text": "abre el menú de enlaces rápidos sobre el botón de Inicio, no el Explorador."
+              },
+              {
+                "term": "Ctrl + E",
+                "text": "dentro de una aplicación suele activar el cuadro de búsqueda; no abre el Explorador."
+              },
+              {
+                "term": "Win + R",
+                "text": "abre el cuadro Ejecutar."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · atajos de teclado"
+            }
+          }
+        },
+        {
+          "id": 103,
+          "text": "Quiere abrir la aplicación Configuración de Windows 10, la que sustituye al clásico Panel de Control. ¿Qué atajo la lanza?",
+          "options": [
+            "Win + C",
+            "Win + P",
+            "Win + I",
+            "Win + S"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Win + I abre Configuración, el entorno moderno que releva al Panel de Control.",
+            "points": [
+              {
+                "term": "Win + P",
+                "text": "abre el panel de proyección para elegir cómo usar una segunda pantalla."
+              },
+              {
+                "term": "Win + S",
+                "text": "abre la búsqueda."
+              },
+              {
+                "term": "De la I",
+                "text": "de «Interfaz de configuración»: es el atajo que conviene tener automatizado."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · atajos de teclado"
+            }
+          }
+        },
+        {
+          "id": 104,
+          "text": "Ha seleccionado un archivo en el Explorador y quiere ver de inmediato su tamaño, sus atributos y sus permisos. ¿Qué atajo muestra su ventana de Propiedades?",
+          "options": [
+            "Alt + Intro",
+            "Ctrl + Intro",
+            "Mayús + F10",
+            "F2"
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Alt + Intro abre las Propiedades del elemento seleccionado sin pasar por el menú contextual.",
+            "points": [
+              {
+                "term": "Mayús + F10",
+                "text": "despliega el menú contextual, desde el que aún habría que elegir Propiedades."
+              },
+              {
+                "term": "F2",
+                "text": "renombra el elemento seleccionado."
+              },
+              {
+                "term": "Sirve igual",
+                "text": "para un archivo, una carpeta o una unidad."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · atajos de teclado"
+            }
+          }
+        },
+        {
+          "id": 105,
+          "text": "Una aplicación se ha quedado bloqueada y necesita el Administrador de tareas sin pasar por la pantalla azul de seguridad. ¿Qué combinación lo abre directamente?",
+          "options": [
+            "Ctrl + Alt + Supr",
+            "Ctrl + Mayús + Esc",
+            "Alt + F4",
+            "Ctrl + Esc"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Ctrl + Mayús + Esc abre el Administrador de tareas de forma directa.",
+            "points": [
+              {
+                "term": "Ctrl + Alt + Supr",
+                "text": "lleva antes a la pantalla de seguridad, desde la que hay que elegirlo: un paso más."
+              },
+              {
+                "term": "Alt + F4",
+                "text": "cierra la ventana activa, que es justo lo que no responde."
+              },
+              {
+                "term": "Ctrl + Esc",
+                "text": "abre el menú Inicio."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · atajos de teclado"
+            }
+          }
+        },
+        {
+          "id": 106,
+          "text": "¿Cuál de estos NO es un atributo de archivo en Windows?",
+          "options": [
+            "Solo lectura",
+            "Oculto",
+            "Sistema",
+            "Compartido"
+          ],
+          "correctAnswerIndex": 3,
+          "explanation": {
+            "summary": "Los atributos son Solo lectura, Oculto, Sistema e Indexado. Compartir es un permiso de red, no un atributo.",
+            "points": [
+              {
+                "term": "Solo lectura",
+                "text": "impide modificar el archivo, aunque siga pudiendo leerse."
+              },
+              {
+                "term": "Oculto",
+                "text": "no se muestra salvo que se activen los elementos ocultos en la ficha Vista."
+              },
+              {
+                "term": "Indexado",
+                "text": "permite que el contenido entre en el índice de búsqueda del sistema."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · gestión de archivos"
+            }
+          }
+        },
+        {
+          "id": 107,
+          "text": "El equipo de la oficina tiene un disco de estado sólido (SSD). ¿Qué operación de mantenimiento le corresponde?",
+          "options": [
+            "Desfragmentarlo periódicamente para reunir los fragmentos de los archivos.",
+            "El comando TRIM, que marca los bloques que ya no se usan para preparar escrituras rápidas.",
+            "Formatearlo a bajo nivel cada cierto número de horas de uso.",
+            "Ejecutar la comprobación de errores en lugar de cualquier optimización."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Un SSD no tiene partes mecánicas: desfragmentarlo solo desgasta su vida útil. Usa TRIM.",
+            "points": [
+              {
+                "term": "Desfragmentar",
+                "text": "tiene sentido en un disco duro mecánico (HDD), donde reunir fragmentos acelera la lectura del cabezal."
+              },
+              {
+                "term": "TRIM",
+                "text": "avisa a la unidad de qué bloques han quedado libres para que pueda borrarlos por adelantado."
+              },
+              {
+                "term": "La trampa",
+                "text": "es que Windows llama «Optimizar unidades» a la misma herramienta para ambos tipos, pero por dentro hace cosas distintas."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · optimización de unidades"
+            }
+          }
+        },
+        {
+          "id": 108,
+          "text": "El Liberador de espacio en disco (cleanmgr) se usa para recuperar espacio de forma segura. ¿Qué elimina?",
+          "options": [
+            "Los programas instalados que no se han abierto en los últimos noventa días.",
+            "Los documentos personales del usuario que superen un tamaño determinado.",
+            "La Papelera, los archivos temporales de internet, las miniaturas y las cachés del sistema.",
+            "Los puntos de restauración del sistema y nada más."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Limpia lo prescindible: Papelera, temporales de internet, miniaturas y cachés.",
+            "points": [
+              {
+                "term": "No toca",
+                "text": "los archivos personales del usuario: es una herramienta segura por diseño."
+              },
+              {
+                "term": "Miniaturas",
+                "text": "son las vistas previas en caché de imágenes y vídeos; se regeneran solas al volver a abrir la carpeta."
+              },
+              {
+                "term": "cleanmgr",
+                "text": "es su nombre como comando: se puede lanzar desde Ejecutar (Win + R)."
+              }
+            ],
+            "source": {
+              "label": "Windows 10 · mantenimiento del sistema"
+            }
+          }
+        },
+        {
+          "id": 109,
+          "text": "El enunciado del práctico pide crear un Estilo Párrafo llamado ESTP01 basado en Normal. ¿Sobre qué actúa un estilo de párrafo?",
+          "options": [
+            "Solo sobre las palabras que estén seleccionadas en ese momento.",
+            "Sobre bloques enteros de texto: sangrías, interlineado, alineación y espaciado anterior y posterior.",
+            "Sobre la configuración de página: márgenes, orientación y tamaño del papel.",
+            "Sobre las propiedades del documento que aparecen en el menú Backstage."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "El estilo de párrafo gobierna el bloque completo, no una selección suelta de palabras.",
+            "points": [
+              {
+                "term": "Estilo de párrafo",
+                "text": "sangría, interlineado, alineación y espaciado; suele basarse en el estilo Normal del documento."
+              },
+              {
+                "term": "Estilo de carácter",
+                "text": "ese sí actúa solo sobre las letras seleccionadas: fuente, tamaño, cursiva, negrita o color."
+              },
+              {
+                "term": "Por qué importa",
+                "text": "el práctico exige estructura, no apaño visual: aplicar el formato a mano en vez de con un estilo cuesta puntos."
+              }
+            ],
+            "source": {
+              "label": "Word · estilos de párrafo y de carácter"
+            }
+          }
+        },
+        {
+          "id": 110,
+          "text": "Necesita poner en versalitas y color una palabra suelta dentro de un párrafo, sin alterar la estructura del párrafo. ¿Qué tipo de estilo aplica?",
+          "options": [
+            "Un estilo de párrafo, como ESTP01.",
+            "Un estilo de carácter, como ESTC01.",
+            "Un estilo de tabla.",
+            "Un estilo de lista multinivel."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Los estilos de carácter afectan solo a las letras seleccionadas y dejan intacto el párrafo.",
+            "points": [
+              {
+                "term": "Controlan",
+                "text": "fuente, tamaño, cursiva, negrita y color."
+              },
+              {
+                "term": "No controlan",
+                "text": "sangría, alineación ni interlineado: eso es competencia del estilo de párrafo."
+              },
+              {
+                "term": "Convención",
+                "text": "en los enunciados de este examen los estilos de carácter se nombran ESTC seguido de un número."
+              }
+            ],
+            "source": {
+              "label": "Word · estilos de párrafo y de carácter"
+            }
+          }
+        },
+        {
+          "id": 111,
+          "text": "Un enunciado pide aplicar un borde inferior «al párrafo» y no «al texto». ¿En qué se diferencian?",
+          "options": [
+            "Al texto envuelve solo las palabras; al párrafo se extiende de margen izquierdo a margen derecho.",
+            "Al texto se aplica con la ficha Insertar y al párrafo con la ficha Diseño.",
+            "Al texto solo admite bordes de un cuarto de punto; al párrafo admite cualquier ancho.",
+            "No hay diferencia: son dos nombres para la misma opción."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "«Al texto» ciñe el borde a las palabras; «al párrafo» lo lleva de margen a margen.",
+            "points": [
+              {
+                "term": "Dónde se elige",
+                "text": "en el cuadro Bordes y sombreado, en el desplegable Aplicar a."
+              },
+              {
+                "term": "Por qué se falla",
+                "text": "a simple vista el resultado puede parecerse si el párrafo ocupa toda la línea; en la corrección no se parecen."
+              },
+              {
+                "term": "Anchos",
+                "text": "el examen suele pedir medidas exactas, del tipo 2 ¼ pto o ¾ pto: conviene fijarse en la fracción."
+              }
+            ],
+            "source": {
+              "label": "Word · bordes y sombreado"
+            }
+          }
+        },
+        {
+          "id": 112,
+          "text": "El enunciado pide un texto justificado. ¿Qué caracteriza a esa alineación?",
+          "options": [
+            "El texto queda pegado al margen derecho y desigual por la izquierda.",
+            "El texto queda a la misma distancia de ambos márgenes, con los bordes desiguales.",
+            "El texto toca ambos márgenes, repartiendo el espacio sobrante entre las palabras.",
+            "El texto empieza en el margen izquierdo y termina donde acabe cada línea."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Justificado significa que las líneas alcanzan los dos márgenes; Word ensancha los espacios para lograrlo.",
+            "points": [
+              {
+                "term": "Centrado",
+                "text": "queda equidistante de ambos márgenes, pero con los bordes de línea irregulares."
+              },
+              {
+                "term": "Izquierda",
+                "text": "empieza pegado al margen izquierdo y termina donde acabe cada línea; es la alineación por defecto del estilo Normal."
+              },
+              {
+                "term": "Regla del práctico",
+                "text": "si piden centrado, se usa el botón de centrar. Conseguirlo a base de espacios se corrige como error."
+              }
+            ],
+            "source": {
+              "label": "Word · formato de párrafo"
+            }
+          }
+        },
+        {
+          "id": 113,
+          "text": "¿Qué son las tabulaciones en Word?",
+          "options": [
+            "Los espacios en blanco que se insertan al pulsar varias veces la barra espaciadora.",
+            "Los puntos de parada del cursor en la regla, con posición exacta, alineación y relleno opcional.",
+            "Las sangrías de primera línea que aplica automáticamente el estilo Normal.",
+            "Las columnas periodísticas en que se divide el texto de una sección."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Una tabulación es una parada definida en la regla, con su medida en centímetros.",
+            "points": [
+              {
+                "term": "Se configuran",
+                "text": "con una posición exacta (por ejemplo 5,25 cm), un tipo de alineación y un posible relleno de puntos o guiones."
+              },
+              {
+                "term": "Tipos",
+                "text": "izquierda, centro, derecha y decimal."
+              },
+              {
+                "term": "Para qué",
+                "text": "evitan el vicio de alinear con espacios, que se descuadra en cuanto cambia la fuente."
+              }
+            ],
+            "source": {
+              "label": "Word · tabulaciones"
+            }
+          }
+        },
+        {
+          "id": 114,
+          "text": "Tiene que alinear una columna de importes para que las comas decimales queden todas en la misma vertical. ¿Qué tipo de tabulación usa?",
+          "options": [
+            "Izquierda",
+            "Derecha",
+            "Decimal",
+            "Barra"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La tabulación decimal alinea los números por su separador decimal, no por su primer o último carácter.",
+            "points": [
+              {
+                "term": "Derecha",
+                "text": "alinearía por el último dígito, que descuadra en cuanto hay distinto número de decimales."
+              },
+              {
+                "term": "Barra",
+                "text": "no alinea texto: dibuja una línea vertical en esa posición."
+              },
+              {
+                "term": "Uso típico",
+                "text": "columnas de precios, importes y porcentajes."
+              }
+            ],
+            "source": {
+              "label": "Word · tabulaciones"
+            }
+          }
+        },
+        {
+          "id": 115,
+          "text": "Debe crear una lista con varios niveles que combine numeración romana, letras y números. ¿Desde dónde se configura correctamente?",
+          "options": [
+            "Aplicando viñetas y aumentando la sangría con el tabulador en cada nivel.",
+            "Desde la opción Definir nueva lista multinivel, fijando la posición del número y la sangría del texto en cada nivel.",
+            "Creando un estilo de carácter distinto para cada nivel de la lista.",
+            "Insertando una tabla sin bordes y escribiendo la numeración a mano."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Las listas multinivel se definen, no se improvisan con el tabulador.",
+            "points": [
+              {
+                "term": "Definir nueva lista multinivel",
+                "text": "permite fijar el esquema de cada nivel (I, ii, a, 1…) y sus sangrías."
+              },
+              {
+                "term": "Posición del número y sangría del texto",
+                "text": "son dos medidas distintas, y el examen las corrige por separado."
+              },
+              {
+                "term": "El apaño",
+                "text": "de tabular a mano se ve idéntico en pantalla y se descuadra en cuanto se añade un elemento."
+              }
+            ],
+            "source": {
+              "label": "Word · listas numeradas y viñetas"
+            }
+          }
+        },
+        {
+          "id": 116,
+          "text": "Una imagen debe quedar como fondo del documento, con el texto pasando por encima de ella. ¿Qué ajuste del texto aplica?",
+          "options": [
+            "En línea con el texto",
+            "Cuadrado",
+            "Detrás del texto",
+            "Estrecho"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "«Detrás del texto» convierte la imagen en fondo: deja de desplazar las palabras.",
+            "points": [
+              {
+                "term": "En línea con el texto",
+                "text": "trata la imagen como un carácter más del párrafo."
+              },
+              {
+                "term": "Cuadrado y Estrecho",
+                "text": "apartan el texto alrededor de la imagen, que es lo contrario de lo que se pide."
+              },
+              {
+                "term": "Ojo",
+                "text": "«Delante del texto» también saca la imagen del flujo, pero tapa las palabras en vez de quedar debajo."
+              }
+            ],
+            "source": {
+              "label": "Word · ajuste del texto en objetos"
+            }
+          }
+        },
+        {
+          "id": 117,
+          "text": "El enunciado pide colocar una imagen a 5 cm del margen superior y a 3 cm del margen izquierdo. ¿Qué está pidiendo?",
+          "options": [
+            "Que se arrastre la imagen con el ratón hasta que la regla marque esas medidas.",
+            "Una posición absoluta respecto a los márgenes, fijada en el cuadro de diseño del objeto.",
+            "Que se inserten cinco párrafos vacíos encima y tres tabulaciones a la izquierda.",
+            "Que se cambien los márgenes de la página a 5 cm y 3 cm."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Es una posición absoluta: se escribe la medida en el cuadro de diseño, no se busca a ojo.",
+            "points": [
+              {
+                "term": "Anclaje",
+                "text": "la imagen se ancla a un párrafo o a la página; el ancla decide qué se mueve con qué."
+              },
+              {
+                "term": "Respecto a qué",
+                "text": "el cuadro permite medir desde el margen, la página o la columna: hay que elegir lo que dice el enunciado."
+              },
+              {
+                "term": "A ojo no vale",
+                "text": "la corrección compara medidas, no impresiones."
+              }
+            ],
+            "source": {
+              "label": "Word · posición de objetos"
+            }
+          }
+        },
+        {
+          "id": 118,
+          "text": "Antes de empezar a escribir conviene fijar la configuración de página. ¿Cuál de estas comprobaciones es la que suele fallar?",
+          "options": [
+            "Que el tamaño de papel sea A4 y no Carta (Letter).",
+            "Que la fuente predeterminada sea Arial en lugar de Calibri.",
+            "Que el idioma de revisión sea el español de España.",
+            "Que el documento se guarde en formato .docx y no en .doc."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "El tamaño Carta viene por defecto en muchas instalaciones y descuadra todos los márgenes.",
+            "points": [
+              {
+                "term": "Qué incluye",
+                "text": "configurar la página es fijar márgenes, orientación y tamaño de papel."
+              },
+              {
+                "term": "Carta frente a A4",
+                "text": "Carta es más ancha y más corta que A4: el texto rompe por otro sitio y la corrección lo detecta."
+              },
+              {
+                "term": "Primero",
+                "text": "es el primer paso del práctico: cambiarlo al final reorganiza todo lo hecho."
+              }
+            ],
+            "source": {
+              "label": "Word · configuración de página"
+            }
+          }
+        },
+        {
+          "id": 119,
+          "text": "En el práctico se pide crear un estilo «basado en Normal». ¿Qué implica esa base?",
+          "options": [
+            "Que el estilo nuevo solo podrá aplicarse a los párrafos que ya tengan el estilo Normal.",
+            "Que el estilo hereda las características de Normal y solo se redefinen las que se cambien.",
+            "Que al aplicarlo se elimina cualquier formato manual previo del documento entero.",
+            "Que el estilo se guardará en la plantilla Normal.dotm y afectará a documentos futuros."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Basarse en un estilo es heredar de él: se parte de Normal y se cambia lo que pida el enunciado.",
+            "points": [
+              {
+                "term": "Herencia",
+                "text": "lo que no se redefine se toma del estilo base."
+              },
+              {
+                "term": "Efecto lateral",
+                "text": "si se modifica Normal, cambian con él todos los estilos que se basan en Normal."
+              },
+              {
+                "term": "Por eso",
+                "text": "el enunciado precisa la base: dos estilos con el mismo formato aparente pero distinta base no son iguales."
+              }
+            ],
+            "source": {
+              "label": "Word · jerarquía de estilos"
+            }
+          }
+        },
+        {
+          "id": 120,
+          "text": "¿Qué diferencia hay entre un estilo de párrafo y el formato aplicado a mano con los botones de la Cinta?",
+          "options": [
+            "Ninguna: el resultado en pantalla es idéntico y se corrige igual.",
+            "El formato manual es más rápido y por eso es el recomendado en pruebas cronometradas.",
+            "El estilo queda definido y es reutilizable y modificable en bloque; el formato manual hay que repetirlo párrafo a párrafo.",
+            "El formato manual solo puede aplicarse a párrafos que no tengan ningún estilo asignado."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Un estilo es una definición reutilizable; el formato manual es una decoración que hay que repetir.",
+            "points": [
+              {
+                "term": "Ventaja práctica",
+                "text": "cambiar el estilo actualiza de golpe todos los párrafos que lo usan."
+              },
+              {
+                "term": "En la corrección",
+                "text": "el enunciado pide explícitamente crear el estilo: lograr el mismo aspecto a mano no cumple lo pedido."
+              },
+              {
+                "term": "Regla",
+                "text": "en el práctico se evita el formateo manual siempre que el enunciado nombre un estilo."
+              }
+            ],
+            "source": {
+              "label": "Word · estilos frente a formato directo"
+            }
+          }
+        },
+        {
+          "id": 121,
+          "text": "En la celda B2 tiene la fórmula =A2*2 y la copia a la celda B3. ¿En qué se convierte?",
+          "options": [
+            "=A2*2",
+            "=A3*2",
+            "=B3*2",
+            "=$A$2*2"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "A2 es una referencia relativa: al bajar una fila, la fórmula baja con ella.",
+            "points": [
+              {
+                "term": "Relativa",
+                "text": "es el tipo por defecto y se adapta a la nueva posición de la fórmula."
+              },
+              {
+                "term": "Al copiar hacia abajo",
+                "text": "cambia el número de fila; al copiar hacia la derecha, cambia la letra de columna."
+              },
+              {
+                "term": "Utilidad",
+                "text": "es lo que permite escribir una fórmula una vez y arrastrarla por toda la columna."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias relativas",
+              "quote": "Sin símbolo de dólar, la referencia se desplaza tanto como se desplace la fórmula."
+            }
+          }
+        },
+        {
+          "id": 122,
+          "text": "Quiere que una fórmula apunte siempre a la celda B1, esté donde esté la fórmula. ¿Cómo se escribe y con qué tecla se consigue?",
+          "options": [
+            "B1, pulsando F2",
+            "$B1, pulsando F4",
+            "$B$1, pulsando F4",
+            "B$1, pulsando F2"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "$B$1 es una referencia absoluta: ancla la columna y la fila. F4 la genera sobre la referencia.",
+            "points": [
+              {
+                "term": "El dólar ancla",
+                "text": "$B fija la columna y $1 fija la fila."
+              },
+              {
+                "term": "F4",
+                "text": "sobre una referencia va rotando entre absoluta, mixta por fila, mixta por columna y relativa."
+              },
+              {
+                "term": "Caso típico",
+                "text": "una celda con el tipo de IVA que todas las filas deben consultar."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias absolutas"
+            }
+          }
+        },
+        {
+          "id": 123,
+          "text": "En la referencia mixta $A1, ¿qué queda fijo al arrastrar la fórmula?",
+          "options": [
+            "La fila, que seguirá siendo la 1.",
+            "La columna, que seguirá siendo la A.",
+            "Ninguna de las dos: el dólar delante de la letra no tiene efecto.",
+            "Las dos: es equivalente a $A$1."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "El dólar ancla lo que va inmediatamente detrás. En $A1 va delante de la A, así que fija la columna.",
+            "points": [
+              {
+                "term": "$A1",
+                "text": "columna fija, fila libre: al arrastrar hacia abajo pasa a $A2, $A3…"
+              },
+              {
+                "term": "A$1",
+                "text": "es la mixta contraria: fila fija, columna libre."
+              },
+              {
+                "term": "Regla mnemotécnica",
+                "text": "el dólar protege a quien tiene justo detrás."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias mixtas"
+            }
+          }
+        },
+        {
+          "id": 124,
+          "text": "Tiene la fórmula =B$1 en la celda C3 y la arrastra hacia la derecha, hasta D3. ¿En qué se convierte?",
+          "options": [
+            "=B$1",
+            "=C$1",
+            "=B$2",
+            "=C$3"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "En B$1 la fila está anclada y la columna no; al desplazarse a la derecha, la columna avanza.",
+            "points": [
+              {
+                "term": "La fila 1",
+                "text": "queda intacta gracias al dólar."
+              },
+              {
+                "term": "La columna B",
+                "text": "no está protegida, así que pasa a C al moverse una columna a la derecha."
+              },
+              {
+                "term": "Uso típico",
+                "text": "una fila de cabecera con valores que todas las filas de debajo deben consultar."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias mixtas"
+            }
+          }
+        },
+        {
+          "id": 125,
+          "text": "Una celda muestra #¡VALOR!. ¿Qué está indicando?",
+          "options": [
+            "Que la fórmula divide entre cero.",
+            "Que se está operando con un tipo de dato equivocado, como sumar un número y un texto.",
+            "Que el resultado no cabe en el ancho de la columna.",
+            "Que Excel no reconoce el nombre de una función escrita en la fórmula."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "#¡VALOR! avisa de que el tipo de dato no encaja con la operación.",
+            "points": [
+              {
+                "term": "Ejemplo",
+                "text": "=2+\"Hola\" no puede resolverse: uno de los operandos no es un número."
+              },
+              {
+                "term": "Se confunde con",
+                "text": "#¿NOMBRE?, que es una errata en el nombre de una función, no un problema de tipos."
+              },
+              {
+                "term": "Cómo se localiza",
+                "text": "revisando las celdas de las que depende la fórmula, no la fórmula en sí."
+              }
+            ],
+            "source": {
+              "label": "Excel · códigos de error"
+            }
+          }
+        },
+        {
+          "id": 126,
+          "text": "Escribe =SUMR(A1:A5) y Excel devuelve un error. ¿Cuál?",
+          "options": [
+            "#¡VALOR!",
+            "#¿NOMBRE?",
+            "#¡DIV/0!",
+            "#####"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "#¿NOMBRE? aparece cuando Excel no reconoce una palabra de la fórmula, normalmente una función mal escrita.",
+            "points": [
+              {
+                "term": "La errata",
+                "text": "la función es SUMA; SUMR no existe en el catálogo."
+              },
+              {
+                "term": "También sale",
+                "text": "al usar un nombre de rango que no está definido."
+              },
+              {
+                "term": "Pista visual",
+                "text": "Excel no autocompleta lo que no conoce: si al escribir no aparece la sugerencia, algo va mal."
+              }
+            ],
+            "source": {
+              "label": "Excel · códigos de error"
+            }
+          }
+        },
+        {
+          "id": 127,
+          "text": "Una celda muestra #¡DIV/0!. Además de dividir explícitamente entre cero, ¿qué otra situación lo provoca?",
+          "options": [
+            "Dividir entre una celda completamente vacía.",
+            "Dividir entre una celda que contiene el número 1.",
+            "Multiplicar por una celda que contiene texto.",
+            "Restar una fecha de un número."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": "Una celda vacía se interpreta como cero, y dividir entre ella da el mismo error.",
+            "points": [
+              {
+                "term": "Por qué pasa tanto",
+                "text": "una plantilla recién montada tiene los divisores en blanco hasta que se rellenan."
+              },
+              {
+                "term": "No confundir",
+                "text": "una celda con un espacio escrito no está vacía: eso daría #¡VALOR!."
+              },
+              {
+                "term": "Se previene",
+                "text": "envolviendo la división en una comprobación previa del divisor."
+              }
+            ],
+            "source": {
+              "label": "Excel · códigos de error"
+            }
+          }
+        },
+        {
+          "id": 128,
+          "text": "Una celda muestra #####. ¿Qué ha ocurrido?",
+          "options": [
+            "La fórmula hace referencia a una celda que se ha eliminado.",
+            "No es un error de cálculo: el contenido no cabe en el ancho actual de la columna.",
+            "El formato de la celda es incompatible con el resultado obtenido.",
+            "La hoja está protegida y el resultado no puede mostrarse."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Los almohadillas no son un error de cálculo, sino de presentación: falta ancho.",
+            "points": [
+              {
+                "term": "Se resuelve",
+                "text": "ensanchando la columna, o con doble clic en el borde del encabezado para ajustarla al contenido."
+              },
+              {
+                "term": "Afecta a",
+                "text": "números, fechas y horas; el texto corriente se desborda en vez de mostrar almohadillas."
+              },
+              {
+                "term": "El valor está bien",
+                "text": "la celda tiene su resultado correcto: solo no se ve."
+              }
+            ],
+            "source": {
+              "label": "Excel · códigos de error",
+              "quote": "##### indica anchura insuficiente de columna, no un fallo en la fórmula."
+            }
+          }
+        },
+        {
+          "id": 129,
+          "text": "¿Qué devuelve la fórmula =5+2*3?",
+          "options": [
+            "21",
+            "11",
+            "30",
+            "10"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Excel respeta la jerarquía matemática: primero multiplica y luego suma.",
+            "points": [
+              {
+                "term": "Orden",
+                "text": "paréntesis, después potencias, después multiplicación y división, y por último suma y resta."
+              },
+              {
+                "term": "El cálculo",
+                "text": "2*3 son 6, y 6+5 son 11."
+              },
+              {
+                "term": "Para obtener 21",
+                "text": "habría que escribir =(5+2)*3, forzando la suma con paréntesis."
+              }
+            ],
+            "source": {
+              "label": "Excel · jerarquía de operadores"
+            }
+          }
+        },
+        {
+          "id": 130,
+          "text": "Ordene de mayor a menor prioridad los operadores en una fórmula de Excel.",
+          "options": [
+            "Suma y resta · multiplicación y división · potencias · paréntesis",
+            "Paréntesis · potencias · multiplicación y división · suma y resta",
+            "Paréntesis · multiplicación y división · potencias · suma y resta",
+            "Potencias · paréntesis · suma y resta · multiplicación y división"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Primero lo que va entre paréntesis, después las potencias, luego multiplicar y dividir, y al final sumar y restar.",
+            "points": [
+              {
+                "term": "Paréntesis",
+                "text": "son la única forma de alterar el orden a voluntad."
+              },
+              {
+                "term": "Potencias",
+                "text": "se escriben con el acento circunflejo: =2^3 son 8."
+              },
+              {
+                "term": "Mismo nivel",
+                "text": "multiplicación y división se resuelven entre sí de izquierda a derecha, igual que suma y resta."
+              }
+            ],
+            "source": {
+              "label": "Excel · jerarquía de operadores"
+            }
+          }
+        },
+        {
+          "id": 131,
+          "text": "Observando la hoja, en D2 quiere calcular el importe de la primera línea (precio por unidades) de forma que pueda arrastrar la fórmula hasta D4. ¿Cuál escribe?",
+          "options": [
+            "=B2*C2",
+            "=$B$2*$C$2",
+            "=B$2*C$2",
+            "=$B2*$C2"
+          ],
+          "correctAnswerIndex": 0,
+          "contextId": "hoja_importes",
+          "explanation": {
+            "summary": "Ambas referencias deben acompañar a la fórmula al bajar, así que las dos van relativas.",
+            "points": [
+              {
+                "term": "Al arrastrar a D3",
+                "text": "=B2*C2 se convierte en =B3*C3, que es justo lo que se busca."
+              },
+              {
+                "term": "Con dólares",
+                "text": "las tres filas calcularían el importe del teclado, repetido."
+              },
+              {
+                "term": "Cuándo sí anclar",
+                "text": "solo cuando una referencia deba quedarse quieta, como el IVA de B6."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias relativas"
+            }
+          }
+        },
+        {
+          "id": 132,
+          "text": "Sobre la misma hoja, en E2 quiere el importe con IVA usando el porcentaje de B6, y arrastrar la fórmula hasta E4. ¿Cuál escribe?",
+          "options": [
+            "=D2*(1+B6)",
+            "=D2*(1+$B$6)",
+            "=$D$2*(1+$B$6)",
+            "=D2*(1+B$6)*C2"
+          ],
+          "correctAnswerIndex": 1,
+          "contextId": "hoja_importes",
+          "explanation": {
+            "summary": "El importe cambia en cada fila, pero el IVA es siempre B6: la primera relativa, la segunda absoluta.",
+            "points": [
+              {
+                "term": "=D2*(1+B6)",
+                "text": "al bajar buscaría el IVA en B7, B8… celdas vacías, y devolvería el importe sin recargo."
+              },
+              {
+                "term": "$B$6",
+                "text": "ancla fila y columna, así que las tres filas consultan siempre el mismo porcentaje."
+              },
+              {
+                "term": "También valdría",
+                "text": "B$6 en este caso, porque solo se arrastra hacia abajo; $B$6 es la opción segura."
+              }
+            ],
+            "source": {
+              "label": "Excel · referencias absolutas"
+            }
+          }
+        },
+        {
+          "id": 133,
+          "text": "En una tabla de Access, ¿qué función cumple la Clave Principal?",
+          "options": [
+            "Ordenar automáticamente los registros al abrir la tabla.",
+            "Identificar de forma unívoca cada registro, impidiendo que su valor se repita.",
+            "Cifrar el contenido del campo para que no pueda leerse desde otras tablas.",
+            "Definir qué campos aparecen por defecto en los formularios generados."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "La clave principal es el campo que identifica sin ambigüedad cada registro de la tabla.",
+            "points": [
+              {
+                "term": "Ejemplo",
+                "text": "el DNI en una tabla de empleados: no puede haber dos registros con el mismo."
+              },
+              {
+                "term": "Consecuencia",
+                "text": "Access impide grabar un valor duplicado o vacío en ese campo."
+              },
+              {
+                "term": "Para qué sirve",
+                "text": "es el punto de enganche de las relaciones con otras tablas."
+              }
+            ],
+            "source": {
+              "label": "Access · diseño de tablas"
+            }
+          }
+        },
+        {
+          "id": 134,
+          "text": "La Integridad Referencial está activada entre las tablas Clientes y Facturas. ¿Qué impide?",
+          "options": [
+            "Que se creen dos facturas con el mismo importe.",
+            "Que se añada un cliente sin dirección de correo electrónico.",
+            "Que se borre un cliente que todavía tiene facturas asignadas.",
+            "Que se abran las dos tablas a la vez en modo edición."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Es la regla que garantiza que las relaciones entre tablas sigan siendo válidas.",
+            "points": [
+              {
+                "term": "Qué protege",
+                "text": "evita registros huérfanos: una factura que apunte a un cliente que ya no existe."
+              },
+              {
+                "term": "También impide",
+                "text": "modificar el valor de la clave de forma que rompa el vínculo."
+              },
+              {
+                "term": "Se define",
+                "text": "en la ventana de Relaciones, al trazar el vínculo entre las dos tablas."
+              }
+            ],
+            "source": {
+              "label": "Access · integridad referencial"
+            }
+          }
+        },
+        {
+          "id": 135,
+          "text": "¿Cuántos caracteres admite como máximo un campo de tipo Texto corto en Access?",
+          "options": [
+            "50",
+            "128",
+            "255",
+            "1024"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Texto corto llega hasta 255 caracteres; por encima hay que usar Texto largo.",
+            "points": [
+              {
+                "term": "Uso típico",
+                "text": "nombres, direcciones, códigos: datos breves y de longitud acotada."
+              },
+              {
+                "term": "Si se queda corto",
+                "text": "el tipo Texto largo (antes Memo) admite textos extensos."
+              },
+              {
+                "term": "Buen diseño",
+                "text": "elegir el tipo justo evita malgastar espacio y ordena mejor las búsquedas."
+              }
+            ],
+            "source": {
+              "label": "Access · tipos de datos"
+            }
+          }
+        },
+        {
+          "id": 136,
+          "text": "En Access, ¿para qué se utilizaba el tipo de dato Objeto OLE?",
+          "options": [
+            "Para almacenar el resultado de una consulta con varios campos calculados.",
+            "Para adjuntar al registro contenidos complejos como imágenes, documentos o audio.",
+            "Para enlazar una tabla con un origen de datos externo en otro servidor.",
+            "Para guardar la fecha y hora de la última modificación del registro."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Objeto OLE servía para incrustar archivos complejos dentro de un registro.",
+            "points": [
+              {
+                "term": "Qué admitía",
+                "text": "imágenes, documentos y audio incrustados en el propio campo."
+              },
+              {
+                "term": "Hoy",
+                "text": "el tipo Datos adjuntos cumple ese papel de forma más eficiente."
+              },
+              {
+                "term": "Inconveniente",
+                "text": "incrustar archivos engorda la base de datos con rapidez."
+              }
+            ],
+            "source": {
+              "label": "Access · tipos de datos"
+            }
+          }
+        },
+        {
+          "id": 137,
+          "text": "En Power BI, ¿qué es Power Query y qué lenguaje utiliza por debajo?",
+          "options": [
+            "El motor de cálculo de medidas, que utiliza el lenguaje DAX.",
+            "La herramienta de extracción, transformación y carga (ETL), que utiliza el lenguaje M.",
+            "El diseñador de informes, que utiliza el lenguaje SQL.",
+            "El servicio de publicación en la nube, que utiliza el lenguaje R."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Power Query es el taller previo: extrae, transforma y carga los datos, y por dentro usa el lenguaje M.",
+            "points": [
+              {
+                "term": "ETL",
+                "text": "Extract, Transform, Load: limpiar, combinar y dar forma a los datos brutos antes de cargarlos."
+              },
+              {
+                "term": "Cuándo actúa",
+                "text": "antes que nada; DAX entra después, ya sobre el modelo cargado."
+              },
+              {
+                "term": "No confundir",
+                "text": "M transforma los datos de origen; DAX calcula sobre los datos ya en el modelo."
+              }
+            ],
+            "source": {
+              "label": "Power BI · Power Query y lenguaje M"
+            }
+          }
+        },
+        {
+          "id": 138,
+          "text": "¿Qué son las fórmulas DAX en Power BI?",
+          "options": [
+            "Un lenguaje de consulta para extraer datos de un servidor externo.",
+            "El lenguaje de cálculo que permite crear Medidas relacionales sobre columnas enteras y agregar según filtros.",
+            "Un formato de archivo en el que se guardan los informes publicados.",
+            "El conjunto de plantillas visuales predefinidas del lienzo de informe."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "DAX (Data Analysis Expressions) es el lenguaje de cálculo del modelo.",
+            "points": [
+              {
+                "term": "Diferencia con Excel",
+                "text": "Excel suma celdas concretas; DAX trabaja sobre columnas enteras y responde a los filtros aplicados."
+              },
+              {
+                "term": "Medidas",
+                "text": "son cálculos que se recalculan según el contexto del informe: al filtrar por un año, la medida se ajusta sola."
+              },
+              {
+                "term": "Convive con M",
+                "text": "M prepara los datos, DAX los interroga."
+              }
+            ],
+            "source": {
+              "label": "Power BI · fórmulas DAX"
+            }
+          }
+        },
+        {
+          "id": 139,
+          "text": "Power BI Desktop organiza el trabajo en tres vistas. ¿En cuál se consultan las relaciones entre tablas y su cardinalidad?",
+          "options": [
+            "Vista Informe",
+            "Vista Datos",
+            "Vista Modelo",
+            "Vista Consulta"
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "La Vista Modelo es el mapa de relaciones: muestra las líneas entre tablas y su cardinalidad.",
+            "points": [
+              {
+                "term": "Vista Informe",
+                "text": "es el lienzo donde se arrastran gráficas y mapas."
+              },
+              {
+                "term": "Vista Datos",
+                "text": "muestra en cuadrícula el contenido de las tablas cargadas."
+              },
+              {
+                "term": "Cardinalidad",
+                "text": "es el tipo de relación: uno a varios, uno a uno…"
+              }
+            ],
+            "source": {
+              "label": "Power BI · vistas principales"
+            }
+          }
+        },
+        {
+          "id": 140,
+          "text": "Va a configurar una cuenta de correo que consultará desde el ordenador, el móvil y la tablet, y quiere que lo leído en uno se marque como leído en los demás. ¿Qué protocolo elige?",
+          "options": [
+            "POP3",
+            "IMAP",
+            "SMTP",
+            "LDAP"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "IMAP sincroniza la bandeja con el servidor, así que el estado se refleja en todos los dispositivos.",
+            "points": [
+              {
+                "term": "POP3",
+                "text": "descarga los mensajes al equipo local y, típicamente, los borra del servidor: pensado para un solo equipo."
+              },
+              {
+                "term": "SMTP",
+                "text": "no sirve para recibir: es el protocolo de envío."
+              },
+              {
+                "term": "LDAP",
+                "text": "es un servicio de directorio, no de correo."
+              }
+            ],
+            "source": {
+              "label": "Outlook · protocolos de recepción"
+            }
+          }
+        },
+        {
+          "id": 141,
+          "text": "¿Qué hace POP3 con los mensajes de forma característica?",
+          "options": [
+            "Los mantiene siempre en el servidor y solo descarga las cabeceras.",
+            "Los descarga al dispositivo local y, típicamente, los elimina del servidor.",
+            "Los duplica en todos los dispositivos configurados con la misma cuenta.",
+            "Los cifra de extremo a extremo antes de descargarlos."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "POP3 se lleva el correo al equipo y lo suele borrar del servidor.",
+            "points": [
+              {
+                "term": "Consecuencia",
+                "text": "si se consulta desde un segundo dispositivo, los mensajes ya descargados pueden no estar."
+              },
+              {
+                "term": "Enfoque",
+                "text": "está pensado para trabajar desde un único equipo aislado."
+              },
+              {
+                "term": "Alternativa",
+                "text": "IMAP, que sincroniza en vez de descargar y borrar."
+              }
+            ],
+            "source": {
+              "label": "Outlook · protocolos de recepción"
+            }
+          }
+        },
+        {
+          "id": 142,
+          "text": "En Outlook, ¿qué guarda un archivo con extensión .pst?",
+          "options": [
+            "La caché sincronizada de una cuenta de Exchange.",
+            "Copias locales de correos, contactos y calendarios, y lo exportado de cuentas POP.",
+            "Las reglas de organización de la bandeja de entrada, únicamente.",
+            "La configuración de la cuenta, sin ningún mensaje."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": ".pst es el almacén local: correos, contactos, calendarios y exportaciones.",
+            "points": [
+              {
+                "term": "Cuándo aparece",
+                "text": "en cuentas POP y al exportar datos para archivarlos o moverlos de equipo."
+              },
+              {
+                "term": "Frente al .ost",
+                "text": "el .pst es un almacén por derecho propio; el .ost es una copia en caché de algo que vive en el servidor."
+              },
+              {
+                "term": "Cuidado",
+                "text": "si se pierde el .pst de una cuenta POP, no hay copia en el servidor de la que tirar."
+              }
+            ],
+            "source": {
+              "label": "Outlook · archivos de datos"
+            }
+          }
+        },
+        {
+          "id": 143,
+          "text": "¿Qué almacena un archivo .ost y qué permite hacer?",
+          "options": [
+            "Una copia en caché sincronizada de una cuenta Exchange o IMAP, que permite consultar el correo ya descargado sin conexión.",
+            "Una copia de seguridad cifrada que solo puede abrirse con la contraseña de la cuenta.",
+            "El histórico de correos eliminados definitivamente de la papelera.",
+            "Las plantillas y firmas configuradas por el usuario."
+          ],
+          "correctAnswerIndex": 0,
+          "explanation": {
+            "summary": ".ost es la caché local de una cuenta que vive en el servidor: sirve para trabajar sin cobertura.",
+            "points": [
+              {
+                "term": "Se sincroniza",
+                "text": "con Exchange o IMAP, así que el servidor sigue siendo la fuente de verdad."
+              },
+              {
+                "term": "Sin conexión",
+                "text": "permite leer lo ya descargado y dejar preparados los envíos."
+              },
+              {
+                "term": "Si se borra",
+                "text": "no se pierde nada: vuelve a generarse desde el servidor."
+              }
+            ],
+            "source": {
+              "label": "Outlook · archivos de datos"
+            }
+          }
+        },
+        {
+          "id": 144,
+          "text": "¿Cuál es el enfoque propio de OneDrive?",
+          "options": [
+            "Departamental: crear intranets y sitios de grupo para toda la organización.",
+            "Individual: un almacenamiento privado del usuario que puede decidir compartir puntualmente.",
+            "Exclusivamente de copia de seguridad automática, sin posibilidad de compartir.",
+            "De archivo histórico, para documentos que ya no se editan."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "OneDrive es el espacio del individuo: como una memoria USB en la nube que se comparte cuando uno quiere.",
+            "points": [
+              {
+                "term": "Propiedad",
+                "text": "los archivos son del usuario, que decide de forma independiente qué comparte y con quién."
+              },
+              {
+                "term": "Frente a SharePoint",
+                "text": "allí la propiedad y los permisos pertenecen a la organización, no a una persona."
+              },
+              {
+                "term": "Uso típico",
+                "text": "borradores y documentos de trabajo propios antes de llevarlos al espacio del equipo."
+              }
+            ],
+            "source": {
+              "label": "Nube · OneDrive"
+            }
+          }
+        },
+        {
+          "id": 145,
+          "text": "¿Qué caracteriza a SharePoint frente a OneDrive?",
+          "options": [
+            "Que solo admite documentos de Office y no otros formatos.",
+            "Que su enfoque es organizacional: intranets, sitios de grupo y permisos por rol, con la propiedad en la corporación.",
+            "Que no permite trabajar sobre el mismo documento a varias personas a la vez.",
+            "Que exige que cada usuario pague una licencia individual distinta."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "SharePoint es estructura de organización: sitios, roles y propiedad corporativa.",
+            "points": [
+              {
+                "term": "Sitios de grupo",
+                "text": "organizan proyectos y documentación por equipos, no por personas."
+              },
+              {
+                "term": "Permisos",
+                "text": "se asignan a roles del equipo; si alguien se va, el acceso del puesto sigue existiendo."
+              },
+              {
+                "term": "Flujos",
+                "text": "se integran aprobaciones y automatizaciones con Power Automate."
+              }
+            ],
+            "source": {
+              "label": "Nube · SharePoint"
+            }
+          }
+        },
+        {
+          "id": 146,
+          "text": "Un empleado deja la organización. ¿Qué ocurre con los documentos de un proyecto según dónde estuvieran guardados?",
+          "options": [
+            "En ambos casos se pierden al desactivar su cuenta.",
+            "En SharePoint siguen siendo del equipo, porque la propiedad es corporativa; en su OneDrive personal quedan ligados a su cuenta.",
+            "En ambos casos pasan automáticamente a su superior jerárquico.",
+            "En OneDrive siguen siendo del equipo y en SharePoint quedan ligados a su cuenta."
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Es la consecuencia práctica de la diferencia: uno es espacio personal y el otro corporativo.",
+            "points": [
+              {
+                "term": "SharePoint",
+                "text": "los permisos son del rol y la propiedad de la organización: el relevo entra y sigue trabajando."
+              },
+              {
+                "term": "OneDrive",
+                "text": "es el espacio privado del usuario; recuperar su contenido exige una gestión aparte."
+              },
+              {
+                "term": "La regla",
+                "text": "lo que es del proyecto va al sitio del equipo, no a la carpeta personal de nadie."
+              }
+            ],
+            "source": {
+              "label": "Nube · OneDrive frente a SharePoint"
+            }
+          }
+        },
+        {
+          "id": 147,
+          "text": "¿Qué herramienta permite montar flujos de aprobación integrados con los sitios de SharePoint?",
+          "options": [
+            "Power Query",
+            "Power Automate",
+            "Power BI",
+            "PowerPoint"
+          ],
+          "correctAnswerIndex": 1,
+          "explanation": {
+            "summary": "Power Automate es la pieza de automatización: flujos, aprobaciones y avisos.",
+            "points": [
+              {
+                "term": "Power Query",
+                "text": "prepara datos para su análisis; nada que ver con flujos de trabajo."
+              },
+              {
+                "term": "Power BI",
+                "text": "explota y visualiza datos ya modelados."
+              },
+              {
+                "term": "Ejemplo",
+                "text": "un documento que al subirse a una biblioteca dispara una aprobación del responsable."
+              }
+            ],
+            "source": {
+              "label": "Nube · SharePoint y Power Automate"
+            }
+          }
+        },
+        {
+          "id": 148,
+          "text": "En el ejercicio práctico, ¿qué recomienda la estrategia de examen ante un formato de carácter menor sobre el que se tienen dudas?",
+          "options": [
+            "Aplicar la opción que parezca más probable, porque no se penaliza el error.",
+            "Dedicarle el tiempo que haga falta hasta resolverlo con seguridad.",
+            "Valorar dejarlo sin aplicar, porque el coste en tiempo y la penalización pueden salir más caros que el punto.",
+            "Aplicar todas las variantes posibles para que alguna coincida."
+          ],
+          "correctAnswerIndex": 2,
+          "explanation": {
+            "summary": "Con el reloj corriendo, un detalle dudoso puede costar más de lo que vale.",
+            "points": [
+              {
+                "term": "Coste de oportunidad",
+                "text": "los minutos gastados en un detalle menor son minutos que no se dedican a lo que sí se domina."
+              },
+              {
+                "term": "Penalización",
+                "text": "las bases pueden penalizar el error, así que aplicar a ciegas no es gratis."
+              },
+              {
+                "term": "Antes de nada",
+                "text": "dos minutos de lectura completa del enunciado, para ver el documento acabado antes de tocar nada."
+              }
+            ],
+            "source": {
+              "label": "Estrategia · prueba práctica"
             }
           }
         }

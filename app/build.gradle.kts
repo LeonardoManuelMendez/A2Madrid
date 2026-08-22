@@ -128,3 +128,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
+// ExamsContentTest valida el `exams.json` que se empaqueta, leyéndolo del árbol de fuentes.
+// Gradle no puede adivinar esa dependencia, así que daría la tarea por actualizada y NO volvería
+// a ejecutar el test justo cuando cambia el contenido que vigila. Se la declaramos a mano.
+tasks.withType<Test>().configureEach {
+    inputs.file(layout.projectDirectory.file("src/commonMain/composeResources/files/exams.json"))
+        .withPropertyName("examsJson")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
+}
