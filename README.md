@@ -10,6 +10,11 @@ lanzar un test compuesto **solo por las preguntas que fallaste** en un intento c
 Cada sesión baraja las preguntas y la posición de las opciones, para que repetir un modelo siga
 enseñando en vez de premiar el «era la tercera».
 
+Además del examen oficial de 2018, incluye un bloque de **ofimática** (Temas 16-21: Windows 10,
+Word, Excel, Access y Power BI, Outlook y trabajo en la nube) con preguntas redactadas para la
+convocatoria vigente. La prueba de ofimática de la oposición es un ejercicio práctico en Word, no
+un test: este bloque no lo sustituye, prepara el conocimiento que ese práctico da por supuesto.
+
 > 🎁 **Esto es un regalo** para todas las personas que están preparando esta oposición. Úsalo
 > libremente: sin registro, sin anuncios y sin coste.
 
