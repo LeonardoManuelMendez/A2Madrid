@@ -7,6 +7,9 @@ terminar ves tu puntuación, el desglose pregunta a pregunta y un historial de m
 La app recuerda lo que fallaste: desde el resultado —o días después, desde el historial— puedes
 lanzar un test compuesto **solo por las preguntas que fallaste** en un intento concreto.
 
+Cada sesión baraja las preguntas y la posición de las opciones, para que repetir un modelo siga
+enseñando en vez de premiar el «era la tercera».
+
 > 🎁 **Esto es un regalo** para todas las personas que están preparando esta oposición. Úsalo
 > libremente: sin registro, sin anuncios y sin coste.
 

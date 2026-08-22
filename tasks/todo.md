@@ -1,123 +1,84 @@
-# TODO: Memoria de respuestas y repaso de fallos
+# TODO: Barajado de preguntas y opciones
 
-Plan: [`tasks/plan.md`](plan.md) · Spec: [`docs/spec_repaso_fallos.md`](../docs/spec_repaso_fallos.md)
+Plan: [`tasks/plan.md`](plan.md) · Spec: [`docs/spec_barajado.md`](../docs/spec_barajado.md)
 
 Regla de ejecución: TDD. Test rojo → código mínimo → verde → siguiente.
-Comando de verificación en todas las tareas salvo indicación contraria:
-`./gradlew :app:testDebugUnitTest`
+Verificación por defecto: `./gradlew :app:testDebugUnitTest`
 
 ---
 
-## Slice 1 · El dato existe y se persiste
+## Slice 1 · El barajado existe y respeta las reglas
 
-- [x] **Tarea 1: Modelo de dominio y persistencia de respuestas**
+- [x] **Tarea 1: Marcar en el dato las preguntas que no admiten barajado de opciones**
   - **Aceptación:**
-    * Nuevo `AnsweredQuestion(questionId: Int, selectedOptionIndex: Int)` en `domain/model`.
-    * `ScoreEntry` gana `answers: List<AnsweredQuestion> = emptyList()` e `isReview: Boolean = false`.
-    * `ScoreEntryDto` refleja ambos campos con el mismo valor por defecto; `ScoreMapper` los
-      traduce en los dos sentidos.
-    * Un JSON con la forma **anterior** (sin `answers` ni `isReview`) se deserializa sin error.
-  - **Verificación:** `ScoreMapperTest` nuevo, con un caso de ida y vuelta y un caso de JSON
-    heredado. Suite completa en verde.
-  - **Archivos:** `domain/model/AnsweredQuestion.kt` (nuevo), `domain/model/ScoreEntry.kt`,
-    `data/dto/ScoreEntryDto.kt`, `data/mapper/ScoreMapper.kt`,
-    `commonTest/data/ScoreMapperTest.kt` (nuevo)
+    * `QuestionDto` y `Question` ganan `lockOptionOrder: Boolean = false`.
+    * `QuestionMapper` lo traslada.
+    * En `exams.json`, las preguntas 47 y 88 quedan marcadas con `"lockOptionOrder": true`.
+  - **Verificación:** `QuestionMapperTest` nuevo (viaja el campo, por defecto `false`), más una
+    comprobación de que en el JSON hay exactamente 2 preguntas marcadas.
+  - **Archivos:** `data/dto/QuestionDto.kt`, `data/mapper/QuestionMapper.kt`,
+    `domain/model/Question.kt`, `composeResources/files/exams.json`,
+    `commonTest/data/QuestionMapperTest.kt` (nuevo)
 
-- [x] **Tarea 2: `SaveScoreUseCase` guarda las respuestas y distingue los repasos**
+- [x] **Tarea 2: `ShuffleQuestionsUseCase`**
   - **Aceptación:**
-    * Acepta `answers: List<AnsweredQuestion>` e `isReview: Boolean = false`.
-    * Devuelve `SaveScoreResult(entry, isNewBestScore)` en vez de `Boolean`, para que quien
-      llama conozca el `timestampMillis` del intento recién guardado.
-    * El cálculo de mejor marca ignora las entradas con `isReview = true`.
-  - **Verificación:** `SaveScoreUseCaseTest` ampliado: las respuestas llegan al repositorio, y un
-    repaso con pleno de aciertos no cuenta como récord.
-  - **Archivos:** `domain/usecase/SaveScoreUseCase.kt`, `commonTest/domain/SaveScoreUseCaseTest.kt`
+    * Devuelve `ShuffledQuestions(questions, optionOrder)`.
+    * Preguntas: bloques por contexto; cada pregunta sin contexto es su propio bloque; los grupos
+      contiguos que comparten contexto se mueven juntos y se barajan por dentro.
+    * Opciones: permutación por pregunta, salvo las marcadas con `lockOptionOrder`, que reciben la
+      permutación identidad.
+    * `Random` inyectado para que el resultado sea reproducible.
+  - **Verificación:** `ShuffleQuestionsUseCaseTest` nuevo: mismo conjunto de preguntas antes y
+    después, bloques contiguos, permutación biyectiva, identidad en las bloqueadas.
+  - **Archivos:** `domain/model/ShuffledQuestions.kt` (nuevo),
+    `domain/usecase/ShuffleQuestionsUseCase.kt` (nuevo), `di/Koin.kt`,
+    `commonTest/domain/ShuffleQuestionsUseCaseTest.kt` (nuevo)
 
-## Slice 2 · El test produce el dato
+## Slice 2 · El estado traduce índices
 
-- [x] **Tarea 3: `QuizUiState` y `QuizViewModel` acumulan las respuestas**
+- [x] **Tarea 3: `QuizUiState` y `QuizViewModel` barajan y guardan el índice canónico**
   - **Aceptación:**
-    * `QuizUiState` gana `answers: List<AnswerResult>`, y `correctAnswers` pasa a derivarse de
-      ella (una sola fuente de verdad, en vez de un contador paralelo).
-    * `QuizUiState` expone `wrongAnswers` para quien lo necesite.
-    * `confirmAnswer()` añade el `AnswerResult` al estado en vez de descartarlo.
-    * `finishQuiz()` entrega las respuestas a `SaveScoreUseCase` y guarda el `attemptMillis`
-      resultante en `QuizResult`.
-  - **Verificación:** `QuizViewModelTest` ampliado: un test completo deja tantas respuestas como
-    preguntas, con el índice elegido correcto en cada una; los tests existentes siguen pasando.
-  - **Archivos:** `presentation/quiz/QuizUiState.kt`, `presentation/quiz/QuizViewModel.kt`,
-    `domain/model/QuizResult.kt`, `commonTest/presentation/QuizViewModelTest.kt`
-
-## Slice 3 · El usuario lo ve
-
-- [x] **Tarea 4: `GetAttemptReviewUseCase` reconstruye el detalle del intento**
-  - **Aceptación:**
-    * Dado `examId` y `attemptMillis`, cruza las `answers` guardadas con las preguntas del examen
-      y devuelve `List<AnswerResult>` en el orden original del examen.
-    * Un intento inexistente, o uno antiguo sin respuestas, devuelve lista vacía (no lanza).
-    * Registrado en `di/Koin.kt`.
-  - **Verificación:** `GetAttemptReviewUseCaseTest` nuevo.
-  - **Archivos:** `domain/usecase/GetAttemptReviewUseCase.kt` (nuevo), `di/Koin.kt`,
-    `commonTest/domain/GetAttemptReviewUseCaseTest.kt` (nuevo)
-
-- [x] **Tarea 5: Desglose pregunta a pregunta en la pantalla de resultado**
-  - **Aceptación:**
-    * `ResultRoute` gana `attemptMillis: Long`; el host de navegación lo propaga desde el test.
-    * `ResultViewModel` expone el desglose del intento.
-    * `ResultScreen` lo pinta en un `LazyColumn`: número, ✓/✗, opción elegida, opción correcta y
-      la explicación existente. Un intento sin respuestas guardadas no muestra la sección.
-  - **Verificación:** compilación + ejecución real de la app; terminar un test y comprobar el
-    desglose contra las respuestas dadas.
-  - **Archivos:** `presentation/navigation/Routes.kt`,
-    `presentation/navigation/A2MadridNavDisplay.kt`, `presentation/quiz/QuizScreen.kt`,
-    `presentation/result/ResultViewModel.kt`, `presentation/result/ResultScreen.kt`
-
-## Slice 4 · El usuario lo usa
-
-- [x] **Tarea 6: Modo repaso en el test**
-  - **Aceptación:**
-    * `QuizViewModel.loadReview(examId, attemptMillis)` carga el examen filtrado a las preguntas
-      falladas en ese intento, conservando el orden original.
-    * El estado marca la sesión como repaso; al terminar se guarda con `isReview = true`.
-    * Si no quedan fallos, el estado lo refleja en vez de abrir un test vacío.
-  - **Verificación:** `QuizViewModelTest` ampliado: el repaso carga solo las falladas y no genera
-    récord.
+    * `QuizUiState` guarda `optionOrder` y expone `displayedOptions(question)` y
+      `canonicalOptionIndex(question, displayedIndex)`.
+    * `selectOption` recibe la posición MOSTRADA y guarda la CANÓNICA en el estado.
+    * El barajado se aplica tanto al test completo como al repaso de fallos.
+  - **Verificación:** `QuizViewModelTest` ampliado con el test crítico: con semilla fija y opciones
+    barajadas, lo que llega a `SaveScoreUseCase` es el índice canónico. Comprobar por mutación que
+    el test falla si se guarda la posición mostrada.
   - **Archivos:** `presentation/quiz/QuizUiState.kt`, `presentation/quiz/QuizViewModel.kt`,
     `commonTest/presentation/QuizViewModelTest.kt`
 
-- [x] **Tarea 7: Entradas al repaso desde resultado e historial**
+## Slice 3 · El usuario lo ve
+
+- [x] **Tarea 4: `QuizScreen` pinta el orden barajado**
   - **Aceptación:**
-    * `ReviewRoute(examId, examTitle, attemptMillis)` nueva; `QuizScreen` acepta el modo repaso
-      como parámetro de composable.
-    * `ResultScreen` muestra «Repasar los N fallos» cuando N > 0.
-    * `ScoreHistoryScreen` etiqueta los repasos como tales y permite repasar los fallos de un
-      intento anterior.
-  - **Verificación:** ejecución real: repasar desde el resultado, y repasar un intento anterior
-    tras cerrar y reabrir la app.
-  - **Archivos:** `presentation/navigation/Routes.kt`,
-    `presentation/navigation/A2MadridNavDisplay.kt`, `presentation/quiz/QuizScreen.kt`,
-    `presentation/result/ResultScreen.kt`, `presentation/scorehistory/ScoreHistoryScreen.kt`
+    * Las opciones se recorren en orden de pantalla y la letra (A/B/C/D) corresponde a la posición
+      mostrada.
+    * El estado de cada tarjeta (elegida / correcta / incorrecta) se resuelve contra el índice
+      canónico.
+  - **Verificación:** ejecución real en emulador.
+  - **Archivos:** `presentation/quiz/QuizScreen.kt`
 
-## Cierre
-
-- [x] **Tarea 8: Verificación multiplataforma y documentación**
-  - **Aceptación:** `:app:testDebugUnitTest` y `:app:compileKotlinWasmJs` en verde; `README.md`
-    menciona el repaso de fallos si procede.
-  - **Verificación:** ambos comandos de Gradle.
+- [x] **Tarea 5: Verificación en dispositivo y cierre**
+  - **Aceptación:** dos sesiones seguidas en orden distinto; 47 y 88 intactas; desglose correcto
+    tras un test barajado; `:app:compileKotlinWasmJs` en verde; README actualizado.
+  - **Verificación:** emulador + ambos comandos de Gradle.
   - **Archivos:** `README.md`
 
 ---
 
 ## Verificado en dispositivo
 
-Checkpoints 3 y 4 del plan, comprobados el 21-08-2026 en un emulador Pixel_8 (Android headless,
-build de depuración) sembrando el historial directamente en SharedPreferences para no tener que
-contestar 45 preguntas a mano:
+Emulador Pixel_8 headless, 21-08-2026. Sembrando el historial en SharedPreferences para llegar a
+las preguntas concretas sin contestar 45 a mano:
 
-- [x] Un historial en el formato ANTERIOR (sin `answers`) se lee sin fallar y no ofrece repaso.
-- [x] «Repasar 2 fallos» abre un test con exactamente las dos preguntas falladas, en el orden del
-      examen y con la cabecera «Repaso · …».
-- [x] El desglose despliega «Tu respuesta» en rojo, «Correcta» en verde y la explicación completa
-      con su artículo citado.
-- [x] El repaso se guarda etiquetado «Repaso», sin estrella: no roba el récord del modelo.
-- [x] Desde el repaso se encadena otro («Repasar 1 fallo»).
+- [x] **Las bloqueadas siguen intactas.** La 47 conserva A/B/C/D, así que «la respuesta b)» sigue
+      apuntando a la Sección segunda; la 88 mantiene «Todas las respuestas anteriores» en último
+      lugar.
+- [x] **Las demás sí se barajan.** Contrastado contra `exams.json`: la q66 se mostró
+      Quince·Veinte·Diez·Siete frente al canónico Siete·Diez·Quince·Veinte, y la q50
+      Aeropuertos·Helipuertos·Espectáculos·Pesca frente a Pesca·Espectáculos·Helipuertos·Aeropuertos.
+- [x] **Tres sesiones seguidas del mismo modelo abren con preguntas distintas.**
+- [x] **La traducción a índice canónico funciona de punta a punta.** En la q66, con las opciones
+      barajadas, se pulsó la posición C («Veinte días»); el desglose dice «Tu respuesta: Veinte
+      días». Si guardara la posición de pantalla diría «Quince días», que es la canónica en C.

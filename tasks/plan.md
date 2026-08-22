@@ -1,79 +1,69 @@
-# Plan de Implementación: Memoria de respuestas y repaso de fallos
+# Plan de Implementación: Barajado de preguntas y opciones
 
-Spec de referencia: [`docs/spec_repaso_fallos.md`](../docs/spec_repaso_fallos.md).
+Spec de referencia: [`docs/spec_barajado.md`](../docs/spec_barajado.md).
 
 ---
 
 ## 1. Arquitectura y Componentes
 
-El cambio recorre las tres capas, siempre respetando la regla de dependencias hacia dentro:
+La idea que gobierna el diseño: **el barajado es una vista, no un cambio en el dato.**
 
 1. **Dominio**
-   * Modelo nuevo `AnsweredQuestion` (id de pregunta + índice elegido).
-   * `ScoreEntry` gana `answers` e `isReview`, ambos con valor por defecto.
-   * `SaveScoreUseCase` pasa a recibir las respuestas y a devolver `SaveScoreResult`
-     (la entrada persistida + si es récord), porque la pantalla de resultado necesita el
-     `timestampMillis` del intento para localizarlo después.
-   * `GetAttemptReviewUseCase` reconstruye el detalle cruzando respuestas guardadas con
-     preguntas del examen.
+   * `Question` gana `lockOptionOrder`, el único dato que el código no puede inferir solo.
+   * `ShuffledQuestions` (preguntas reordenadas + permutación de opciones por pregunta).
+   * `ShuffleQuestionsUseCase`: puro, sin repositorio, con `Random` inyectado.
 2. **Datos**
-   * `ScoreEntryDto` refleja los dos campos nuevos; `ScoreMapper` los traduce en ambos sentidos.
-   * Sin cambios en `ScoreStorage` ni en las implementaciones de plataforma: sigue siendo una
-     lista de DTO serializada a JSON.
+   * `QuestionDto` refleja el campo nuevo con valor por defecto; `exams.json` marca las
+     preguntas 47 y 88.
 3. **Presentación**
-   * `QuizUiState` arrastra `List<AnswerResult>`; `correctAnswers` pasa a ser derivado.
-   * `QuizViewModel` acumula cada respuesta y gana el modo repaso (`loadReview`).
-   * `ResultViewModel` + `ResultScreen`: desglose pregunta a pregunta y botón de repaso.
-   * `Routes` gana `attemptMillis` en `ResultRoute` y una `ReviewRoute` nueva.
-   * `ScoreHistoryScreen` etiqueta los repasos y ofrece repasar intentos anteriores.
+   * `QuizUiState` guarda la permutación de la sesión y expone las opciones ya en orden de
+     pantalla, más la traducción a índice canónico.
+   * `QuizViewModel` baraja al cargar y traduce en `selectOption`.
+   * `QuizScreen` pinta las opciones mostradas; nada más cambia.
+
+La capa de datos y el historial **no se tocan**: siguen hablando en índices canónicos.
 
 ---
 
 ## 2. Orden de implementación (rebanadas verticales)
 
-El orden es por dependencia, no por importancia. Cada rebanada deja el proyecto compilando y en
-verde.
-
 ```
-Slice 1 (dominio+datos)  ──►  Slice 2 (captura)  ──►  Slice 3 (desglose)  ──►  Slice 4 (repaso)
-   persistir respuestas       el test las graba      el resultado las pinta    se estudian
+Slice 1 (dominio)  ──►  Slice 2 (estado)  ──►  Slice 3 (UI)
+ barajar y proteger      traducir índices      pintar el orden
+ las no barajables       canónicos             barajado
 ```
 
-* **Slice 1 · El dato existe y se persiste.** Sin esto no hay nada que mostrar.
-* **Slice 2 · El test lo produce.** `QuizViewModel` acumula y entrega a `SaveScoreUseCase`.
-* **Slice 3 · El usuario lo ve.** Desglose en la pantalla de resultado. Primer valor visible.
-* **Slice 4 · El usuario lo usa.** Repaso de fallos desde resultado e historial.
+* **Slice 1 · El barajado existe y respeta las reglas.** Sin esto no hay nada que mostrar.
+* **Slice 2 · El estado traduce.** Es la rebanada crítica: aquí se protege el repaso de fallos.
+* **Slice 3 · El usuario lo ve.** La UI pinta lo que el estado ya le da resuelto.
 
 ---
 
 ## 3. Mitigación de Riesgos
 
-* **Riesgo 1: romper historiales ya guardados en dispositivos reales.**
-  * *Mitigación:* los dos campos nuevos del DTO llevan valor por defecto, que es exactamente el
-    caso que `kotlinx.serialization` cubre al deserializar. Se añade un test que decodifica un
-    JSON con la forma **antigua** y comprueba que produce un `ScoreEntry` válido con `answers`
-    vacío. Ese test es la red de seguridad del cambio.
-* **Riesgo 2: que un repaso falsee el récord del modelo.**
-  * *Mitigación:* `isReview` y su exclusión en el cálculo de mejor marca, con test dedicado.
-* **Riesgo 3: `Long?` como argumento de navegación type-safe.**
-  * *Mitigación:* no se usa. En vez de hacer nullable el argumento de `QuizRoute`, se añade una
-    `ReviewRoute` separada con sus dos argumentos obligatorios. El modo llega a `QuizScreen`
-    como parámetro de composable, no como argumento de navegación.
-* **Riesgo 4: desglose de 45 preguntas en la pantalla de resultado.**
-  * *Mitigación:* `LazyColumn`, no `Column` con scroll. Cada fila colapsada por defecto.
-* **Riesgo 5: romper multiplataforma.**
-  * *Mitigación:* todo en `commonMain`; verificación con `:app:compileKotlinWasmJs` al cierre.
+* **Riesgo 1 (el grave): romper el repaso de fallos ya publicado.**
+  * *Mitigación:* el índice que se persiste sigue siendo el canónico. Se añade un test que baraja
+    con semilla fija, responde, y comprueba que lo guardado apunta a la opción correcta del JSON
+    y no a la posición de pantalla. Ese test es la red de seguridad de todo el cambio.
+* **Riesgo 2: romper las preguntas con opciones autorreferentes.**
+  * *Mitigación:* `lockOptionOrder` en el dato + test dedicado. No se usan heurísticas de texto.
+* **Riesgo 3: dispersar las preguntas que comparten estímulo.**
+  * *Mitigación:* barajado por bloques + test que comprueba que siguen contiguas.
+* **Riesgo 4: barajado no reproducible en tests.**
+  * *Mitigación:* `Random` inyectado; en producción se crea uno por sesión.
+* **Riesgo 5: que el barajado se aplique también al reintentar y confunda al comparar marcas.**
+  * *Mitigación:* ninguna necesaria. La puntuación no depende del orden; el récord se sigue
+    calculando sobre aciertos totales del modelo.
 
 ---
 
 ## 4. Puntos de Verificación (Checkpoints)
 
-* **Checkpoint 1 (fin de Slice 1):** `./gradlew :app:testDebugUnitTest` en verde, incluido el
-  test de compatibilidad con el formato antiguo.
-* **Checkpoint 2 (fin de Slice 2):** los tests de `QuizViewModel` demuestran que un test
-  completo deja tantas respuestas como preguntas, y `correctAnswers` sigue cuadrando.
-* **Checkpoint 3 (fin de Slice 3):** ejecución real: terminar un test y ver el desglose con la
-  opción elegida y la correcta en cada pregunta.
-* **Checkpoint 4 (fin de Slice 4):** ejecución real: repasar fallos desde el resultado, y
-  repasar los fallos de un intento anterior tras reiniciar la app.
-* **Checkpoint final:** `:app:compileKotlinWasmJs` en verde (garantía multiplataforma).
+* **Checkpoint 1 (fin de Slice 1):** suite en verde, incluidos los tests de bloques y de
+  `lockOptionOrder`.
+* **Checkpoint 2 (fin de Slice 2):** el test de índice canónico pasa, y se comprueba que FALLA si
+  se guarda a propósito la posición mostrada (prueba de mutación).
+* **Checkpoint 3 (fin de Slice 3):** ejecución real en emulador — dos sesiones seguidas salen en
+  orden distinto, la 47 y la 88 conservan sus opciones, y el desglose tras un test barajado señala
+  la opción realmente pulsada.
+* **Checkpoint final:** `:app:compileKotlinWasmJs` en verde.
