@@ -17,4 +17,5 @@ fun QuestionDto.toDomain(contexts: Map<String, String> = emptyMap()): Question =
     correctAnswerIndex = correctAnswerIndex,
     explanation = explanation?.toDomain(),
     context = contextId?.let { contexts[it] },
+    lockOptionOrder = lockOptionOrder,
 )

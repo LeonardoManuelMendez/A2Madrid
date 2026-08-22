@@ -249,13 +249,16 @@ private fun QuestionState(
             ContextBlock(context)
         }
 
-        question.options.forEachIndexed { index, option ->
+        // Las opciones se pintan en el orden barajado de ESTA sesión: la letra corresponde a la
+        // posición en pantalla, y el estado se resuelve contra el índice canónico, que es el que
+        // conoce el estado (y el que se persiste).
+        uiState.displayedOptions(question).forEachIndexed { displayedIndex, option ->
             AnswerOptionCard(
                 text = option,
-                label = ('A' + index).toString(),
-                state = optionStateFor(uiState, index),
+                label = ('A' + displayedIndex).toString(),
+                state = optionStateFor(uiState, uiState.canonicalOptionIndex(question, displayedIndex)),
                 enabled = !uiState.isAnswerConfirmed,
-                onClick = { onSelectOption(index) },
+                onClick = { onSelectOption(displayedIndex) },
             )
         }
 
@@ -292,14 +295,14 @@ private fun ContextBlock(context: String) {
     }
 }
 
-private fun optionStateFor(uiState: QuizUiState, index: Int): OptionState {
+private fun optionStateFor(uiState: QuizUiState, canonicalIndex: Int): OptionState {
     val confirmed = uiState.isAnswerConfirmed
     val correctIndex = uiState.currentQuestion?.correctAnswerIndex
     return when {
-        !confirmed && uiState.selectedOptionIndex == index -> OptionState.Selected
+        !confirmed && uiState.selectedOptionIndex == canonicalIndex -> OptionState.Selected
         !confirmed -> OptionState.Default
-        index == correctIndex -> OptionState.Correct
-        index == uiState.selectedOptionIndex -> OptionState.Incorrect
+        canonicalIndex == correctIndex -> OptionState.Correct
+        canonicalIndex == uiState.selectedOptionIndex -> OptionState.Incorrect
         else -> OptionState.Dimmed
     }
 }

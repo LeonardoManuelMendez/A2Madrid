@@ -1,23 +1,26 @@
 package io.github.leonardomanuelmendez.a2madrid.presentation
 
+import io.github.leonardomanuelmendez.a2madrid.domain.model.AnsweredQuestion
 import io.github.leonardomanuelmendez.a2madrid.domain.model.Exam
 import io.github.leonardomanuelmendez.a2madrid.domain.model.Question
-import io.github.leonardomanuelmendez.a2madrid.domain.model.AnsweredQuestion
 import io.github.leonardomanuelmendez.a2madrid.domain.model.ScoreEntry
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.EvaluateAnswerUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetAttemptReviewUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.SaveScoreUseCase
+import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ShuffleQuestionsUseCase
 import io.github.leonardomanuelmendez.a2madrid.fake.FakeQuizRepository
+import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizUiState
 import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import kotlin.random.Random
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -39,18 +42,43 @@ class QuizViewModelTest {
     fun tearDown() = Dispatchers.resetMain()
 
     private val questions = listOf(
-        Question(1, "Q1", listOf("a", "b"), correctAnswerIndex = 0),
-        Question(2, "Q2", listOf("c", "d"), correctAnswerIndex = 1),
+        Question(1, "Q1", listOf("a1", "b1", "c1", "d1"), correctAnswerIndex = 0),
+        Question(2, "Q2", listOf("a2", "b2", "c2", "d2"), correctAnswerIndex = 1),
     )
     private val exam = Exam("modelo_a", "Modelo A", questions)
 
-    private fun buildViewModel(repository: FakeQuizRepository): QuizViewModel =
-        QuizViewModel(
-            getExam = GetExamUseCase(repository),
-            evaluateAnswer = EvaluateAnswerUseCase(),
-            saveScore = SaveScoreUseCase(repository),
-            getAttemptReview = GetAttemptReviewUseCase(GetExamUseCase(repository), repository),
-        )
+    /**
+     * Como la sesión se baraja, los tests no pueden razonar en «la opción 0»: eligen por
+     * CONTENIDO y dejan que el ViewModel traduzca. Es justo lo que hace la pantalla.
+     */
+    private fun QuizViewModel.selectByText(text: String) {
+        val state = uiState.value
+        val question = state.currentQuestion ?: error("no hay pregunta actual")
+        val displayed = state.displayedOptions(question).indexOf(text)
+        check(displayed >= 0) { "la opción '$text' no se está mostrando" }
+        selectOption(displayed)
+    }
+
+    private fun QuizViewModel.selectCorrect() {
+        val question = uiState.value.currentQuestion ?: error("no hay pregunta actual")
+        selectByText(question.correctAnswer)
+    }
+
+    private fun QuizViewModel.selectWrong() {
+        val question = uiState.value.currentQuestion ?: error("no hay pregunta actual")
+        selectByText(question.options.first { it != question.correctAnswer })
+    }
+
+    private fun buildViewModel(
+        repository: FakeQuizRepository,
+        shuffle: ShuffleQuestionsUseCase = ShuffleQuestionsUseCase(Random(0)),
+    ): QuizViewModel = QuizViewModel(
+        getExam = GetExamUseCase(repository),
+        evaluateAnswer = EvaluateAnswerUseCase(),
+        saveScore = SaveScoreUseCase(repository),
+        getAttemptReview = GetAttemptReviewUseCase(GetExamUseCase(repository), repository),
+        shuffleQuestions = shuffle,
+    )
 
     @Test
     fun `loads questions for selected exam`() = runTest {
@@ -85,7 +113,7 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        viewModel.selectOption(0)
+        viewModel.selectCorrect()
         viewModel.confirmAnswer()
 
         val state = viewModel.uiState.value
@@ -99,11 +127,12 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        viewModel.selectOption(0)
+        viewModel.selectCorrect()
         viewModel.confirmAnswer()
-        viewModel.selectOption(1)
+        val elegida = viewModel.uiState.value.selectedOptionIndex
+        viewModel.selectWrong()
 
-        assertEquals(0, viewModel.uiState.value.selectedOptionIndex)
+        assertEquals(elegida, viewModel.uiState.value.selectedOptionIndex)
     }
 
     @Test
@@ -112,14 +141,11 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        // Q1 correct
-        viewModel.selectOption(0)
-        viewModel.confirmAnswer()
-        viewModel.nextQuestion()
-        // Q2 correct
-        viewModel.selectOption(1)
-        viewModel.confirmAnswer()
-        viewModel.nextQuestion()
+        repeat(questions.size) {
+            viewModel.selectCorrect()
+            viewModel.confirmAnswer()
+            viewModel.nextQuestion()
+        }
         advanceUntilIdle()
 
         val result = viewModel.uiState.value.result
@@ -135,19 +161,24 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        // Q1 acertada (índice 0), Q2 fallada (elige 0, la correcta es 1).
-        viewModel.selectOption(0)
+        viewModel.selectCorrect()
         viewModel.confirmAnswer()
         viewModel.nextQuestion()
-        viewModel.selectOption(0)
+        viewModel.selectWrong()
         viewModel.confirmAnswer()
         advanceUntilIdle()
 
         val answers = viewModel.uiState.value.answers
         assertEquals(2, answers.size)
-        assertEquals(listOf(1, 2), answers.map { it.question.id })
-        assertEquals(listOf(0, 0), answers.map { it.selectedOptionIndex })
+        assertEquals(setOf(1, 2), answers.map { it.question.id }.toSet())
         assertEquals(listOf(true, false), answers.map { it.isCorrect })
+        // El índice guardado apunta siempre al orden canónico del examen.
+        answers.forEach { answer ->
+            val esperado = answer.question.options[answer.selectedOptionIndex]
+            val canonica = questions.first { it.id == answer.question.id }
+                .options[answer.selectedOptionIndex]
+            assertEquals(esperado, canonica)
+        }
     }
 
     @Test
@@ -156,16 +187,19 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        viewModel.selectOption(0)   // Q1 correcta
+        val primeraId = viewModel.uiState.value.currentQuestion!!.id
+        viewModel.selectCorrect()
         viewModel.confirmAnswer()
         viewModel.nextQuestion()
-        viewModel.selectOption(0)   // Q2 fallada
+        val segundaId = viewModel.uiState.value.currentQuestion!!.id
+        viewModel.selectWrong()
         viewModel.confirmAnswer()
         advanceUntilIdle()
 
-        val wrong = viewModel.uiState.value.wrongAnswers
-        assertEquals(listOf(2), wrong.map { it.question.id })
-        assertEquals(1, viewModel.uiState.value.correctAnswers)
+        val state = viewModel.uiState.value
+        assertEquals(listOf(segundaId), state.wrongAnswers.map { it.question.id })
+        assertEquals(1, state.correctAnswers)
+        assertTrue(primeraId != segundaId)
     }
 
     @Test
@@ -175,34 +209,95 @@ class QuizViewModelTest {
         viewModel.loadExam(exam.id)
         advanceUntilIdle()
 
-        viewModel.selectOption(0)
-        viewModel.confirmAnswer()
-        viewModel.nextQuestion()
-        viewModel.selectOption(0)
-        viewModel.confirmAnswer()
-        viewModel.nextQuestion()
+        repeat(questions.size) {
+            viewModel.selectCorrect()
+            viewModel.confirmAnswer()
+            viewModel.nextQuestion()
+        }
         advanceUntilIdle()
 
         val stored = repository.scoreHistory.first().single()
-        assertEquals(listOf(1, 2), stored.answers.map { it.questionId })
-        assertEquals(listOf(0, 0), stored.answers.map { it.selectedOptionIndex })
+        assertEquals(setOf(1, 2), stored.answers.map { it.questionId }.toSet())
 
-        // El resultado lleva el identificador del intento para poder recuperarlo luego.
         val result = viewModel.uiState.value.result
         assertNotNull(result)
         assertEquals(stored.timestampMillis, result!!.attemptMillis)
     }
 
+    // ---- Barajado ----
+
+    @Test
+    fun `guarda el indice canonico aunque las opciones se muestren barajadas`() = runTest {
+        val viewModel = buildViewModel(FakeQuizRepository(exams = listOf(exam)), ShuffleQuestionsUseCase(Random(5)))
+        viewModel.loadExam(exam.id)
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        val question = state.currentQuestion!!
+        val textoPulsado = state.displayedOptions(question)[0]
+
+        viewModel.selectOption(0) // el usuario pulsa la PRIMERA opción que ve
+        viewModel.confirmAnswer()
+
+        val answer = viewModel.uiState.value.answers.single()
+        // Lo guardado indexa el orden canónico, no la posición de pantalla.
+        assertEquals(textoPulsado, question.options[answer.selectedOptionIndex])
+    }
+
+    @Test
+    fun `el desglose de un intento barajado senala la opcion que se pulso`() = runTest {
+        // Este es el test que protege el repaso de fallos ya publicado: si el barajado se colara
+        // en lo persistido, el desglose del día siguiente señalaría otra opción distinta.
+        val repository = FakeQuizRepository(exams = listOf(exam))
+        val viewModel = buildViewModel(repository, ShuffleQuestionsUseCase(Random(11)))
+        viewModel.loadExam(exam.id)
+        advanceUntilIdle()
+
+        val pulsado = mutableMapOf<Int, String>()
+        repeat(questions.size) {
+            val state = viewModel.uiState.value
+            val question = state.currentQuestion!!
+            pulsado[question.id] = state.displayedOptions(question)[0]
+            viewModel.selectOption(0)
+            viewModel.confirmAnswer()
+            viewModel.nextQuestion()
+        }
+        advanceUntilIdle()
+
+        val entry = repository.scoreHistory.first().single()
+        val desglose = GetAttemptReviewUseCase(GetExamUseCase(repository), repository)(
+            examId = exam.id,
+            attemptMillis = entry.timestampMillis,
+        )
+
+        assertEquals(
+            pulsado,
+            desglose.associate { it.question.id to it.question.options[it.selectedOptionIndex] },
+        )
+    }
+
+    @Test
+    fun `un examen sin barajar muestra las opciones en su orden original`() = runTest {
+        // Sin permutación registrada, el estado debe degradar a la identidad.
+        val state = QuizUiState(questions = questions, isLoading = false)
+
+        assertEquals(questions[0].options, state.displayedOptions(questions[0]))
+        assertEquals(2, state.canonicalOptionIndex(questions[0], 2))
+    }
+
     // ---- Modo repaso ----
 
-    /** Historial con un intento en el que se falló solo la pregunta 2. */
+    /** Historial con un intento del examen completo, con las respuestas indicadas. */
     private fun repositoryWithAttempt(vararg answers: AnsweredQuestion) = FakeQuizRepository(
         exams = listOf(exam),
         initialHistory = listOf(
             ScoreEntry(
                 examId = exam.id,
                 examTitle = exam.title,
-                correctAnswers = answers.size - answers.count { it.selectedOptionIndex != 0 },
+                correctAnswers = answers.count { answer ->
+                    questions.first { it.id == answer.questionId }
+                        .isCorrect(answer.selectedOptionIndex)
+                },
                 totalQuestions = 2,
                 timestampMillis = 700L,
                 answers = answers.toList(),
@@ -212,7 +307,7 @@ class QuizViewModelTest {
 
     @Test
     fun `el repaso carga solo las preguntas falladas`() = runTest {
-        // Q1 acertada (0 es correcta), Q2 fallada (eligió 0, la correcta es 1).
+        // Q1 acertada (0 es la correcta), Q2 fallada (eligió 0, la correcta es 1).
         val repository = repositoryWithAttempt(AnsweredQuestion(1, 0), AnsweredQuestion(2, 0))
         val viewModel = buildViewModel(repository)
 
@@ -233,7 +328,7 @@ class QuizViewModelTest {
 
         viewModel.loadReview(exam.id, attemptMillis = 700L)
         advanceUntilIdle()
-        viewModel.selectOption(1)   // ahora sí acierta la 2
+        viewModel.selectCorrect()
         viewModel.confirmAnswer()
         viewModel.nextQuestion()
         advanceUntilIdle()
@@ -249,7 +344,6 @@ class QuizViewModelTest {
 
     @Test
     fun `un repaso sin fallos no abre un test vacio`() = runTest {
-        // Intento perfecto: no queda nada que repasar.
         val repository = repositoryWithAttempt(AnsweredQuestion(1, 0), AnsweredQuestion(2, 1))
         val viewModel = buildViewModel(repository)
 

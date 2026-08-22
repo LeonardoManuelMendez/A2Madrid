@@ -1554,7 +1554,8 @@
               "label": "Constitución Española, art. 53.2",
               "quote": "Cualquier ciudadano podrá recabar la tutela de las libertades y derechos reconocidos en el artículo 14 y la Sección primera del Capítulo segundo ante los Tribunales ordinarios por un procedimiento basado en los principios de preferencia y sumariedad y, en su caso, a través del recurso de amparo ante el Tribunal Constitucional. Este último recurso será aplicable a la objeción de conciencia reconocida en el artículo 30."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 48,
@@ -2815,7 +2816,8 @@
               "label": "Ley 39/2015, art. 53.1.d)",
               "quote": "A no presentar datos y documentos no exigidos por las normas aplicables al procedimiento de que se trate, que ya se encuentren en poder de las Administraciones Públicas o que hayan sido elaborados por éstas."
             }
-          }
+          },
+          "lockOptionOrder": true
         },
         {
           "id": 89,

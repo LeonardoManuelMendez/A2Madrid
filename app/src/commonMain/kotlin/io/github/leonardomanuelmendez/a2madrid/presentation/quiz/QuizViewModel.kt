@@ -12,6 +12,9 @@
  * Tiene dos modos, y la única diferencia entre ellos es de QUÉ preguntas se compone la sesión:
  * el test completo carga el examen entero; el repaso carga solo las falladas en un intento
  * anterior. Todo lo demás (confirmar, avanzar, guardar) es idéntico.
+ *
+ * Ambos modos se barajan. El barajado es solo de PRESENTACIÓN: `selectOption` recibe la posición
+ * que el usuario ve y guarda en el estado el índice canónico, que es el que acaba en el historial.
  */
 package io.github.leonardomanuelmendez.a2madrid.presentation.quiz
 
@@ -24,6 +27,7 @@ import io.github.leonardomanuelmendez.a2madrid.domain.usecase.EvaluateAnswerUseC
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetAttemptReviewUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.SaveScoreUseCase
+import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ShuffleQuestionsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -39,6 +43,7 @@ class QuizViewModel constructor(
     private val evaluateAnswer: EvaluateAnswerUseCase,
     private val saveScore: SaveScoreUseCase,
     private val getAttemptReview: GetAttemptReviewUseCase,
+    private val shuffleQuestions: ShuffleQuestionsUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(QuizUiState())
@@ -88,6 +93,7 @@ class QuizViewModel constructor(
                             examId = session.examId,
                             examTitle = session.examTitle,
                             questions = session.questions,
+                            optionOrder = session.optionOrder,
                             isReview = isReview,
                         )
                     }
@@ -111,19 +117,25 @@ class QuizViewModel constructor(
                 .filterNot { it.isCorrect }
                 .map { it.question }
         }
-        return Session(exam.id, exam.title, questions)
+        val shuffled = shuffleQuestions(questions)
+        return Session(exam.id, exam.title, shuffled.questions, shuffled.optionOrder)
     }
 
-    /** The questions this run is made of, plus the exam they belong to. */
+    /** The questions this run is made of, in session order, plus the exam they belong to. */
     private data class Session(
         val examId: String,
         val examTitle: String,
         val questions: List<Question>,
+        val optionOrder: Map<Int, List<Int>>,
     )
 
-    fun selectOption(optionIndex: Int) {
-        if (_uiState.value.isAnswerConfirmed) return
-        _uiState.update { it.copy(selectedOptionIndex = optionIndex) }
+    /** @param displayedOptionIndex position the user tapped on screen, not the canonical index. */
+    fun selectOption(displayedOptionIndex: Int) {
+        val state = _uiState.value
+        if (state.isAnswerConfirmed) return
+        val question = state.currentQuestion ?: return
+        val canonical = state.canonicalOptionIndex(question, displayedOptionIndex)
+        _uiState.update { it.copy(selectedOptionIndex = canonical) }
     }
 
     fun confirmAnswer() {

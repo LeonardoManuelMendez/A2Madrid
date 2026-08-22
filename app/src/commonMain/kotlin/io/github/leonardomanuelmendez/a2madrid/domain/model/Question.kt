@@ -20,6 +20,13 @@ data class Question(
     val explanation: Explanation? = null,
     /** Optional shared stimulus (table, grid…) shown verbatim in a monospace block. */
     val context: String? = null,
+    /**
+     * True when the options refer to each other («la respuesta b) es correcta», «todas las
+     * anteriores») and therefore must keep the order they were written in. Shuffling them would
+     * leave the reference dangling. It cannot be inferred from the text with any reliability, so
+     * it travels in the data.
+     */
+    val lockOptionOrder: Boolean = false,
 ) {
     init {
         require(options.size >= 2) { "A question needs at least two options" }

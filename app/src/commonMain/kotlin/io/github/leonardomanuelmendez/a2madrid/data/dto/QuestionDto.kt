@@ -19,4 +19,6 @@ data class QuestionDto(
     val explanation: ExplanationDto? = null,
     /** Key into [ExamDto.contexts] for a shared stimulus, if any. */
     val contextId: String? = null,
+    /** True when the options refer to each other and must not be shuffled. See [Question]. */
+    val lockOptionOrder: Boolean = false,
 )

@@ -19,6 +19,7 @@ import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamsUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetOppositionsUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ObserveScoreHistoryUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.SaveScoreUseCase
+import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ShuffleQuestionsUseCase
 import io.github.leonardomanuelmendez.a2madrid.presentation.examselection.ExamSelectionViewModel
 import io.github.leonardomanuelmendez.a2madrid.presentation.oppositionselection.OppositionSelectionViewModel
 import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizViewModel
@@ -46,6 +47,7 @@ val appModule = module {
     factoryOf(::GetExamUseCase)
     factoryOf(::GetAttemptReviewUseCase)
     factoryOf(::EvaluateAnswerUseCase)
+    factory { ShuffleQuestionsUseCase() }
     factoryOf(::SaveScoreUseCase)
     factoryOf(::ObserveScoreHistoryUseCase)
     factoryOf(::DeleteScoreUseCase)
