@@ -121,29 +121,33 @@ private fun ScoreHistoryContent(
                     .groupBy(ScoreEntry::examId)
                     .mapValues { (_, examEntries) -> examEntries.maxOf { it.correctAnswers } }
             }
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-                LazyColumn(
-                    modifier = Modifier.widthIn(max = ContentMaxWidth).fillMaxSize(),
-                    contentPadding = PaddingValues(
-                        start = 20.dp,
-                        end = 20.dp,
-                        top = innerPadding.calculateTopPadding() + 12.dp,
-                        bottom = innerPadding.calculateBottomPadding() + 20.dp,
-                    ),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    items(
-                        items = entries,
-                        key = { entry -> "${entry.examId}-${entry.timestampMillis}-${entry.correctAnswers}" },
-                    ) { entry ->
-                        ScoreRow(
-                            entry = entry,
-                            isBest = !entry.isReview && !entry.isExam &&
-                                entry.correctAnswers == bestCorrectByExam[entry.examId],
-                            onReview = { onReviewAttempt(entry) },
-                            onDelete = { pendingDeleteEntry = entry },
-                        )
-                    }
+            // La LazyColumn ocupa TODO EL ANCHO y son sus filas las que se limitan: así la rueda
+            // del ratón funciona también sobre los márgenes de una ventana ancha.
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                contentPadding = PaddingValues(
+                    start = 20.dp,
+                    end = 20.dp,
+                    top = innerPadding.calculateTopPadding() + 12.dp,
+                    bottom = innerPadding.calculateBottomPadding() + 20.dp,
+                ),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                items(
+                    items = entries,
+                    key = { entry -> "${entry.examId}-${entry.timestampMillis}-${entry.correctAnswers}" },
+                ) { entry ->
+                    ScoreRow(
+                        modifier = Modifier
+                            .widthIn(max = ContentMaxWidth)
+                            .fillMaxWidth(),
+                        entry = entry,
+                        isBest = !entry.isReview && !entry.isExam &&
+                            entry.correctAnswers == bestCorrectByExam[entry.examId],
+                        onReview = { onReviewAttempt(entry) },
+                        onDelete = { pendingDeleteEntry = entry },
+                    )
                 }
             }
         }
@@ -206,6 +210,7 @@ private fun ScoreRow(
     isBest: Boolean,
     onReview: () -> Unit,
     onDelete: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val container = if (isBest) {
         MaterialTheme.colorScheme.tertiaryContainer
@@ -215,7 +220,7 @@ private fun ScoreRow(
     Surface(
         shape = RoundedCornerShape(16.dp),
         color = container,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         Row(
             modifier = Modifier

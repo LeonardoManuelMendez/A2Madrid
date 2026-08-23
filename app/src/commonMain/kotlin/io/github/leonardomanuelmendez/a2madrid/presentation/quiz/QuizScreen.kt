@@ -250,12 +250,18 @@ private fun QuestionState(
     onSelectOption: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier, contentAlignment = Alignment.TopCenter) {
+    // El scroll va en el contenedor a TODO EL ANCHO, no en la columna de contenido: si se
+    // pusiera en la columna limitada a ContentMaxWidth, en una ventana ancha la rueda del ratón
+    // no haría nada en los márgenes laterales.
+    Column(
+        modifier = modifier
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
       Column(
         modifier = Modifier
             .widthIn(max = ContentMaxWidth)
             .fillMaxWidth()
-            .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp, vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
@@ -302,22 +308,43 @@ private fun QuestionState(
     }
 }
 
+/**
+ * Estímulo compartido (una rejilla de letras, una tabla) en monoespaciado.
+ *
+ * No se ajusta el texto A PROPÓSITO: una rejilla o una tabla pierden el sentido si las filas se
+ * parten. A cambio hay que desplazar de lado, y eso es invisible: sin aviso, el usuario no sabe
+ * que a la derecha queda contenido. Por eso se muestra la pista, y SOLO cuando de verdad hay algo
+ * fuera de la vista (`maxValue > 0`).
+ */
 @Composable
 private fun ContextBlock(context: String) {
-    Surface(
-        shape = RoundedCornerShape(12.dp),
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Text(
-            text = context,
-            style = MaterialTheme.typography.bodySmall,
-            fontFamily = FontFamily.Monospace,
-            softWrap = false,
-            modifier = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(12.dp),
-        )
+    val scroll = rememberScrollState()
+    // Antes de medir, maxValue es Int.MAX_VALUE: no anunciar nada todavía.
+    val desbordaAlLado = scroll.maxValue > 0 && scroll.maxValue != Int.MAX_VALUE
+
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Surface(
+            shape = RoundedCornerShape(12.dp),
+            color = MaterialTheme.colorScheme.surfaceVariant,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(
+                text = context,
+                style = MaterialTheme.typography.bodySmall,
+                fontFamily = FontFamily.Monospace,
+                softWrap = false,
+                modifier = Modifier
+                    .horizontalScroll(scroll)
+                    .padding(12.dp),
+            )
+        }
+        if (desbordaAlLado) {
+            Text(
+                text = "Desliza el recuadro para ver el resto →",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
     }
 }
 
