@@ -31,6 +31,14 @@ data class ResultRoute(
     val isExam: Boolean = false,
 )
 
+/** Las instrucciones que se leen antes de arrancar el reloj de un simulacro. */
+@Serializable
+data class SimulationBriefingRoute(
+    val examId: String,
+    val examTitle: String,
+    val questionCount: Int,
+)
+
 /** Simulacro de un modelo: mismo test, pero con reloj, penalización y sin corrección. */
 @Serializable
 data class SimulationRoute(val examId: String)

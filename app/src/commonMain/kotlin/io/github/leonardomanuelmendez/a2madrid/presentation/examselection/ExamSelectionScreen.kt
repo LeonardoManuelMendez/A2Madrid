@@ -29,8 +29,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.leonardomanuelmendez.a2madrid.domain.model.Exam
 import io.github.leonardomanuelmendez.a2madrid.presentation.ContentMaxWidth
@@ -52,7 +53,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun ExamSelectionScreen(
     oppositionId: String,
     onExamSelected: (String) -> Unit,
-    onSimulationSelected: (String) -> Unit,
+    onSimulationSelected: (Exam) -> Unit,
     onViewScores: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
@@ -76,7 +77,7 @@ fun ExamSelectionScreen(
 private fun ExamSelectionContent(
     oppositionId: String,
     uiState: ExamSelectionUiState,
-    onSimulationSelected: (String) -> Unit,
+    onSimulationSelected: (Exam) -> Unit,
     onExamSelected: (String) -> Unit,
     onViewScores: () -> Unit,
     onBack: () -> Unit,
@@ -143,8 +144,8 @@ private fun ExamSelectionContent(
                     uiState.exams.forEach { exam ->
                         ExamCard(
                             exam = exam,
-                            onClick = { onExamSelected(exam.id) },
-                            onSimulate = { onSimulationSelected(exam.id) },
+                            onStudy = { onExamSelected(exam.id) },
+                            onSimulate = { onSimulationSelected(exam) },
                         )
                     }
                 }
@@ -153,15 +154,21 @@ private fun ExamSelectionContent(
     }
 }
 
+/**
+ * La tarjeta NO es pulsable en su conjunto: las dos acciones se comportan de forma muy distinta y
+ * una superficie pulsable sin etiqueta no dice cuál de las dos dispara.
+ */
 @Composable
-private fun ExamCard(exam: Exam, onClick: () -> Unit, onSimulate: () -> Unit) {
+private fun ExamCard(exam: Exam, onStudy: () -> Unit, onSimulate: () -> Unit) {
     Surface(
-        onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 8.dp)) {
+        Column(
+            modifier = Modifier.padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
             Text(
                 text = exam.title,
                 style = MaterialTheme.typography.titleMedium,
@@ -172,12 +179,31 @@ private fun ExamCard(exam: Exam, onClick: () -> Unit, onSimulate: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            // Un minuto por pregunta, la proporción del examen real (90 en 90 minutos).
-            TextButton(onClick = onSimulate, modifier = Modifier.padding(top = 4.dp)) {
-                Text("Simulacro · ${exam.questionCount} min, con penalización")
+
+            Button(onClick = onStudy, modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) {
+                Text("Estudiar")
             }
+            ActionHint("Corrige y explica cada pregunta")
+
+            // Un minuto por pregunta, la proporción del examen real (90 en 90 minutos).
+            OutlinedButton(onClick = onSimulate, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+                Text("Simulacro")
+            }
+            ActionHint("${exam.questionCount} min · con penalización")
         }
     }
+}
+
+/** La línea pequeña bajo cada botón: es la que hace que no haya que adivinar. */
+@Composable
+private fun ActionHint(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 @Composable

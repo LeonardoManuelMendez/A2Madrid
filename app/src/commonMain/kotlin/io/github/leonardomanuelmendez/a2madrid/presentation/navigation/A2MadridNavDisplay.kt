@@ -21,6 +21,7 @@ import io.github.leonardomanuelmendez.a2madrid.presentation.oppositionselection.
 import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizScreen
 import io.github.leonardomanuelmendez.a2madrid.presentation.result.ResultScreen
 import io.github.leonardomanuelmendez.a2madrid.presentation.scorehistory.ScoreHistoryScreen
+import io.github.leonardomanuelmendez.a2madrid.presentation.simulation.SimulationBriefingScreen
 
 @Composable
 fun A2MadridNavHost(modifier: Modifier = Modifier) {
@@ -52,7 +53,11 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
             ExamSelectionScreen(
                 oppositionId = route.oppositionId,
                 onExamSelected = { examId -> navController.navigate(QuizRoute(examId)) },
-                onSimulationSelected = { examId -> navController.navigate(SimulationRoute(examId)) },
+                onSimulationSelected = { exam ->
+                    navController.navigate(
+                        SimulationBriefingRoute(exam.id, exam.title, exam.questionCount),
+                    )
+                },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
                 onBack = { navController.popBackStack() },
             )
@@ -75,6 +80,21 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                 },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
                 onGoHome = goHome,
+            )
+        }
+        composable<SimulationBriefingRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<SimulationBriefingRoute>()
+            SimulationBriefingScreen(
+                examTitle = route.examTitle,
+                questionCount = route.questionCount,
+                // Las instrucciones salen de la pila al empezar: volver atrás desde el simulacro
+                // lleva a la lista de modelos, no a leerlas otra vez.
+                onStart = {
+                    navController.navigate(SimulationRoute(route.examId)) {
+                        popUpTo<SimulationBriefingRoute> { inclusive = true }
+                    }
+                },
+                onBack = { navController.popBackStack() },
             )
         }
         composable<SimulationRoute> { backStackEntry ->
