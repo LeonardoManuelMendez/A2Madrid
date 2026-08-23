@@ -44,10 +44,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.leonardomanuelmendez.a2madrid.domain.model.AnswerResult
+import io.github.leonardomanuelmendez.a2madrid.domain.model.ExamScore
 import io.github.leonardomanuelmendez.a2madrid.domain.model.QuizResult
 import io.github.leonardomanuelmendez.a2madrid.presentation.ContentMaxWidth
 import io.github.leonardomanuelmendez.a2madrid.presentation.result.components.BreakdownRow
 import io.github.leonardomanuelmendez.a2madrid.presentation.theme.A2MadridTheme
+import kotlin.math.abs
+import kotlin.math.roundToInt
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -60,6 +63,7 @@ fun ResultScreen(
     isNewBestScore: Boolean,
     attemptMillis: Long,
     isReview: Boolean,
+    isExam: Boolean,
     onRestart: () -> Unit,
     onReviewWrong: () -> Unit,
     onViewScores: () -> Unit,
@@ -80,6 +84,11 @@ fun ResultScreen(
         result = QuizResult(correctAnswers, totalQuestions, isNewBestScore, attemptMillis),
         bestScore = bestForExam,
         isReview = isReview,
+        examScore = if (isExam && breakdown.isNotEmpty()) {
+            ExamScore.from(breakdown, totalQuestions)
+        } else {
+            null
+        },
         breakdown = breakdown,
         onRestart = onRestart,
         onReviewWrong = onReviewWrong,
@@ -94,6 +103,8 @@ private fun ResultContent(
     result: QuizResult,
     bestScore: Int,
     isReview: Boolean,
+    /** Presente solo en un simulacro: obliga a puntuar con las reglas del examen. */
+    examScore: ExamScore?,
     breakdown: List<AnswerResult>,
     onRestart: () -> Unit,
     onReviewWrong: () -> Unit,
@@ -114,6 +125,7 @@ private fun ResultContent(
                     result = result,
                     bestScore = bestScore,
                     isReview = isReview,
+                    examScore = examScore,
                     modifier = Modifier.widthIn(max = ContentMaxWidth).fillMaxWidth(),
                 )
             }
@@ -173,6 +185,7 @@ private fun Summary(
     result: QuizResult,
     bestScore: Int,
     isReview: Boolean,
+    examScore: ExamScore?,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -182,7 +195,11 @@ private fun Summary(
     ) {
         if (examTitle.isNotBlank()) {
             Text(
-                text = if (isReview) "Repaso de fallos · $examTitle" else examTitle,
+                text = when {
+                    isReview -> "Repaso de fallos · $examTitle"
+                    examScore != null -> "Simulacro · $examTitle"
+                    else -> examTitle
+                },
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center,
@@ -192,6 +209,7 @@ private fun Summary(
         Text(
             text = when {
                 isReview -> "Repaso terminado"
+                examScore != null -> "Simulacro terminado"
                 result.hasPassed -> "¡Prueba superada!"
                 else -> "Prueba finalizada"
             },
@@ -200,13 +218,16 @@ private fun Summary(
             textAlign = TextAlign.Center,
         )
 
-        ScoreBadge(result = result)
+        if (examScore != null) ExamScoreBadge(examScore) else ScoreBadge(result = result)
 
         Text(
             text = when {
                 isReview && result.correctAnswers == result.totalQuestions ->
                     "Has acertado todas las que antes fallaste."
                 isReview -> "Aún quedan preguntas por afianzar. Puedes repasarlas otra vez."
+                // No se anuncia aprobado ni suspenso: la nota de corte no está en las
+                // instrucciones del examen, así que inventarla sería engañar.
+                examScore != null -> "Cada error resta un tercio de acierto; los blancos no puntúan."
                 result.hasPassed -> "¡Buen trabajo! Has demostrado un buen conocimiento sobre Madrid."
                 else -> "Sigue practicando para mejorar tu resultado."
             },
@@ -219,7 +240,7 @@ private fun Summary(
             NewRecordBadge()
         }
 
-        if (!isReview) {
+        if (!isReview && examScore == null) {
             Text(
                 text = "Mejor marca en este examen: $bestScore de ${result.totalQuestions}",
                 style = MaterialTheme.typography.bodyMedium,
@@ -252,6 +273,54 @@ private fun BreakdownHeader(wrongCount: Int, modifier: Modifier = Modifier) {
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
+}
+
+/** Marcador del simulacro: la nota neta manda, y debajo de dónde sale. */
+@Composable
+private fun ExamScoreBadge(score: ExamScore) {
+    Surface(
+        shape = RoundedCornerShape(24.dp),
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 32.dp, vertical = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = formatNet(score.net),
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "puntos netos sobre ${score.totalQuestions}",
+                style = MaterialTheme.typography.titleSmall,
+            )
+            Text(
+                text = listOf(
+                    plural(score.correct, "acierto", "aciertos"),
+                    plural(score.wrong, "error", "errores"),
+                    "${score.blank} en blanco",
+                ).joinToString(" · "),
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(top = 6.dp),
+            )
+        }
+    }
+}
+
+/** «1 error» y no «1 errores»: el marcador se lee muchas veces y el detalle canta. */
+private fun plural(count: Int, singular: String, plural: String): String =
+    "$count ${if (count == 1) singular else plural}"
+
+/** Dos decimales con coma, sin depender de formateo de plataforma. */
+private fun formatNet(value: Double): String {
+    val rounded = (value * 100).roundToInt()
+    val signo = if (rounded < 0) "-" else ""
+    val absoluto = abs(rounded)
+    return "$signo${absoluto / 100},${(absoluto % 100).toString().padStart(2, '0')}"
 }
 
 @Composable
@@ -319,6 +388,7 @@ private fun ResultPassedPreview() {
             ),
             bestScore = 8,
             isReview = false,
+            examScore = null,
             breakdown = emptyList(),
             onRestart = {},
             onReviewWrong = {},
@@ -341,6 +411,7 @@ private fun ResultFailedPreview() {
             ),
             bestScore = 5,
             isReview = false,
+            examScore = null,
             breakdown = emptyList(),
             onRestart = {},
             onReviewWrong = {},

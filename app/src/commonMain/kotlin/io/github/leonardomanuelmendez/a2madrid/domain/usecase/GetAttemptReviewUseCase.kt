@@ -8,6 +8,10 @@
  * Se degrada en silencio: si el intento no existe, es anterior a esta funcionalidad, o el
  * contenido del examen ha cambiado y una respuesta ya no casa, esa respuesta se descarta en
  * vez de reventar la pantalla.
+ *
+ * Las preguntas se buscan en TODOS los modelos, no solo en el del intento: un simulacro se guarda
+ * con un examId sintético y mezcla preguntas de los tres. Es seguro porque ExamsContentTest
+ * garantiza que los ids de pregunta son únicos en todo el fichero.
  */
 package io.github.leonardomanuelmendez.a2madrid.domain.usecase
 
@@ -17,7 +21,6 @@ import kotlinx.coroutines.flow.first
 
 /** Rebuilds the per-question detail of a stored attempt. */
 class GetAttemptReviewUseCase(
-    private val getExam: GetExamUseCase,
     private val repository: QuizRepository,
 ) {
     suspend operator fun invoke(examId: String, attemptMillis: Long): List<AnswerResult> {
@@ -26,12 +29,11 @@ class GetAttemptReviewUseCase(
             ?: return emptyList()
         if (entry.answers.isEmpty()) return emptyList()
 
-        val exam = getExam(examId) ?: return emptyList()
         val answeredBy = entry.answers.associateBy { it.questionId }
 
-        // Recorrer el examen (y no las respuestas) fija el orden y descarta de paso las
+        // Recorrer el contenido (y no las respuestas) fija el orden y descarta de paso las
         // respuestas huérfanas de preguntas que ya no existen.
-        return exam.questions.mapNotNull { question ->
+        return repository.getExams().flatMap { it.questions }.mapNotNull { question ->
             val answer = answeredBy[question.id] ?: return@mapNotNull null
             val selected = answer.selectedOptionIndex
             if (selected !in question.options.indices) return@mapNotNull null

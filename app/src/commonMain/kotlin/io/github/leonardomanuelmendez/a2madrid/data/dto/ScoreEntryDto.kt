@@ -21,4 +21,5 @@ data class ScoreEntryDto(
     val timestampMillis: Long,
     val answers: List<AnsweredQuestionDto> = emptyList(),
     val isReview: Boolean = false,
+    val isExam: Boolean = false,
 )

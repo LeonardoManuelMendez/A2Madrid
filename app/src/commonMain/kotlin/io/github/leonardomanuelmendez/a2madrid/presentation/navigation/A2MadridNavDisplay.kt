@@ -52,6 +52,7 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
             ExamSelectionScreen(
                 oppositionId = route.oppositionId,
                 onExamSelected = { examId -> navController.navigate(QuizRoute(examId)) },
+                onSimulationSelected = { examId -> navController.navigate(SimulationRoute(examId)) },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
                 onBack = { navController.popBackStack() },
             )
@@ -71,6 +72,28 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                             attemptMillis = result.attemptMillis,
                         ),
                     ) { popUpTo<QuizRoute> { inclusive = true } }
+                },
+                onViewScores = { navController.navigate(ScoreHistoryRoute) },
+                onGoHome = goHome,
+            )
+        }
+        composable<SimulationRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<SimulationRoute>()
+            QuizScreen(
+                examId = route.examId,
+                isSimulation = true,
+                onQuizFinished = { result, examId, examTitle ->
+                    navController.navigate(
+                        ResultRoute(
+                            examId = examId,
+                            examTitle = examTitle,
+                            correctAnswers = result.correctAnswers,
+                            totalQuestions = result.totalQuestions,
+                            isNewBestScore = result.isNewBestScore,
+                            attemptMillis = result.attemptMillis,
+                            isExam = true,
+                        ),
+                    ) { popUpTo<SimulationRoute> { inclusive = true } }
                 },
                 onViewScores = { navController.navigate(ScoreHistoryRoute) },
                 onGoHome = goHome,
@@ -108,6 +131,7 @@ fun A2MadridNavHost(modifier: Modifier = Modifier) {
                 isNewBestScore = route.isNewBestScore,
                 attemptMillis = route.attemptMillis,
                 isReview = route.isReview,
+                isExam = route.isExam,
                 onRestart = {
                     navController.navigate(QuizRoute(route.examId)) {
                         popUpTo<ResultRoute> { inclusive = true }

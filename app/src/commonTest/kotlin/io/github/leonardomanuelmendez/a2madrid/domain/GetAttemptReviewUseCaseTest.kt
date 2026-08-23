@@ -5,7 +5,6 @@ import io.github.leonardomanuelmendez.a2madrid.domain.model.Exam
 import io.github.leonardomanuelmendez.a2madrid.domain.model.Question
 import io.github.leonardomanuelmendez.a2madrid.domain.model.ScoreEntry
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetAttemptReviewUseCase
-import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.fake.FakeQuizRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -28,10 +27,20 @@ class GetAttemptReviewUseCaseTest {
         ),
     )
 
-    private fun useCaseWith(vararg history: ScoreEntry): GetAttemptReviewUseCase {
-        val repository = FakeQuizRepository(exams = listOf(exam), initialHistory = history.toList())
-        return GetAttemptReviewUseCase(GetExamUseCase(repository), repository)
-    }
+    /** Segundo modelo, para comprobar que un simulacro resuelve preguntas de varios exámenes. */
+    private val otroExamen = Exam(
+        id = "modelo_b",
+        title = "Modelo B",
+        questions = listOf(
+            Question(50, "Q50", listOf("a", "b"), correctAnswerIndex = 1),
+            Question(51, "Q51", listOf("a", "b"), correctAnswerIndex = 0),
+        ),
+    )
+
+    private fun useCaseWith(vararg history: ScoreEntry): GetAttemptReviewUseCase =
+        GetAttemptReviewUseCase(
+            FakeQuizRepository(exams = listOf(exam, otroExamen), initialHistory = history.toList()),
+        )
 
     @Test
     fun `reconstruye el detalle del intento cruzando por id de pregunta`() = runTest {
@@ -111,5 +120,31 @@ class GetAttemptReviewUseCaseTest {
         )
 
         assertEquals(listOf(1), useCase(exam.id, 500L).map { it.question.id })
+    }
+
+    @Test
+    fun `el desglose de un simulacro resuelve preguntas de varios modelos`() = runTest {
+        // Un simulacro se guarda con un examId sintético que no corresponde a ningún modelo, y
+        // sus respuestas mezclan preguntas de todos ellos.
+        val useCase = useCaseWith(
+            ScoreEntry(
+                examId = "simulacro_completo",
+                examTitle = "Simulacro",
+                correctAnswers = 2,
+                totalQuestions = 4,
+                timestampMillis = 900L,
+                answers = listOf(
+                    AnsweredQuestion(51, 0),  // modelo_b, acierto
+                    AnsweredQuestion(2, 0),   // modelo_a, fallo
+                    AnsweredQuestion(1, 0),   // modelo_a, acierto
+                ),
+                isExam = true,
+            ),
+        )
+
+        val review = useCase("simulacro_completo", attemptMillis = 900L)
+
+        assertEquals(listOf(1, 2, 51), review.map { it.question.id }, "orden del contenido")
+        assertEquals(listOf(true, false, true), review.map { it.isCorrect })
     }
 }

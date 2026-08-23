@@ -30,8 +30,10 @@ data class QuizUiState(
     val currentIndex: Int = 0,
     val selectedOptionIndex: Int? = null,
     val isAnswerConfirmed: Boolean = false,
-    /** True when this session only covers the questions failed in an earlier attempt. */
-    val isReview: Boolean = false,
+    /** Which rules this session runs under. */
+    val mode: QuizMode = QuizMode.PRACTICE,
+    /** Seconds left in a mock exam, or `null` when the session is not timed. */
+    val remainingSeconds: Int? = null,
     /** Every answer confirmed so far, in the order they were given. */
     val answers: List<AnswerResult> = emptyList(),
     /** questionId → displayed option position → canonical option index, for this session. */
@@ -48,7 +50,31 @@ data class QuizUiState(
     val isEmptyReview: Boolean
         get() = isReview && !isLoading && errorMessage == null && questions.isEmpty()
 
+    companion object {
+        const val WARNING_SECONDS = 5 * 60
+    }
+
+    val isReview: Boolean get() = mode == QuizMode.REVIEW
+    val isExam: Boolean get() = mode == QuizMode.EXAM
+
+    /** True when the session corrects and explains after each answer. */
+    val showsFeedback: Boolean get() = mode.showsFeedback
+
+    /** Últimos cinco minutos, el mismo aviso que da el responsable del aula. */
+    val isTimeRunningOut: Boolean get() = remainingSeconds != null && remainingSeconds <= WARNING_SECONDS
+
+    /** Tiempo restante en mm:ss, listo para pintar. */
+    val remainingTimeLabel: String?
+        get() = remainingSeconds?.let { total ->
+            val minutes = total / 60
+            val seconds = total % 60
+            "${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}"
+        }
+
     val correctAnswers: Int get() = answers.count { it.isCorrect }
+
+    /** Preguntas que quedaron sin contestar, que en un simulacro no puntúan ni penalizan. */
+    val blankAnswers: Int get() = (totalQuestions - answers.size).coerceAtLeast(0)
 
     /** [question]'s options in the order this session must show them. */
     fun displayedOptions(question: Question): List<String> =

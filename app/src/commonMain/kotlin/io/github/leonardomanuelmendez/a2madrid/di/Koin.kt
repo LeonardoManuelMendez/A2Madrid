@@ -31,6 +31,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.bind
@@ -55,7 +56,9 @@ val appModule = module {
 
     viewModelOf(::OppositionSelectionViewModel)
     viewModelOf(::ExamSelectionViewModel)
-    viewModelOf(::QuizViewModel)
+    // A mano y no con viewModelOf: el reloj del cronómetro lleva valor por defecto y el
+    // DSL de constructor intentaría resolverlo por tipo.
+    viewModel { QuizViewModel(get(), get(), get(), get(), get()) }
     viewModelOf(::ResultViewModel)
     viewModelOf(::ScoreHistoryViewModel)
 }

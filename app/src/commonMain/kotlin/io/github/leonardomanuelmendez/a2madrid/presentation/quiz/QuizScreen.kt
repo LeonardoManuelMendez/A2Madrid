@@ -10,6 +10,7 @@ package io.github.leonardomanuelmendez.a2madrid.presentation.quiz
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.horizontalScroll
@@ -68,16 +69,18 @@ fun QuizScreen(
     onGoHome: () -> Unit,
     /** Cuando llega un intento, la sesión se compone solo de las preguntas que se fallaron en él. */
     reviewAttemptMillis: Long? = null,
+    /** Cuando es cierto, el modelo se recorre con las reglas del examen: reloj y penalización. */
+    isSimulation: Boolean = false,
     modifier: Modifier = Modifier,
     viewModel: QuizViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    androidx.compose.runtime.LaunchedEffect(examId, reviewAttemptMillis) {
-        if (reviewAttemptMillis == null) {
-            viewModel.loadExam(examId)
-        } else {
-            viewModel.loadReview(examId, reviewAttemptMillis)
+    androidx.compose.runtime.LaunchedEffect(examId, reviewAttemptMillis, isSimulation) {
+        when {
+            isSimulation -> viewModel.loadExamSimulation(examId)
+            reviewAttemptMillis != null -> viewModel.loadReview(examId, reviewAttemptMillis)
+            else -> viewModel.loadExam(examId)
         }
     }
 
@@ -94,6 +97,7 @@ fun QuizScreen(
         onSelectOption = viewModel::selectOption,
         onConfirm = viewModel::confirmAnswer,
         onNext = viewModel::nextQuestion,
+        onSkip = viewModel::skipQuestion,
         onRestart = viewModel::restart,
         onViewScores = onViewScores,
         onGoHome = onGoHome,
@@ -108,6 +112,7 @@ private fun QuizContent(
     onSelectOption: (Int) -> Unit,
     onConfirm: () -> Unit,
     onNext: () -> Unit,
+    onSkip: () -> Unit,
     onRestart: () -> Unit,
     onViewScores: () -> Unit,
     onGoHome: () -> Unit,
@@ -122,9 +127,28 @@ private fun QuizContent(
                 TopAppBar(
                     title = {
                         val title = uiState.examTitle.ifBlank { "A2Madrid" }
-                        Text(if (uiState.isReview) "Repaso · $title" else title)
+                        Text(
+                            when {
+                                uiState.isReview -> "Repaso · $title"
+                                uiState.isExam -> "Simulacro · $title"
+                                else -> title
+                            },
+                        )
                     },
                     actions = {
+                        uiState.remainingTimeLabel?.let { tiempo ->
+                            Text(
+                                text = tiempo,
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = if (uiState.isTimeRunningOut) {
+                                    MaterialTheme.colorScheme.error
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface
+                                },
+                                modifier = Modifier.padding(end = 4.dp),
+                            )
+                        }
                         QuizOptionsMenu(
                             onGoHome = onGoHome,
                             onViewScores = onViewScores,
@@ -149,8 +173,10 @@ private fun QuizContent(
                     isAnswerConfirmed = uiState.isAnswerConfirmed,
                     isLastQuestion = uiState.isLastQuestion,
                     canConfirm = uiState.canConfirm,
+                    isExam = uiState.isExam,
                     onConfirm = onConfirm,
                     onNext = onNext,
+                    onSkip = onSkip,
                 )
             }
         },
@@ -262,7 +288,7 @@ private fun QuestionState(
             )
         }
 
-        if (uiState.isAnswerConfirmed) {
+        if (uiState.isAnswerConfirmed && uiState.showsFeedback) {
             // El desplegable arranca plegado y se reinicia al cambiar de pregunta.
             var explanationExpanded by remember(question.id) { mutableStateOf(false) }
             ExplanationCard(
@@ -312,8 +338,10 @@ private fun QuizBottomBar(
     isAnswerConfirmed: Boolean,
     isLastQuestion: Boolean,
     canConfirm: Boolean,
+    isExam: Boolean,
     onConfirm: () -> Unit,
     onNext: () -> Unit,
+    onSkip: () -> Unit,
 ) {
     Surface(tonalElevation = 3.dp) {
         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
@@ -323,7 +351,18 @@ private fun QuizBottomBar(
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp, vertical = 12.dp),
             ) {
-                if (isAnswerConfirmed) {
+                if (isExam) {
+                    // En el simulacro no se confirma nada: se avanza, y dejar en blanco es una
+                    // decisión táctica válida porque el error penaliza y el blanco no.
+                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        OutlinedButton(onClick = onSkip, modifier = Modifier.weight(1f)) {
+                            Text("Dejar en blanco")
+                        }
+                        Button(onClick = onNext, modifier = Modifier.weight(1f)) {
+                            Text(if (isLastQuestion) "Terminar" else "Siguiente")
+                        }
+                    }
+                } else if (isAnswerConfirmed) {
                     Button(
                         onClick = onNext,
                         modifier = Modifier.fillMaxWidth(),
@@ -451,6 +490,7 @@ private fun QuizContentQuestionPreview() {
             onSelectOption = {},
             onConfirm = {},
             onNext = {},
+            onSkip = {},
             onRestart = {},
             onViewScores = {},
             onGoHome = {},
@@ -472,6 +512,7 @@ private fun QuizContentAnsweredPreview() {
             onSelectOption = {},
             onConfirm = {},
             onNext = {},
+            onSkip = {},
             onRestart = {},
             onViewScores = {},
             onGoHome = {},
@@ -488,6 +529,7 @@ private fun QuizContentErrorPreview() {
             onSelectOption = {},
             onConfirm = {},
             onNext = {},
+            onSkip = {},
             onRestart = {},
             onViewScores = {},
             onGoHome = {},

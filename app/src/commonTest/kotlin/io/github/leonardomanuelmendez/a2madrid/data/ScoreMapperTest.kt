@@ -58,4 +58,30 @@ class ScoreMapperTest {
         assertTrue(restored.answers.isEmpty())
         assertFalse(restored.isReview)
     }
+
+    @Test
+    fun `en un simulacro los blancos no cuentan como fallos`() {
+        // 44 preguntas, 20 contestadas (12 acertadas) y 24 en blanco.
+        val entry = ScoreEntry(
+            examId = "modelo_a",
+            examTitle = "Modelo A",
+            correctAnswers = 12,
+            totalQuestions = 44,
+            timestampMillis = 1L,
+            answers = (1..20).map { AnsweredQuestion(it, 0) },
+            isExam = true,
+        )
+
+        assertEquals(8, entry.wrongAnswers, "fallos = contestadas − acertadas")
+        assertEquals(24, entry.blankAnswers)
+    }
+
+    @Test
+    fun `un intento sin desglose sigue contando los fallos como antes`() {
+        // Historial anterior a esta funcionalidad: sin `answers`, todo lo no acertado es fallo.
+        val legacy = ScoreEntry("modelo_a", "Modelo A", 30, 44, 1L)
+
+        assertEquals(14, legacy.wrongAnswers)
+        assertEquals(0, legacy.blankAnswers)
+    }
 }

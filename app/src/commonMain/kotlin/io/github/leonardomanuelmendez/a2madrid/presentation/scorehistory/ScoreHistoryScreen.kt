@@ -117,7 +117,7 @@ private fun ScoreHistoryContent(
             EmptyState(Modifier.fillMaxSize().padding(innerPadding))
         } else {
             val bestCorrectByExam = remember(entries) {
-                entries.filterNot { it.isReview }
+                entries.filterNot { it.isReview || it.isExam }
                     .groupBy(ScoreEntry::examId)
                     .mapValues { (_, examEntries) -> examEntries.maxOf { it.correctAnswers } }
             }
@@ -138,7 +138,7 @@ private fun ScoreHistoryContent(
                     ) { entry ->
                         ScoreRow(
                             entry = entry,
-                            isBest = !entry.isReview &&
+                            isBest = !entry.isReview && !entry.isExam &&
                                 entry.correctAnswers == bestCorrectByExam[entry.examId],
                             onReview = { onReviewAttempt(entry) },
                             onDelete = { pendingDeleteEntry = entry },
@@ -244,7 +244,10 @@ private fun ScoreRow(
                         )
                     }
                     if (entry.isReview) {
-                        ReviewChip(modifier = Modifier.padding(start = 8.dp))
+                        AttemptChip("Repaso", Modifier.padding(start = 8.dp))
+                    }
+                    if (entry.isExam) {
+                        AttemptChip("Simulacro", Modifier.padding(start = 8.dp))
                     }
                 }
                 Text(
@@ -253,6 +256,14 @@ private fun ScoreRow(
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                if (entry.isExam && entry.blankAnswers > 0) {
+                    Text(
+                        text = "${entry.wrongAnswers} ${if (entry.wrongAnswers == 1) "fallo" else "fallos"} · " +
+                            "${entry.blankAnswers} en blanco",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
                 Text(
                     text = formatTimestamp(entry.timestampMillis),
                     style = MaterialTheme.typography.bodySmall,
@@ -284,9 +295,9 @@ private fun ScoreRow(
     }
 }
 
-/** Distintivo que marca una entrada como repaso de fallos, no como intento completo. */
+/** Distintivo que separa repasos y simulacros de un intento de práctica corriente. */
 @Composable
-private fun ReviewChip(modifier: Modifier = Modifier) {
+private fun AttemptChip(text: String, modifier: Modifier = Modifier) {
     Surface(
         shape = RoundedCornerShape(50),
         color = MaterialTheme.colorScheme.secondaryContainer,
@@ -294,7 +305,7 @@ private fun ReviewChip(modifier: Modifier = Modifier) {
         modifier = modifier,
     ) {
         Text(
-            text = "Repaso",
+            text = text,
             style = MaterialTheme.typography.labelSmall,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),

@@ -27,7 +27,13 @@ data class ResultRoute(
     val attemptMillis: Long,
     /** Un repaso cubre un subconjunto: su marcador no es comparable con el del modelo. */
     val isReview: Boolean = false,
+    /** Un simulacro se corrige con las reglas del examen: penaliza el error y el blanco no puntúa. */
+    val isExam: Boolean = false,
 )
+
+/** Simulacro de un modelo: mismo test, pero con reloj, penalización y sin corrección. */
+@Serializable
+data class SimulationRoute(val examId: String)
 
 /** Repaso de los fallos de un intento concreto: mismo test, solo las preguntas falladas. */
 @Serializable

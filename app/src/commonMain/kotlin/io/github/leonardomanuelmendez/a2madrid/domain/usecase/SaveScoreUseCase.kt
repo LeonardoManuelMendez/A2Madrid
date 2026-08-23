@@ -4,9 +4,9 @@
  * modelo. Orquesta lógica (lee mejor previo + persiste) sobre el repositorio.
  * → lo usa QuizViewModel al terminar el test.
  *
- * Los REPASOS se guardan igual que un intento normal, pero quedan fuera del cálculo de la mejor
- * marca: cubren un subconjunto de preguntas, así que un 6/6 en un repaso no es comparable con
- * un 30/45 del modelo completo.
+ * Los REPASOS y los SIMULACROS se guardan igual que un intento normal, pero quedan fuera del
+ * cálculo de la mejor marca: el repaso cubre un subconjunto (un 6/6 no es comparable con un
+ * 30/45 del modelo completo) y el simulacro abarca todos los modelos a la vez.
  */
 package io.github.leonardomanuelmendez.a2madrid.domain.usecase
 
@@ -33,9 +33,10 @@ class SaveScoreUseCase(
         totalQuestions: Int,
         answers: List<AnsweredQuestion> = emptyList(),
         isReview: Boolean = false,
+        isExam: Boolean = false,
     ): SaveScoreResult {
         val previousBest = repository.scoreHistory.first()
-            .filter { it.examId == examId && !it.isReview }
+            .filter { it.examId == examId && !it.isReview && !it.isExam }
             .maxOfOrNull { it.correctAnswers } ?: 0
 
         val entry = ScoreEntry(
@@ -46,12 +47,13 @@ class SaveScoreUseCase(
             timestampMillis = Clock.System.now().toEpochMilliseconds(),
             answers = answers,
             isReview = isReview,
+            isExam = isExam,
         )
         repository.addScore(entry)
 
         return SaveScoreResult(
             entry = entry,
-            isNewBestScore = !isReview && correctAnswers > previousBest,
+            isNewBestScore = !isReview && !isExam && correctAnswers > previousBest,
         )
     }
 }

@@ -18,6 +18,7 @@ fun ScoreEntryDto.toDomain(): ScoreEntry = ScoreEntry(
     timestampMillis = timestampMillis,
     answers = answers.map { it.toDomain() },
     isReview = isReview,
+    isExam = isExam,
 )
 
 fun ScoreEntry.toDto(): ScoreEntryDto = ScoreEntryDto(
@@ -28,6 +29,7 @@ fun ScoreEntry.toDto(): ScoreEntryDto = ScoreEntryDto(
     timestampMillis = timestampMillis,
     answers = answers.map { it.toDto() },
     isReview = isReview,
+    isExam = isExam,
 )
 
 private fun AnsweredQuestionDto.toDomain(): AnsweredQuestion =

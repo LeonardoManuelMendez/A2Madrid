@@ -25,6 +25,12 @@ data class ScoreEntry(
      * Reviews cover a subset, so they are excluded from the personal best of the exam model.
      */
     val isReview: Boolean = false,
+    /**
+     * True when this attempt was a mock exam over every model, marked under the real rules
+     * (a third of a point off per error, blanks worth nothing). Mutually exclusive with
+     * [isReview]; like it, it stays out of the personal best of any single model.
+     */
+    val isExam: Boolean = false,
 ) {
     val percentage: Int
         get() = if (totalQuestions == 0) 0 else (correctAnswers * 100) / totalQuestions
@@ -32,7 +38,17 @@ data class ScoreEntry(
     /** True when this attempt kept enough detail to rebuild a per-question breakdown. */
     val hasBreakdown: Boolean get() = answers.isNotEmpty()
 
-    val wrongAnswers: Int get() = totalQuestions - correctAnswers
+    /**
+     * Las falladas de verdad. En un simulacro se puede dejar en blanco, y un blanco NO es un
+     * fallo: restar aciertos al total contaría los blancos como errores y prometería un repaso
+     * de preguntas que nunca se contestaron.
+     */
+    val wrongAnswers: Int
+        get() = if (hasBreakdown) answers.size - correctAnswers else totalQuestions - correctAnswers
+
+    /** Preguntas que se dejaron sin contestar. Solo puede haberlas en un simulacro. */
+    val blankAnswers: Int
+        get() = if (hasBreakdown) (totalQuestions - answers.size).coerceAtLeast(0) else 0
 
     /** True when this attempt left failures behind and kept the detail needed to revisit them. */
     val canReview: Boolean get() = hasBreakdown && wrongAnswers > 0

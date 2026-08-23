@@ -10,14 +10,17 @@ import io.github.leonardomanuelmendez.a2madrid.domain.usecase.GetExamUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.SaveScoreUseCase
 import io.github.leonardomanuelmendez.a2madrid.domain.usecase.ShuffleQuestionsUseCase
 import io.github.leonardomanuelmendez.a2madrid.fake.FakeQuizRepository
+import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizMode
 import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizUiState
 import io.github.leonardomanuelmendez.a2madrid.presentation.quiz.QuizViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlin.random.Random
@@ -72,12 +75,14 @@ class QuizViewModelTest {
     private fun buildViewModel(
         repository: FakeQuizRepository,
         shuffle: ShuffleQuestionsUseCase = ShuffleQuestionsUseCase(Random(0)),
+        nowMillis: () -> Long = { 0L },
     ): QuizViewModel = QuizViewModel(
         getExam = GetExamUseCase(repository),
         evaluateAnswer = EvaluateAnswerUseCase(),
         saveScore = SaveScoreUseCase(repository),
-        getAttemptReview = GetAttemptReviewUseCase(GetExamUseCase(repository), repository),
+        getAttemptReview = GetAttemptReviewUseCase(repository),
         shuffleQuestions = shuffle,
+        nowMillis = nowMillis,
     )
 
     @Test
@@ -265,7 +270,7 @@ class QuizViewModelTest {
         advanceUntilIdle()
 
         val entry = repository.scoreHistory.first().single()
-        val desglose = GetAttemptReviewUseCase(GetExamUseCase(repository), repository)(
+        val desglose = GetAttemptReviewUseCase(repository)(
             examId = exam.id,
             attemptMillis = entry.timestampMillis,
         )
@@ -353,5 +358,137 @@ class QuizViewModelTest {
         val state = viewModel.uiState.value
         assertTrue(state.questions.isEmpty())
         assertTrue(state.isEmptyReview)
+    }
+
+    // ---- Simulacro ----
+
+    /** Modelo de 45 preguntas, como los reales, para que reloj y aviso tengan cifras creíbles. */
+    private val modeloLargo = Exam(
+        "modelo_largo",
+        "Modelo largo",
+        (1..45).map { Question(it, "Q$it", listOf("a", "b", "c", "d"), correctAnswerIndex = 0) },
+    )
+
+    @Test
+    fun `el simulacro carga un solo modelo, no todos`() = runTest {
+        val otro = Exam(
+            "modelo_b",
+            "Modelo B",
+            listOf(Question(10, "Q10", listOf("a", "b", "c", "d"), correctAnswerIndex = 0)),
+        )
+        val repository = FakeQuizRepository(exams = listOf(exam, otro))
+        val viewModel = buildViewModel(repository, nowMillis = { testScheduler.currentTime })
+
+        viewModel.loadExamSimulation(exam.id)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        assertEquals(QuizMode.EXAM, state.mode)
+        assertEquals(exam.id, state.examId)
+        assertEquals(setOf(1, 2), state.questions.map { it.id }.toSet())
+    }
+
+    @Test
+    fun `el simulacro dura un minuto por pregunta`() = runTest {
+        val viewModel = buildViewModel(
+            FakeQuizRepository(exams = listOf(modeloLargo)),
+            nowMillis = { testScheduler.currentTime },
+        )
+
+        viewModel.loadExamSimulation(modeloLargo.id)
+        runCurrent()
+
+        // 45 preguntas → 45 minutos, como el bloque real de legislación.
+        assertEquals(45 * 60, viewModel.uiState.value.remainingSeconds)
+        assertEquals("45:00", viewModel.uiState.value.remainingTimeLabel)
+        assertFalse(viewModel.uiState.value.isTimeRunningOut)
+    }
+
+    @Test
+    fun `en el simulacro no hay corrección hasta el final`() = runTest {
+        val repository = FakeQuizRepository(exams = listOf(exam))
+        val viewModel = buildViewModel(repository, nowMillis = { testScheduler.currentTime })
+        viewModel.loadExamSimulation(exam.id)
+        runCurrent()
+
+        viewModel.selectCorrect()
+        viewModel.confirmAnswer()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isAnswerConfirmed, "el simulacro no corrige sobre la marcha")
+        assertFalse(state.showsFeedback)
+        assertTrue(state.answers.isEmpty(), "nada se registra hasta avanzar")
+    }
+
+    @Test
+    fun `dejar en blanco avanza sin registrar respuesta`() = runTest {
+        val repository = FakeQuizRepository(exams = listOf(exam))
+        val viewModel = buildViewModel(repository, nowMillis = { testScheduler.currentTime })
+        viewModel.loadExamSimulation(exam.id)
+        runCurrent()
+
+        viewModel.selectCorrect()   // aunque haya algo marcado…
+        viewModel.skipQuestion()    // …dejar en blanco lo descarta
+
+        val state = viewModel.uiState.value
+        assertTrue(state.answers.isEmpty())
+        assertEquals(1, state.currentIndex, "ha avanzado de pregunta")
+        assertNull(state.selectedOptionIndex)
+    }
+
+    @Test
+    fun `avanzar registra la respuesta marcada`() = runTest {
+        val repository = FakeQuizRepository(exams = listOf(exam))
+        val viewModel = buildViewModel(repository, nowMillis = { testScheduler.currentTime })
+        viewModel.loadExamSimulation(exam.id)
+        runCurrent()
+
+        viewModel.selectCorrect()
+        viewModel.nextQuestion()
+
+        val state = viewModel.uiState.value
+        assertEquals(1, state.answers.size)
+        assertTrue(state.answers.single().isCorrect)
+        assertEquals(1, state.blankAnswers, "queda una sin contestar todavía")
+    }
+
+    @Test
+    fun `al agotarse el tiempo el ejercicio se cierra con lo contestado`() = runTest {
+        val repository = FakeQuizRepository(exams = listOf(exam))
+        val viewModel = buildViewModel(repository, nowMillis = { testScheduler.currentTime })
+        viewModel.loadExamSimulation(exam.id)
+        runCurrent()
+
+        viewModel.selectCorrect()
+        viewModel.nextQuestion()          // 1 contestada, queda 1
+        advanceTimeBy(2 * 60 * 1000 + 1500)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        assertNotNull(state.result, "el simulacro debe cerrarse solo")
+        assertEquals(0, state.remainingSeconds)
+        assertEquals(1, state.correctAnswers)
+        assertEquals(2, state.totalQuestions)
+
+        val guardado = repository.scoreHistory.first().single()
+        assertTrue(guardado.isExam)
+        assertEquals(exam.id, guardado.examId)
+    }
+
+    @Test
+    fun `el aviso salta en los últimos cinco minutos`() = runTest {
+        val viewModel = buildViewModel(
+            FakeQuizRepository(exams = listOf(modeloLargo)),
+            nowMillis = { testScheduler.currentTime },
+        )
+        viewModel.loadExamSimulation(modeloLargo.id)
+        runCurrent()
+        assertFalse(viewModel.uiState.value.isTimeRunningOut)
+
+        // 45 minutos de examen: a los 40 transcurridos quedan justo 5.
+        advanceTimeBy(40 * 60 * 1000L + 1_000)
+        runCurrent()
+
+        assertTrue(viewModel.uiState.value.isTimeRunningOut)
     }
 }

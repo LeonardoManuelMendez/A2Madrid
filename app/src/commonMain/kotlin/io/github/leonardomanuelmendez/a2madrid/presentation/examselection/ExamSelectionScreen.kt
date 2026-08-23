@@ -30,6 +30,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -51,6 +52,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun ExamSelectionScreen(
     oppositionId: String,
     onExamSelected: (String) -> Unit,
+    onSimulationSelected: (String) -> Unit,
     onViewScores: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
@@ -61,6 +63,7 @@ fun ExamSelectionScreen(
         oppositionId = oppositionId,
         uiState = uiState,
         onExamSelected = onExamSelected,
+        onSimulationSelected = onSimulationSelected,
         onViewScores = onViewScores,
         onBack = onBack,
         onRetry = viewModel::load,
@@ -73,6 +76,7 @@ fun ExamSelectionScreen(
 private fun ExamSelectionContent(
     oppositionId: String,
     uiState: ExamSelectionUiState,
+    onSimulationSelected: (String) -> Unit,
     onExamSelected: (String) -> Unit,
     onViewScores: () -> Unit,
     onBack: () -> Unit,
@@ -137,7 +141,11 @@ private fun ExamSelectionContent(
                         modifier = Modifier.padding(bottom = 4.dp),
                     )
                     uiState.exams.forEach { exam ->
-                        ExamCard(exam = exam, onClick = { onExamSelected(exam.id) })
+                        ExamCard(
+                            exam = exam,
+                            onClick = { onExamSelected(exam.id) },
+                            onSimulate = { onSimulationSelected(exam.id) },
+                        )
                     }
                 }
             }
@@ -146,14 +154,14 @@ private fun ExamSelectionContent(
 }
 
 @Composable
-private fun ExamCard(exam: Exam, onClick: () -> Unit) {
+private fun ExamCard(exam: Exam, onClick: () -> Unit, onSimulate: () -> Unit) {
     Surface(
         onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Column(modifier = Modifier.padding(20.dp)) {
+        Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 8.dp)) {
             Text(
                 text = exam.title,
                 style = MaterialTheme.typography.titleMedium,
@@ -164,6 +172,10 @@ private fun ExamCard(exam: Exam, onClick: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+            // Un minuto por pregunta, la proporción del examen real (90 en 90 minutos).
+            TextButton(onClick = onSimulate, modifier = Modifier.padding(top = 4.dp)) {
+                Text("Simulacro · ${exam.questionCount} min, con penalización")
+            }
         }
     }
 }
@@ -200,6 +212,7 @@ private fun ExamSelectionContentPreview() {
                 ),
             ),
             onExamSelected = {},
+            onSimulationSelected = {},
             onViewScores = {},
             onBack = {},
             onRetry = {},

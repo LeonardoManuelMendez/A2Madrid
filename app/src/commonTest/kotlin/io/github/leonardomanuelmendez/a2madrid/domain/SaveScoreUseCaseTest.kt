@@ -144,6 +144,23 @@ class SaveScoreUseCaseTest {
         assertTrue(saved.isNewBestScore)
     }
 
+    @Test
+    fun `un simulacro se guarda marcado y no genera récord`() = runTest {
+        val repository = FakeQuizRepository()
+        val useCase = SaveScoreUseCase(repository)
+
+        val saved = useCase(
+            examId = "simulacro_completo",
+            examTitle = "Simulacro completo",
+            correctAnswers = 90,
+            totalQuestions = 137,
+            isExam = true,
+        )
+
+        assertTrue(saved.entry.isExam)
+        assertFalse(saved.isNewBestScore, "un simulacro no es la marca de ningún modelo suelto")
+    }
+
     private fun List<ScoreEntry>.bestFor(examId: String): Int =
         filter { it.examId == examId }.maxOfOrNull { it.correctAnswers } ?: 0
 }
